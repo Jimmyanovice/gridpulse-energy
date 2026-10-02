@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use GridPulse, please cite the repository and the OPSD dataset recorded in THIRD_PARTY_NOTICES.md."
+title: "GridPulse: Renewable-Aware Net-Load Forecasting and Candidate Operational-Risk Screening"
+version: "0.1.0"
+date-released: 2026-10-02
+type: software
+abstract: "A reproducible historical backtest prototype for causal one-step-ahead net-load forecasting, uncertainty-aware risk review, and theoretical storage peak-shaving scenarios."
+license: MIT
