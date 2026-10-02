@@ -6,3 +6,4 @@ date-released: 2026-10-02
 type: software
 abstract: "A reproducible historical backtest prototype for causal one-step-ahead net-load forecasting, uncertainty-aware risk review, and theoretical storage peak-shaving scenarios."
 license: MIT
+repository-code: "https://github.com/Jimmyanovice/gridpulse-energy"
