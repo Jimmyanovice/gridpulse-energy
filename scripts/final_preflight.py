@@ -95,7 +95,7 @@ def main() -> int:
         "technical_report_pdf": not any((ROOT / "outputs").rglob("*.pdf")),
         "defense_ppt_pdf": not (ROOT / "outputs/presentation/gridpulse-defense-v1.pdf").is_file(),
         "demo_video": not any((ROOT / "outputs").glob("*.mp4")),
-        "official_submission_link": True,
+        "submission_upload": True,
         "anonymous_final_review": True,
     }
     report = {
