@@ -14,7 +14,7 @@ Show OPSD Germany fields, 2015-2020 hourly coverage, missingness controls, and t
 
 ## Slide 4: Causal forecasting design
 
-Show chronological split, seasonal-naive baseline, lag/rolling features, and the one-step-ahead information boundary.
+Show the one-step evidence path, then the direct 1--6 hour planning models and their causal information boundary.
 
 ## Slide 5: Forecasting results
 
@@ -28,10 +28,10 @@ Show the three rules, validation-only threshold calibration, and the evidence ca
 
 Show full model versus renewable-free, rolling-free, and calendar-only variants. Link the renewable ablation to the project claim.
 
-## Slide 8: Theoretical storage scenario
+## Slide 8: Risk-aware storage planning
 
-Show SOC-constrained rule, capacities, P95 outcomes, and the unreduced single maximum. State the limitation plainly.
+Show the fixed-reserve baseline against dynamic SOC reserve rolling optimization. Compare P95 and equivalent full cycles, and state the extreme-peak versus risk-reserve tradeoff plainly.
 
 ## Slide 9: Prototype and next steps
 
-Show the Streamlit MVP, the fixed rolling evidence (5/5 folds beating baseline; mean MAE 837.30 MW), the calibrated test coverage (86.92%), the reproducibility path, and the next research gate: direct 24-hour forecast inputs and SOC-aware peak prioritization.
+Show the Streamlit MVP, the fixed rolling evidence (5/5 folds beating baseline; mean MAE 837.30 MW), the calibrated test coverage (86.92%), the reproducibility path, and the next research gate: direct 24-hour forecast inputs with prices, degradation, and network constraints.

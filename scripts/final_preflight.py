@@ -34,24 +34,37 @@ def main() -> int:
         "data/processed/net_load_hourly.csv",
         "outputs/metrics/data-quality-report.json",
         "outputs/models/day3_model_metrics.json",
+        "outputs/models/multihorizon_metrics.json",
         "outputs/models/rolling_backtest_metrics.json",
         "outputs/alerts/alert_evaluation.json",
         "outputs/scenarios/storage_scenario_metrics.json",
-        "outputs/presentation/gridpulse-defense-v1.pptx",
-        ".codex-finalizer/gridpulse-defense-v1.validation.json",
+        "outputs/presentation/gridpulse-defense-v3.pptx",
+        ".codex-finalizer/gridpulse-defense-v3.validation.json",
     ]
     for relative in required:
         checks.append({"name": f"artifact:{relative}", "passed": (ROOT / relative).is_file()})
 
     model = read_json("outputs/models/day3_model_metrics.json")
+    multihorizon = read_json("outputs/models/multihorizon_metrics.json")
     scenario = read_json("outputs/scenarios/storage_scenario_metrics.json")
-    receipt = read_json(".codex-finalizer/gridpulse-defense-v1.validation.json")
+    receipt = read_json(".codex-finalizer/gridpulse-defense-v3.validation.json")
     model_mae = model["models"]["hist_gradient_boosting"]["test"]["mae_mw"]
     checks.append(
         {
             "name": "model-metric-boundary",
             "passed": model.get("forecast_design") == "one_step_ahead_causal",
             "detail": model.get("forecast_design"),
+        }
+    )
+    checks.append(
+        {
+            "name": "direct-multihorizon-boundary",
+            "passed": multihorizon.get("forecast_design") == "direct_multi_horizon_causal"
+            and multihorizon.get("horizons") == [1, 2, 3, 4, 5, 6],
+            "detail": {
+                "forecast_design": multihorizon.get("forecast_design"),
+                "horizons": multihorizon.get("horizons"),
+            },
         }
     )
     interval = model["models"]["hist_gradient_boosting"].get("prediction_interval", {})
@@ -69,11 +82,15 @@ def main() -> int:
         {
             "name": "storage-sensitivity",
             "passed": all(
-                scenario["sensitivity"][key]["theoretical_max_reduction_mw"] >= 0
+                scenario["fixed_policy"]["sensitivity"][key]["theoretical_max_reduction_mw"] >= 0
+                and scenario["risk_aware_optimization"]["sensitivity"][key]["solver_optimal_rate_pct"] == 100.0
                 for key in ("storage_10000mwh", "storage_20000mwh", "storage_30000mwh")
             ),
             "detail": {
-                key: scenario["sensitivity"][key]["theoretical_max_reduction_mw"]
+                key: {
+                    "fixed_max_reduction_mw": scenario["fixed_policy"]["sensitivity"][key]["theoretical_max_reduction_mw"],
+                    "risk_aware_solver_optimal_rate_pct": scenario["risk_aware_optimization"]["sensitivity"][key]["solver_optimal_rate_pct"],
+                }
                 for key in ("storage_10000mwh", "storage_20000mwh", "storage_30000mwh")
             },
         }

@@ -49,8 +49,8 @@ def make_styles():
         "title": ParagraphStyle("title", parent=base["Title"], fontName="NotoSC-Bold", fontSize=20, leading=27, alignment=TA_CENTER, textColor=colors.HexColor("#17302A"), spaceAfter=14),
         "h1": ParagraphStyle("h1", parent=base["Heading1"], fontName="NotoSC-Bold", fontSize=15, leading=21, textColor=colors.HexColor("#0F766E"), spaceBefore=12, spaceAfter=7),
         "h2": ParagraphStyle("h2", parent=base["Heading2"], fontName="NotoSC-Bold", fontSize=12, leading=17, textColor=colors.HexColor("#17302A"), spaceBefore=9, spaceAfter=5),
-        "body": ParagraphStyle("body", parent=base["BodyText"], fontName="NotoSC", fontSize=9.5, leading=15, textColor=colors.HexColor("#24332F"), spaceAfter=6),
-        "bullet": ParagraphStyle("bullet", parent=base["BodyText"], fontName="NotoSC", fontSize=9.2, leading=14, leftIndent=13, firstLineIndent=-8, spaceAfter=3),
+        "body": ParagraphStyle("body", parent=base["BodyText"], fontName="NotoSC", fontSize=9.2, leading=14, textColor=colors.HexColor("#24332F"), spaceAfter=5),
+        "bullet": ParagraphStyle("bullet", parent=base["BodyText"], fontName="NotoSC", fontSize=9.0, leading=13, leftIndent=13, firstLineIndent=-8, spaceAfter=2),
         "code": ParagraphStyle("code", parent=base["Code"], fontName="NotoSC", fontSize=8.5, leading=12, backColor=colors.HexColor("#F0F5F2"), borderPadding=6, spaceBefore=4, spaceAfter=7),
         "caption": ParagraphStyle("caption", parent=base["BodyText"], fontName="NotoSC", fontSize=8, leading=11, textColor=colors.HexColor("#50625E"), spaceAfter=6),
     }

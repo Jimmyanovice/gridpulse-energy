@@ -20,6 +20,7 @@ python scripts/run_baseline.py
 python scripts/train_models.py
 python scripts/rolling_backtest.py
 python scripts/run_alerts.py
+python scripts/train_multihorizon.py
 python scripts/run_storage_scenario.py
 python -m streamlit run app.py
 python scripts/final_preflight.py
@@ -34,9 +35,9 @@ python scripts/export_report_pdf.py
 |---|---|
 | Data evidence | `outputs/metrics/data-quality-report.json`, `outputs/figures/*.png` |
 | Baseline | `outputs/metrics/seasonal_naive_metrics.json`, `outputs/predictions/seasonal_naive_test.csv` |
-| Models | `outputs/models/day3_model_metrics.json`, test predictions, feature importance, saved models |
+| Models | `outputs/models/day3_model_metrics.json`, `outputs/models/multihorizon_metrics.json`, test predictions, feature importance, saved models |
 | Alerts | `outputs/alerts/alert_evaluation.json`, `outputs/alerts/test_candidate_risks.csv` |
-| Scenario | `outputs/scenarios/storage_scenario_metrics.json`, hourly SOC traces |
+| Scenario | `outputs/scenarios/storage_scenario_metrics.json`, fixed-rule and risk-aware hourly SOC traces |
 | Final preflight | `.codex-finalizer/gridpulse-final-preflight.json` |
 
 ## Reproduction boundaries

@@ -21,10 +21,10 @@ Mention that the review queue also includes interval-only peak watches: cases wh
 
 Open Feature Explanation, then Dispatch Suggestions. Explain that recent net load is the strongest validation-period feature and that solar/wind lag ablation worsened test MAE by 100.17 MW. Read one suggested action and its operational constraint.
 
-## 2:55-3:35 Scenario and limits
+## 2:55-3:35 Risk-aware planning and limits
 
-Show the storage scenario result in the report or deck. Explain the explicit SOC, power, efficiency, reserve, and capacity assumptions. State that the reserve-aware policy reduces P95 and the largest test peak in this theoretical backtest, but it does not support a savings or reliability claim.
+Open the Risk-Aware Control tab. Contrast the fixed 30% reserve baseline with the direct 1--6 hour forecast-interval policy. Explain that the new policy raises the SOC reserve when the upper forecast or interval width increases, re-plans each hour, and only executes the first action. State that the 20/30 GWh scenarios reduce P95 with much lower theoretical throughput, but do not chase the single maximum peak. This is a stated objective tradeoff, not a savings, lifetime, or reliability claim.
 
 ## 3:35-4:00 Close
 
-“The next research step is to replace the one-step backtest input with a real direct 24-hour information set and develop an SOC-aware risk-prioritization policy. Every result and figure can be regenerated from the included scripts.”
+“The next research step is to extend the implemented 1--6 hour planning window to a direct 24-hour information set with forecast-time weather inputs, prices, degradation and network constraints. Every result and figure can be regenerated from the included scripts.”

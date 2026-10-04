@@ -8,26 +8,53 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.scenarios import simulate_storage_dispatch
 from src.alerts import predict_periods
+from src.multihorizon import build_planning_panel
+from src.scenarios import simulate_risk_aware_dispatch, simulate_storage_dispatch
+
+
+CAPACITIES_MWH = (10000.0, 20000.0, 30000.0)
+
+
+def comparison(fixed: dict, optimized: dict) -> dict[str, float]:
+    return {
+        "optimized_minus_fixed_max_reduction_mw": float(
+            optimized["theoretical_max_reduction_mw"] - fixed["theoretical_max_reduction_mw"]
+        ),
+        "optimized_minus_fixed_controlled_p95_mw": float(
+            optimized["controlled_p95_net_load_mw"] - fixed["controlled_p95_net_load_mw"]
+        ),
+        "optimized_minus_fixed_throughput_mwh": float(
+            optimized["throughput_mwh"] - fixed["throughput_mwh"]
+        ),
+    }
 
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
-    predictions = pd.read_csv(root / "outputs/models/hist_gradient_boosting_test_predictions.csv", parse_dates=["timestamp"])
-    predictions = predictions.rename(columns={"hist_gradient_boosting_prediction_mw": "predicted_net_load_mw"})
+    output_dir = root / "outputs/scenarios"
+    output_dir.mkdir(parents=True, exist_ok=True)
     thresholds = json.loads((root / "outputs/alerts/alert_evaluation.json").read_text(encoding="utf-8"))["thresholds"]
     validation, _ = predict_periods(
         root / "data/processed/net_load_hourly.csv", root / "outputs/models/hist_gradient_boosting.joblib"
     )
     charge_threshold = float(validation["predicted_net_load_mw"].quantile(0.25))
     emergency_threshold = float(validation["predicted_net_load_mw"].quantile(0.99))
-    output_dir = root / "outputs/scenarios"
-    output_dir.mkdir(parents=True, exist_ok=True)
-    summaries = {}
-    for capacity_mwh in [10000.0, 20000.0, 30000.0]:
-        result, metrics = simulate_storage_dispatch(
-            predictions,
+    fixed_predictions = pd.read_csv(
+        root / "outputs/models/hist_gradient_boosting_test_predictions.csv", parse_dates=["timestamp"]
+    ).rename(columns={"hist_gradient_boosting_prediction_mw": "predicted_net_load_mw"})
+    direct_predictions = pd.read_csv(
+        root / "outputs/models/direct_horizon_test_predictions.csv", parse_dates=["issued_timestamp", "timestamp"]
+    )
+    planning_panel = build_planning_panel(direct_predictions, planning_window_hours=6)
+
+    fixed_sensitivity: dict[str, dict] = {}
+    optimized_sensitivity: dict[str, dict] = {}
+    comparisons: dict[str, dict] = {}
+    for capacity_mwh in CAPACITIES_MWH:
+        label = f"storage_{int(capacity_mwh)}mwh"
+        fixed_result, fixed_metrics = simulate_storage_dispatch(
+            fixed_predictions,
             peak_threshold_mw=float(thresholds["peak_prediction_threshold_mw"]),
             capacity_mwh=capacity_mwh,
             charge_threshold_mw=charge_threshold,
@@ -35,30 +62,60 @@ def main() -> None:
             reserve_fraction=0.30,
             energy_smoothing_hours=24.0,
         )
-        label = f"storage_{int(capacity_mwh)}mwh"
-        summaries[label] = metrics
-        result.to_csv(output_dir / f"{label}_timeseries.csv", index=False, date_format="%Y-%m-%dT%H:%M:%SZ")
+        optimized_result, optimized_metrics = simulate_risk_aware_dispatch(
+            planning_panel,
+            peak_threshold_mw=float(thresholds["peak_prediction_threshold_mw"]),
+            capacity_mwh=capacity_mwh,
+            charge_threshold_mw=charge_threshold,
+            energy_smoothing_hours=24.0,
+        )
+        fixed_metrics["throughput_mwh"] = float(fixed_result["storage_dispatch_mw"].abs().sum())
+        fixed_metrics["equivalent_full_cycles"] = float(fixed_result["storage_dispatch_mw"].abs().sum() / (2 * capacity_mwh))
+        fixed_sensitivity[label] = fixed_metrics
+        optimized_sensitivity[label] = optimized_metrics
+        comparisons[label] = comparison(fixed_metrics, optimized_metrics)
+        fixed_result.to_csv(output_dir / f"{label}_fixed_timeseries.csv", index=False, date_format="%Y-%m-%dT%H:%M:%SZ")
+        optimized_result.to_csv(output_dir / f"{label}_risk_aware_timeseries.csv", index=False, date_format="%Y-%m-%dT%H:%M:%SZ")
     report = {
-        "scenario_type": "Deterministic theoretical storage peak-shaving simulation, not deployment evidence or savings claim.",
+        "scenario_type": "Theoretical storage backtest; not deployment evidence, savings claim, or dispatch authorization.",
         "time_resolution": "1 hour",
-        "decision_information": "Uses the existing one-step-ahead net-load prediction as the peak trigger.",
-        "assumptions": [
-            "Initial state of charge is 50% of nominal capacity.",
-            "Maximum discharge power is 2,500 MW; maximum charge power is 1,250 MW.",
-            "A capacity/24-hour effective discharge limit is used as a conservative daily energy-spreading proxy.",
-            "Charge and discharge efficiency are each assumed to be 92%.",
-            "Storage discharges only when the forecast crosses the validation-calibrated peak threshold.",
-            "Thirty percent of capacity is reserved during ordinary peak alerts and released only for a validation-calibrated extreme forecast.",
-            "Storage charges only below the validation-period 25th percentile of forecast net load.",
-            "No network constraints, battery degradation, market prices, reserve obligations, or real dispatch authorization are modeled.",
-        ],
+        "decision_information": "Fixed policy uses one-step point forecasts. Risk-aware policy uses direct 1--6 hour forecasts and validation-calibrated empirical intervals.",
+        "fixed_policy": {
+            "name": "fixed_reserve_rule_baseline",
+            "assumptions": [
+                "Initial state of charge is 50% of nominal capacity.",
+                "Maximum discharge power is 2,500 MW; maximum charge power is 1,250 MW.",
+                "A capacity/24-hour effective discharge limit is used as a conservative daily energy-spreading proxy.",
+                "Charge and discharge efficiency are each assumed to be 92%.",
+                "Thirty percent of capacity is reserved during ordinary peak alerts.",
+            ],
+            "sensitivity": fixed_sensitivity,
+        },
+        "risk_aware_optimization": {
+            "name": "uncertainty_aware_receding_horizon_linear_program",
+            "planning_window_hours": 6,
+            "objective": "Minimize the maximum direct-forecast upper net load across the next six hours, with a small throughput penalty.",
+            "constraints": [
+                "Hourly charge/discharge power bounds and storage capacity bounds.",
+                "SOC dynamics with 92% charge and discharge efficiency.",
+                "Charging only when the one-hour lower forecast is below the validation-calibrated low-load threshold.",
+                "Discharging only when the horizon upper forecast reaches the validation-calibrated peak threshold.",
+                "Dynamic reserve target = base reserve + forecast-severity contribution + interval-width contribution, capped at 60% of capacity.",
+                "Only the first action is executed before forecasts and reserve targets are recomputed.",
+            ],
+            "sensitivity": optimized_sensitivity,
+        },
+        "comparison": comparisons,
         "calibration": {
             "charge_forecast_threshold_mw": charge_threshold,
-            "emergency_forecast_threshold_mw": emergency_threshold,
-            "reserve_fraction": 0.30,
+            "fixed_emergency_forecast_threshold_mw": emergency_threshold,
+            "peak_threshold_mw": float(thresholds["peak_prediction_threshold_mw"]),
             "calibration_period": "2019-01-12 20:00 UTC to 2019-08-09 20:00 UTC",
         },
-        "sensitivity": summaries,
+        "limitations": [
+            "No network constraints, battery degradation, market prices, reserve obligations, or real dispatch authorization are modeled.",
+            "Results depend on historical public data and direct forecast accuracy; they do not demonstrate field reliability or realized savings.",
+        ],
     }
     (output_dir / "storage_scenario_metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2))

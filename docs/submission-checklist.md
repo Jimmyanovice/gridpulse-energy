@@ -23,7 +23,7 @@ requirements for this self-proposed Technology Innovation Group entry.
 
 ## Defense PPT
 
-- [x] Editable PPT exists at `outputs/presentation/gridpulse-defense-v1.pptx`.
+- [x] Editable PPT exists at `outputs/presentation/gridpulse-defense-v3.pptx`.
 - [ ] Verify the PPT has no school, instructor, account, or team-identifying content.
 - [ ] Confirm every chart metric matches `outputs/models/day3_model_metrics.json` or `outputs/scenarios/storage_scenario_metrics.json`.
 - [ ] Rehearse the project narrative and dashboard demonstration.

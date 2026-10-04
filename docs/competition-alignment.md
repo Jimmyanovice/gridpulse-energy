@@ -22,12 +22,12 @@
 | 赛题要求 | GridPulse 对应实现 | 当前状态 | 验收证据 |
 |---|---|---|---|
 | 聚焦能源生产、传输、存储、消费等真实工程场景 | 新能源出力波动下的净负荷预测、峰值风险复核和理论储能削峰 | 已实现为历史回测原型 | `README.md`、`docs/technical-report-draft.md`、Streamlit 五个页面 |
-| 选取 AI 技术解决能源问题 | Histogram Gradient Boosting、随机森林、经验预测区间、规则风险筛查 | 已实现 | `src/models.py`、`src/alerts.py`、`outputs/models/day3_model_metrics.json` |
-| 自拟题目并说明场景、方法、应用效果、预期效益 | 明确主方向为新能源消纳与并网智能调控；给出预测、复核、理论削峰链路 | 场景和方法已完成；真实效益仍需业务数据 | 本文第 4 节、技术报告第 1/4/6 节 |
+| 选取 AI 技术解决能源问题 | 梯度提升、直接多步预测、经验预测区间、规则风险筛查、滚动线性规划 | 已实现 | `src/models.py`、`src/multihorizon.py`、`src/alerts.py`、`src/scenarios.py` |
+| 自拟题目并说明场景、方法、应用效果、预期效益 | 明确主方向为新能源消纳与并网智能调控；给出预测、复核、动态储备调控对照链路 | 场景和方法已完成；真实效益仍需业务数据 | `docs/risk-aware-control.md`、技术报告第 1/4/6 节 |
 | 可运行代码、模型或系统原型 | 可下载数据、构建特征、训练模型、生成风险和储能情景，启动 Streamlit | 已实现 | `docs/reproducibility.md`、`scripts/final_preflight.py` |
 | 提供数据和详细部署说明 | OPSD 下载、字段字典、质量报告、安装和运行命令 | 已实现 | `docs/data-source-decision.md`、`docs/data-dictionary.md`、`docs/reproducibility.md` |
 | 技术报告（PDF） | 仓库保留可审阅 PDF，同时保留可追溯 Markdown 源稿 | 已完成 | `outputs/report/gridpulse-technical-report-v0.1.pdf` |
-| 汇报 PPT | 可编辑答辩 PPT，数字来自模型与情景 JSON | 已完成 | `outputs/presentation/gridpulse-defense-v1.pptx` |
+| 汇报 PPT | 可编辑答辩 PPT，数字来自模型与情景 JSON | 已完成 | `outputs/presentation/gridpulse-defense-v3.pptx` |
 | 演示视频（5 分钟以内、MP4） | 提供可录制的 Streamlit 演示脚本和验收路径 | 需人工录制 | `docs/demo-script.md` |
 | 硬件或实物照片/操作录像（如涉及） | 本作品不涉及硬件或实物系统 | 不适用 | 在提交说明中写明“不涉及硬件” |
 
@@ -46,6 +46,8 @@
 | 候选风险行 | 1,023 | 峰值、光伏骤降、持续偏差筛查，不是故障标签 |
 | 人工复核队列 | 1,184 | 含 161 条仅由预测上界触发的复核信号 |
 | 理论 30 GWh 最大削峰 | 1,250 MW | SOC、功率、效率和备用假设下的情景输出，不是实际收益 |
+| 风险感知 30 GWh P95 相对固定储备 | -107.31 MW | 直接 1--6 小时区间规划下的理论对照 |
+| 风险感知 30 GWh 等效全循环 | 0.89 vs. 11.65 | 吞吐代理，不是实际寿命结论 |
 
 ## 5. 工程链路
 

@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.scenarios import simulate_storage_dispatch
+from src.scenarios import dynamic_reserve_fraction, simulate_risk_aware_dispatch, simulate_storage_dispatch
 
 
 def test_storage_state_stays_within_capacity():
@@ -44,3 +44,44 @@ def test_reserve_is_held_until_an_emergency_forecast():
     )
     assert result.loc[0, "storage_dispatch_mw"] == 20
     assert result.loc[1, "storage_dispatch_mw"] == 50
+
+
+def test_dynamic_reserve_rises_with_upper_forecast_stress():
+    low_risk = dynamic_reserve_fraction(
+        upper_forecasts_mw=pd.array([70.0, 72.0], dtype=float).to_numpy(),
+        interval_radii_mw=pd.array([2.0, 2.0], dtype=float).to_numpy(),
+        peak_threshold_mw=100.0,
+    )
+    high_risk = dynamic_reserve_fraction(
+        upper_forecasts_mw=pd.array([115.0, 120.0], dtype=float).to_numpy(),
+        interval_radii_mw=pd.array([12.0, 12.0], dtype=float).to_numpy(),
+        peak_threshold_mw=100.0,
+    )
+    assert high_risk > low_risk
+
+
+def test_risk_aware_optimizer_respects_soc_and_returns_an_optimal_plan():
+    frame = pd.DataFrame(
+        {
+            "decision_timestamp": pd.date_range("2020-01-01", periods=4, freq="h", tz="UTC"),
+            "timestamp": pd.date_range("2020-01-01 01:00", periods=4, freq="h", tz="UTC"),
+            "net_load_mw": [105.0, 110.0, 40.0, 105.0],
+        }
+    )
+    for horizon in range(1, 4):
+        frame[f"prediction_h{horizon}_mw"] = [105.0, 110.0, 40.0, 105.0]
+        frame[f"lower_h{horizon}_mw"] = [95.0, 100.0, 30.0, 95.0]
+        frame[f"upper_h{horizon}_mw"] = [115.0, 120.0, 50.0, 115.0]
+    result, metrics = simulate_risk_aware_dispatch(
+        frame,
+        peak_threshold_mw=100.0,
+        capacity_mwh=200.0,
+        max_power_mw=50.0,
+        charge_power_mw=20.0,
+        efficiency=0.9,
+        charge_threshold_mw=60.0,
+        energy_smoothing_hours=None,
+    )
+    assert result["storage_soc_mwh"].between(0, 200).all()
+    assert (result["solver_status"] == "optimal").all()
+    assert metrics["solver_optimal_rate_pct"] == 100.0

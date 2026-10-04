@@ -22,7 +22,9 @@ def load_artifacts():
     importance = pd.read_csv(ROOT / "outputs/models/hist_gradient_boosting_validation_permutation_importance.csv")
     metrics = json.loads((ROOT / "outputs/models/day3_model_metrics.json").read_text(encoding="utf-8"))
     evaluation = json.loads((ROOT / "outputs/alerts/alert_evaluation.json").read_text(encoding="utf-8"))
-    return data, predictions, alerts, importance, metrics, evaluation
+    multihorizon = json.loads((ROOT / "outputs/models/multihorizon_metrics.json").read_text(encoding="utf-8"))
+    scenario = json.loads((ROOT / "outputs/scenarios/storage_scenario_metrics.json").read_text(encoding="utf-8"))
+    return data, predictions, alerts, importance, metrics, evaluation, multihorizon, scenario
 
 
 def line_chart(frame: pd.DataFrame, columns: list[str], labels: list[str], title: str):
@@ -42,9 +44,9 @@ def risk_label(value: str) -> str:
     return "、".join(mapping.get(item, item) for item in value.split("|"))
 
 
-data, predictions, alerts, importance, metrics, evaluation = load_artifacts()
+data, predictions, alerts, importance, metrics, evaluation, multihorizon, scenario = load_artifacts()
 st.title("GridPulse 能源净负荷风险研判")
-st.caption("德国公开历史数据回测原型 | 一步超前因果预测 | 候选运行风险，不构成调度指令或故障诊断")
+st.caption("德国公开历史数据回测原型 | 一步超前预测与直接 1--6 小时规划 | 候选运行风险，不构成调度指令或故障诊断")
 
 with st.sidebar:
     st.header("回测范围")
@@ -58,7 +60,9 @@ with st.sidebar:
 window_predictions = predictions.loc[(predictions["timestamp"].dt.date >= start) & (predictions["timestamp"].dt.date <= end)].copy()
 window_alerts = alerts.loc[(alerts["timestamp"].dt.date >= start) & (alerts["timestamp"].dt.date <= end)].copy()
 
-overview, forecast, risks, explanation, suggestions = st.tabs(["数据概览", "预测回测", "风险事件", "特征解释", "调度建议"])
+overview, forecast, risks, explanation, suggestions, control = st.tabs(
+    ["数据概览", "预测回测", "风险事件", "特征解释", "调度建议", "风险感知调控"]
+)
 
 with overview:
     m1, m2, m3, m4 = st.columns(4)
@@ -112,3 +116,39 @@ with suggestions:
     else:
         st.dataframe(suggestions_table, use_container_width=True, height=430)
         st.download_button("下载所选建议 CSV", suggestions_table.to_csv(index=False).encode("utf-8-sig"), "gridpulse_dispatch_suggestions.csv", "text/csv")
+
+with control:
+    st.caption("理论回测：每个小时使用直接 1--6 小时预测及验证期校准区间，滚动求解 SOC 约束削峰问题，只执行当前第一步动作。不是实际调度指令、收益或可靠性证明。")
+    risk_aware = scenario["risk_aware_optimization"]["sensitivity"]
+    fixed = scenario["fixed_policy"]["sensitivity"]
+    comparison_rows = []
+    for key in ("storage_10000mwh", "storage_20000mwh", "storage_30000mwh"):
+        capacity = risk_aware[key]["capacity_mwh"] / 1000
+        comparison_rows.append(
+            {
+                "容量 (GWh)": capacity,
+                "固定储备 P95 (MW)": fixed[key]["controlled_p95_net_load_mw"],
+                "风险感知 P95 (MW)": risk_aware[key]["controlled_p95_net_load_mw"],
+                "P95 差值 (MW)": risk_aware[key]["controlled_p95_net_load_mw"] - fixed[key]["controlled_p95_net_load_mw"],
+                "固定/风险感知等效全循环": f"{fixed[key]['equivalent_full_cycles']:.2f} / {risk_aware[key]['equivalent_full_cycles']:.2f}",
+                "风险感知最低 SOC (MWh)": risk_aware[key]["min_soc_mwh"],
+            }
+        )
+    comparison_frame = pd.DataFrame(comparison_rows)
+    c1, c2, c3 = st.columns(3)
+    c1.metric("规划窗口", f"{multihorizon['planning_window_hours']} 小时")
+    c2.metric("30 GWh 风险感知 P95", f"{risk_aware['storage_30000mwh']['controlled_p95_net_load_mw']:,.1f} MW")
+    c3.metric("30 GWh 求解最优率", f"{risk_aware['storage_30000mwh']['solver_optimal_rate_pct']:.0f}%")
+    st.dataframe(comparison_frame, use_container_width=True, hide_index=True)
+    st.caption("解释：固定储备规则更激进地追求单一最大点削峰；风险感知策略将预测上界与区间宽度转成动态 SOC 储备，在 20/30 GWh 情景降低 P95 且显著减少理论吞吐。该差异是目标权衡，不应解释为实际电池寿命或经济收益。")
+    horizon_rows = []
+    for key, item in multihorizon["models"].items():
+        horizon_rows.append(
+            {
+                "预测时距": f"{item['horizon_hours']} 小时",
+                "测试 MAE (MW)": item["test"]["mae_mw"],
+                "区间覆盖率 (%)": item["prediction_interval"]["test"]["coverage_pct"],
+                "区间半宽 (MW)": item["prediction_interval"]["radius_mw"],
+            }
+        )
+    st.dataframe(pd.DataFrame(horizon_rows), use_container_width=True, hide_index=True)

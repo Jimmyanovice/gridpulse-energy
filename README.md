@@ -1,8 +1,8 @@
 # GridPulse
 
-> Renewable-aware net-load forecasting, uncertainty-aware risk review, and theoretical storage peak-shaving scenarios.
+> Renewable-aware net-load forecasting, uncertainty-aware risk review, and risk-aware theoretical storage planning.
 
-GridPulse is a reproducible energy decision-support prototype built with public German power-system data. It connects data quality checks, causal one-step-ahead net-load forecasting, empirical prediction intervals, candidate operational-risk screening, and a constrained theoretical storage scenario.
+GridPulse is a reproducible energy decision-support prototype built with public German power-system data. It connects data quality checks, causal net-load forecasts, empirical prediction intervals, candidate operational-risk screening, and a constrained theoretical storage-planning comparison.
 
 **This is a historical backtest prototype, not a deployed dispatch system, fault-diagnosis system, or direct 24-hour forecasting product.**
 
@@ -18,7 +18,7 @@ GridPulse turns this quantity into an auditable workflow:
 
 ```text
 Public data -> quality checks -> causal features -> forecast + interval
-            -> candidate risks + review queue -> theoretical storage scenario
+            -> candidate risks + review queue -> risk-aware storage planning
 ```
 
 ## Competition Positioning
@@ -53,6 +53,8 @@ All figures below are generated from the scripts in this repository and scoped t
 | Candidate-risk rows | 1,023 | Screening signals, not confirmed faults |
 | Human-review queue | 1,184 | Includes 161 interval-only peak watches |
 | Theoretical 30 GWh peak reduction | 1,250 MW | Assumption-driven scenario, not deployment evidence |
+| Risk-aware 30 GWh P95 vs. fixed reserve | -107.31 MW | Direct 1--6h forecast interval planning; maximum-peak objective is intentionally traded for reserve |
+| Risk-aware 30 GWh equivalent full cycles | 0.89 vs. 11.65 | Theoretical throughput comparison, not battery-lifetime evidence |
 
 ## What Is Implemented
 
@@ -62,13 +64,14 @@ All figures below are generated from the scripts in this repository and scoped t
 - Fixed rolling robustness backtest and validation-calibrated empirical prediction intervals.
 - Candidate peak-load, solar-drop, and sustained-deviation rules with evidence traces.
 - Separate candidate-risk export and uncertainty-aware human-review queue.
-- Theoretical SOC-constrained storage sensitivity simulation with explicit assumptions.
+- Direct 1--6 hour causal forecasts and validation-calibrated intervals for storage planning.
+- Fixed-reserve baseline versus uncertainty-aware, dynamic-SOC-reserve rolling linear optimization.
 - Streamlit dashboard, technical-report draft, defense deck, and automated preflight checks.
 
 ## Submission Materials
 
 - Technical report source and PDF preview: `docs/technical-report-draft.md` and `outputs/report/`.
-- Editable defense deck: `outputs/presentation/gridpulse-defense-v1.pptx`.
+- Editable defense deck: `outputs/presentation/gridpulse-defense-v3.pptx`.
 - Demonstration runbook for the required short video: `docs/demo-script.md`.
 - Competition requirement and acceptance matrix: `docs/competition-alignment.md`.
 - Final local verification: `python scripts/final_preflight.py`.
@@ -108,6 +111,7 @@ python scripts/run_baseline.py
 python scripts/train_models.py
 python scripts/rolling_backtest.py
 python scripts/run_alerts.py
+python scripts/train_multihorizon.py
 python scripts/run_storage_scenario.py
 python scripts/final_preflight.py
 ```
@@ -130,11 +134,12 @@ The preflight validates tests, expected evidence artifacts, prediction-interval 
 ## Scientific and Operational Boundaries
 
 - The forecast is **one step ahead** and only uses information available no later than the previous hour.
-- A direct 24-hour forecast needs issuance-time weather or renewable-generation forecasts and is future work.
+- The risk-aware scenario uses direct **1--6 hour** models; a direct 24-hour forecast still needs issuance-time weather or renewable-generation forecasts.
 - Prediction intervals are empirical bands calibrated on validation residuals; they are not probabilistic guarantees.
 - Alerts are candidate operating signals, not confirmed equipment faults or certified safety warnings.
 - The solar-drop rule uses historical observed solar output in backtest; deployment requires real-time measurements or forecast inputs.
 - The storage module is a theoretical scenario. It omits network constraints, prices, degradation, reserve obligations, and dispatch authorization.
+- The risk-aware optimizer compares peak/P95/throughput tradeoffs under stated constraints. It does not establish actual battery life, operational safety, or savings.
 - No result should be interpreted as realized savings, carbon reduction, reliability improvement, or deployment performance.
 
 ## Data and Third-Party Material
@@ -153,6 +158,7 @@ Generated raw/processed data, model binaries, derived figures, and large experim
 - [Rolling-backtest protocol](docs/rolling-backtest.md)
 - [Risk-screening evidence](docs/day4-risk-alerts.md)
 - [Storage-scenario evidence](docs/day6-evidence-and-scenario.md)
+- [Risk-aware storage planning](docs/risk-aware-control.md)
 - [Technical-report draft](docs/technical-report-draft.md)
 
 ## Contributing and Security
