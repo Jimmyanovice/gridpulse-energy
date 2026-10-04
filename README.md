@@ -21,6 +21,23 @@ Public data -> quality checks -> causal features -> forecast + interval
             -> candidate risks + review queue -> theoretical storage scenario
 ```
 
+## Competition Positioning
+
+This repository is prepared for the **Technology Innovation Group** track. The primary
+application direction is **new-energy consumption and grid-connection intelligent
+control**: renewable-aware net-load forecasting provides an early signal, uncertainty
+and risk rules produce an auditable human-review queue, and a constrained storage
+scenario illustrates a possible peak-shaving response. The prototype is designed to
+show a complete, reproducible engineering path with public data; it does not claim
+real-time dispatch, confirmed fault diagnosis, realized savings, or deployed-grid
+performance.
+
+The requirement-to-evidence matrix is in
+[docs/competition-alignment.md](docs/competition-alignment.md). It records which
+competition requirements are implemented, which are manual submission tasks, and
+which require data or authorization that are not present in a public historical
+dataset.
+
 ## Current Evidence
 
 All figures below are generated from the scripts in this repository and scoped to the selected OPSD Germany historical release.
@@ -47,6 +64,14 @@ All figures below are generated from the scripts in this repository and scoped t
 - Separate candidate-risk export and uncertainty-aware human-review queue.
 - Theoretical SOC-constrained storage sensitivity simulation with explicit assumptions.
 - Streamlit dashboard, technical-report draft, defense deck, and automated preflight checks.
+
+## Submission Materials
+
+- Technical report source and PDF preview: `docs/technical-report-draft.md` and `outputs/report/`.
+- Editable defense deck: `outputs/presentation/gridpulse-defense-v1.pptx`.
+- Demonstration runbook for the required short video: `docs/demo-script.md`.
+- Competition requirement and acceptance matrix: `docs/competition-alignment.md`.
+- Final local verification: `python scripts/final_preflight.py`.
 
 ## Repository Map
 
