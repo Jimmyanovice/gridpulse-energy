@@ -1,0 +1,21 @@
+# Keep supplied data, models and evidence tracked; ignore only local artifacts.
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/*.py[cod]
+**/.venv/
+**/venv/
+**/node_modules/
+**/.chart-data-*/
+**/.codex-finalizer/
+**/tmp/
+**/pytest-temp/
+**/data/raw/
+.env
+.env.*
+!.env.example
+*.zip
+*.zip.sha256
+Thumbs.db
+.DS_Store

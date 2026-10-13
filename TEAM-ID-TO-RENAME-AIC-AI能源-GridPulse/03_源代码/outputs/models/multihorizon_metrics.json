@@ -1,0 +1,229 @@
+{
+  "forecast_design": "direct_multi_horizon_causal",
+  "planning_window_hours": 6,
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "target": "net_load_mw",
+  "feature_columns": [
+    "hour_sin",
+    "hour_cos",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "is_weekend",
+    "month_sin",
+    "month_cos",
+    "net_load_latest_available_mw",
+    "net_load_same_day_prior_mw",
+    "net_load_same_week_prior_mw",
+    "net_load_rolling_mean_24h",
+    "net_load_rolling_std_24h",
+    "solar_latest_available_mw",
+    "solar_same_day_prior_mw",
+    "wind_latest_available_mw",
+    "wind_same_day_prior_mw"
+  ],
+  "information_policy": "Each h-hour model uses observations no later than h hours before its target timestamp.",
+  "validation_start": "2019-01-12 20:00:00+00:00",
+  "test_start": "2019-08-09 21:00:00+00:00",
+  "models": {
+    "horizon_1h": {
+      "horizon_hours": 1,
+      "train_rows": 34875,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 942.804858337858,
+        "rmse_mw": 1238.0625431025178,
+        "mape_pct": 3.218226166059082,
+        "smape_pct": 3.1616171113643023
+      },
+      "test": {
+        "mae_mw": 1019.8683699335935,
+        "rmse_mw": 1354.1934784116124,
+        "mape_pct": 4.54221208163514,
+        "smape_pct": 4.116475271454697
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 1984.794001870309,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 3969.588003740616
+        },
+        "test": {
+          "coverage_pct": 86.9157947184853,
+          "mean_width_mw": 3969.588003740616
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_1h.joblib"
+    },
+    "horizon_2h": {
+      "horizon_hours": 2,
+      "train_rows": 34869,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 1720.9914896305972,
+        "rmse_mw": 2285.8891588238544,
+        "mape_pct": 5.805808654988234,
+        "smape_pct": 5.605646744926758
+      },
+      "test": {
+        "mae_mw": 1898.3448180906983,
+        "rmse_mw": 2501.302100132636,
+        "mape_pct": 7.8572438807725975,
+        "smape_pct": 7.143885071543307
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 3686.276803289968,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 7372.553606579937
+        },
+        "test": {
+          "coverage_pct": 87.06527154957648,
+          "mean_width_mw": 7372.553606579937
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_2h.joblib"
+    },
+    "horizon_3h": {
+      "horizon_hours": 3,
+      "train_rows": 34864,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 2409.036656543579,
+        "rmse_mw": 3172.7739509582834,
+        "mape_pct": 8.117513309170592,
+        "smape_pct": 7.72569014411629
+      },
+      "test": {
+        "mae_mw": 2650.706104115225,
+        "rmse_mw": 3507.5986076020877,
+        "mape_pct": 11.052584176691898,
+        "smape_pct": 9.777820690603804
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 5107.349086788264,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 10214.698173576531
+        },
+        "test": {
+          "coverage_pct": 86.49725959143,
+          "mean_width_mw": 10214.69817357653
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_3h.joblib"
+    },
+    "horizon_4h": {
+      "horizon_hours": 4,
+      "train_rows": 34859,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 2997.271232592479,
+        "rmse_mw": 3944.7548835309462,
+        "mape_pct": 10.319874049352643,
+        "smape_pct": 9.53798048157233
+      },
+      "test": {
+        "mae_mw": 3333.8083899608596,
+        "rmse_mw": 4367.224218334176,
+        "mape_pct": 14.1128031852199,
+        "smape_pct": 12.12534463432123
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 6389.162043104315,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 12778.324086208626
+        },
+        "test": {
+          "coverage_pct": 86.3677130044843,
+          "mean_width_mw": 12778.324086208626
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_4h.joblib"
+    },
+    "horizon_5h": {
+      "horizon_hours": 5,
+      "train_rows": 34854,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 3562.388538841327,
+        "rmse_mw": 4649.148750381081,
+        "mape_pct": 12.648605625895637,
+        "smape_pct": 11.369218259885832
+      },
+      "test": {
+        "mae_mw": 3934.666563356707,
+        "rmse_mw": 5112.528316964349,
+        "mape_pct": 17.137860347495348,
+        "smape_pct": 14.19687305701772
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 7680.80687325306,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 15361.613746506117
+        },
+        "test": {
+          "coverage_pct": 86.86596910812158,
+          "mean_width_mw": 15361.613746506115
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_5h.joblib"
+    },
+    "horizon_6h": {
+      "horizon_hours": 6,
+      "train_rows": 34849,
+      "validation_rows": 5017,
+      "test_rows": 10035,
+      "validation": {
+        "mae_mw": 3981.078275034193,
+        "rmse_mw": 5164.5356858261985,
+        "mape_pct": 14.29354100878368,
+        "smape_pct": 12.629200656509449
+      },
+      "test": {
+        "mae_mw": 4420.123480062998,
+        "rmse_mw": 5787.862848240826,
+        "mape_pct": 19.47376297355597,
+        "smape_pct": 15.80751987620446
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 8416.766121202934,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 16833.53224240587
+        },
+        "test": {
+          "coverage_pct": 85.65022421524664,
+          "mean_width_mw": 16833.53224240587
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs/models/direct_horizon_6h.joblib"
+    }
+  },
+  "test_predictions": "outputs/models/direct_horizon_test_predictions.csv"
+}

@@ -1,0 +1,35 @@
+{
+  "model": "seasonal_naive_24h",
+  "target": "net_load_mw",
+  "lag_hours": 24,
+  "source_rows": 50400,
+  "evaluable_rows": 50173,
+  "split": {
+    "train_end": "2019-01-12 19:00:00+00:00",
+    "validation_start": "2019-01-12 20:00:00+00:00",
+    "validation_end": "2019-08-09 20:00:00+00:00",
+    "test_start": "2019-08-09 21:00:00+00:00",
+    "test_end": "2020-09-30 23:00:00+00:00",
+    "train_rows": 35121,
+    "validation_rows": 5017,
+    "test_rows": 10035
+  },
+  "validation": {
+    "mae_mw": 8061.038070560096,
+    "rmse_mw": 10470.61365171936,
+    "mape_pct": 28.442645659922917,
+    "smape_pct": 25.25785448349065
+  },
+  "test": {
+    "mae_mw": 8760.665470852018,
+    "rmse_mw": 11465.883395606908,
+    "mape_pct": 34.66868066028962,
+    "smape_pct": 30.078989164632684
+  },
+  "protocol": [
+    "Chronological 70/10/20 split over evaluable target/lag pairs.",
+    "The previous UTC day's same hour is joined by timestamp, not by row offset.",
+    "No random shuffling and no final-test-based threshold or model selection.",
+    "MAPE excludes zero actual targets; sMAPE is reported as a complementary scale-free metric."
+  ]
+}

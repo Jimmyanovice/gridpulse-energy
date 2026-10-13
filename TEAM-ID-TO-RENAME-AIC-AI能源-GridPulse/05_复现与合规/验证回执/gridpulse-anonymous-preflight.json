@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "gridpulse-anonymous-preflight.v1",
+  "passed": true,
+  "checks": [
+    {
+      "artifact": "outputs/report/gridpulse-technical-report-v0.1.pdf",
+      "passed": true,
+      "findings": []
+    },
+    {
+      "artifact": "outputs/presentation/gridpulse-defense-v9.pptx",
+      "passed": true,
+      "findings": []
+    },
+    {
+      "artifact": "outputs/presentation/gridpulse-defense-v9.pdf",
+      "passed": true,
+      "findings": []
+    },
+    {
+      "artifact": "source-local-paths",
+      "passed": true,
+      "findings": []
+    }
+  ],
+  "manual_boundary": "This scan cannot identify a person from visual-only content, Git history, browser tabs, or a shared-drive URL. Exclude .git and identity-bearing repository metadata from an anonymous submission package."
+}

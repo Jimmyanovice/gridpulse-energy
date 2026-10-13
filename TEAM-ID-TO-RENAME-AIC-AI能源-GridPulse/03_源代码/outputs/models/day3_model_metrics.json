@@ -1,0 +1,177 @@
+{
+  "target": "net_load_mw",
+  "forecast_design": "one_step_ahead_causal",
+  "feature_columns": [
+    "hour_sin",
+    "hour_cos",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "is_weekend",
+    "month_sin",
+    "month_cos",
+    "net_load_lag_1h",
+    "net_load_lag_24h",
+    "net_load_lag_168h",
+    "net_load_rolling_mean_24h",
+    "net_load_rolling_std_24h",
+    "solar_lag_1h",
+    "solar_lag_24h",
+    "wind_lag_1h",
+    "wind_lag_24h"
+  ],
+  "split": {
+    "day2_frozen_validation_start": "2019-01-12 20:00:00+00:00",
+    "day2_frozen_test_start": "2019-08-09 21:00:00+00:00",
+    "train_rows_after_feature_filtering": 34875,
+    "validation_rows_after_feature_filtering": 5017,
+    "test_rows_after_feature_filtering": 10035,
+    "test_end": "2020-09-30 23:00:00+00:00"
+  },
+  "models": {
+    "random_forest": {
+      "validation": {
+        "mae_mw": 1021.8125266120351,
+        "rmse_mw": 1341.782018450405,
+        "mape_pct": 3.4387922343482558,
+        "smape_pct": 3.375923367869708
+      },
+      "test": {
+        "mae_mw": 1126.8809472824057,
+        "rmse_mw": 1501.1928594929436,
+        "mape_pct": 4.690522928876593,
+        "smape_pct": 4.419103847832268
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 2151.7894081673917,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 4303.578816334787
+        },
+        "test": {
+          "coverage_pct": 86.27802690582959,
+          "mean_width_mw": 4303.578816334787
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs\\models\\random_forest.joblib"
+    },
+    "hist_gradient_boosting": {
+      "validation": {
+        "mae_mw": 942.804858337858,
+        "rmse_mw": 1238.0625431025178,
+        "mape_pct": 3.218226166059082,
+        "smape_pct": 3.1616171113643023
+      },
+      "test": {
+        "mae_mw": 1019.8683699335935,
+        "rmse_mw": 1354.1934784116124,
+        "mape_pct": 4.54221208163514,
+        "smape_pct": 4.116475271454697
+      },
+      "prediction_interval": {
+        "calibration_quantile": 0.9,
+        "radius_mw": 1984.794001870309,
+        "validation": {
+          "coverage_pct": 89.99402033087503,
+          "mean_width_mw": 3969.588003740616
+        },
+        "test": {
+          "coverage_pct": 86.9157947184853,
+          "mean_width_mw": 3969.588003740616
+        },
+        "method": "symmetric absolute-residual calibration on validation only"
+      },
+      "artifact": "outputs\\models\\hist_gradient_boosting.joblib"
+    }
+  },
+  "ablation": {
+    "hist_gradient_boosting_without_renewable_lags": {
+      "feature_columns": [
+        "hour_sin",
+        "hour_cos",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "is_weekend",
+        "month_sin",
+        "month_cos",
+        "net_load_lag_1h",
+        "net_load_lag_24h",
+        "net_load_lag_168h",
+        "net_load_rolling_mean_24h",
+        "net_load_rolling_std_24h"
+      ],
+      "validation": {
+        "mae_mw": 1045.281081389336,
+        "rmse_mw": 1387.0596473592493,
+        "mape_pct": 3.5672386682885824,
+        "smape_pct": 3.4896794900397947
+      },
+      "test": {
+        "mae_mw": 1120.041945168563,
+        "rmse_mw": 1499.381149130804,
+        "mape_pct": 4.878926903051685,
+        "smape_pct": 4.447619333979694
+      }
+    },
+    "hist_gradient_boosting_without_rolling_statistics": {
+      "feature_columns": [
+        "hour_sin",
+        "hour_cos",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "is_weekend",
+        "month_sin",
+        "month_cos",
+        "net_load_lag_1h",
+        "net_load_lag_24h",
+        "net_load_lag_168h",
+        "solar_lag_1h",
+        "solar_lag_24h",
+        "wind_lag_1h",
+        "wind_lag_24h"
+      ],
+      "validation": {
+        "mae_mw": 957.8847221889258,
+        "rmse_mw": 1257.1179186243326,
+        "mape_pct": 3.2528971032723604,
+        "smape_pct": 3.1934528936294004
+      },
+      "test": {
+        "mae_mw": 1035.033017082226,
+        "rmse_mw": 1373.2370728493854,
+        "mape_pct": 4.615200119998524,
+        "smape_pct": 4.1608672466285075
+      }
+    },
+    "hist_gradient_boosting_calendar_only": {
+      "feature_columns": [
+        "hour_sin",
+        "hour_cos",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "is_weekend",
+        "month_sin",
+        "month_cos"
+      ],
+      "validation": {
+        "mae_mw": 7327.515764970326,
+        "rmse_mw": 9936.851853983264,
+        "mape_pct": 30.98387920491813,
+        "smape_pct": 21.799895755119913
+      },
+      "test": {
+        "mae_mw": 9160.431840428593,
+        "rmse_mw": 11857.649244258953,
+        "mape_pct": 46.50369396702472,
+        "smape_pct": 28.928825250432354
+      }
+    }
+  },
+  "protocol": [
+    "All observed target, solar, and wind features are shifted before calculation.",
+    "Models predict the current net load using data available no later than the preceding hour.",
+    "Chronological split uses the same 70/10/20 protocol as Day 2 after model-feature availability filtering.",
+    "Validation is reserved for future model and threshold decisions; final test is reported without tuning against it."
+  ]
+}

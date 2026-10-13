@@ -1,0 +1,50 @@
+{
+  "thresholds": {
+    "peak_prediction_threshold_mw": 55406.33955758931,
+    "solar_drop_threshold_mw_per_hour": -4243.0,
+    "absolute_residual_threshold_mw": 2936.536312310365,
+    "sustained_hours": 3,
+    "calibration_rows": 5017,
+    "calibration_period_start": "2019-01-12 20:00:00+00:00",
+    "calibration_period_end": "2019-08-09 20:00:00+00:00"
+  },
+  "test_rows": 10035,
+  "test_candidate_risk_rows": 972,
+  "test_review_queue_rows": 1135,
+  "interval_only_review_rows": 163,
+  "stress_test": {
+    "scenario": "Synthetic deterministic stress test; injected events are not historical fault labels.",
+    "random_seed": 20260929,
+    "event_count": 25,
+    "solar_drop_event_count": 25,
+    "event_length_hours": 3,
+    "injection_magnitudes": {
+      "peak_prediction_level_mw": 59838.84672219646,
+      "residual_shift_mw": 4404.804468465547,
+      "solar_drop_mw": 6364.5
+    },
+    "injected_point_detection": {
+      "peak_load": {
+        "detected": 75,
+        "injected": 75,
+        "rate": 1.0
+      },
+      "solar_drop": {
+        "detected": 25,
+        "injected": 25,
+        "rate": 1.0
+      },
+      "sustained_deviation": {
+        "detected": 25,
+        "injected": 75,
+        "rate": 0.3333333333333333
+      }
+    },
+    "sustained_event_detection": {
+      "detected_events": 25,
+      "injected_events": 25,
+      "confirmation_delay_hours": 2,
+      "interpretation": "Point rate is lower because earlier hours are not retroactively flagged; event detection is evaluated separately."
+    }
+  }
+}

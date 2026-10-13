@@ -1,0 +1,2061 @@
+{
+  "protocol": {
+    "status": "Post-hoc operating sensitivity on four fixed calendar weeks, not independent validation.",
+    "weeks": [
+      "2021-01-08",
+      "2021-04-08",
+      "2021-07-08",
+      "2021-10-08"
+    ],
+    "policies": [
+      "frozen_reference",
+      "two_stage_250mw_candidate"
+    ],
+    "scenarios": [
+      "nominal",
+      "feed_delay_1h",
+      "feed_delay_3h",
+      "six_hour_outage",
+      "forecast_bias_plus_1000mw",
+      "forecast_bias_minus_1000mw",
+      "power_70pct",
+      "efficiency_0_85",
+      "continuous_week"
+    ],
+    "meaning": "Feed lag delays an already frozen forecast issue, not a retrained model with delayed observations. Continuity is within each week only. All weeks and scenarios fixed before stress evaluation."
+  },
+  "episodes": {
+    "2021-01-08": {
+      "nominal": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66822.29489312225,
+            "controlled_p95_mw": 63847.766715753176,
+            "mean_daily_peak_mw": 54151.00074643573,
+            "throughput_mwh": 37753.98839249165,
+            "conversion_loss_mwh": 3140.713072512302,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 22,
+            "timeseries": "outputs/development/stress_2021-01-08_nominal_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66318.30753735425,
+            "controlled_p95_mw": 64097.766715753176,
+            "mean_daily_peak_mw": 54147.12847100976,
+            "throughput_mwh": 32440.77230850709,
+            "conversion_loss_mwh": 2698.712427744089,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 22,
+            "timeseries": "outputs/development/stress_2021-01-08_nominal_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_1h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 65892.9,
+            "controlled_p95_mw": 64110.63432384967,
+            "mean_daily_peak_mw": 54003.371683305646,
+            "throughput_mwh": 38849.917314673265,
+            "conversion_loss_mwh": 3231.8822029537537,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.524291969370097e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 21,
+            "timeseries": "outputs/development/stress_2021-01-08_feed_delay_1h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66142.9,
+            "controlled_p95_mw": 64352.18126230642,
+            "mean_daily_peak_mw": 54109.12064238762,
+            "throughput_mwh": 31091.96399394486,
+            "conversion_loss_mwh": 2586.506536757977,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.8421709430404007e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 25,
+            "timeseries": "outputs/development/stress_2021-01-08_feed_delay_1h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_3h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66175.13140581727,
+            "controlled_p95_mw": 64455.55429104402,
+            "mean_daily_peak_mw": 54184.77715635922,
+            "throughput_mwh": 35857.097615548104,
+            "conversion_loss_mwh": 2982.912799906946,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 6.821210263296962e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 13,
+            "timeseries": "outputs/development/stress_2021-01-08_feed_delay_3h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66387.59090528442,
+            "controlled_p95_mw": 64499.30429104402,
+            "mean_daily_peak_mw": 54103.058032328794,
+            "throughput_mwh": 23212.071708659205,
+            "conversion_loss_mwh": 1930.9869012402792,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.3164582191602676e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 16,
+            "timeseries": "outputs/development/stress_2021-01-08_feed_delay_3h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "six_hour_outage": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 6,
+          "beyond_horizon_fallback_hours": 6,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66822.29489312225,
+            "controlled_p95_mw": 63847.766715753176,
+            "mean_daily_peak_mw": 54151.00074643573,
+            "throughput_mwh": 40480.83149268069,
+            "conversion_loss_mwh": 3367.5561727013383,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 22,
+            "timeseries": "outputs/development/stress_2021-01-08_six_hour_outage_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66318.30753735425,
+            "controlled_p95_mw": 64097.766715753176,
+            "mean_daily_peak_mw": 54147.12847100976,
+            "throughput_mwh": 34622.24678865832,
+            "conversion_loss_mwh": 2880.1869078953177,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 22,
+            "timeseries": "outputs/development/stress_2021-01-08_six_hour_outage_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_plus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 67015.05331362043,
+            "controlled_p95_mw": 63847.76671575317,
+            "mean_daily_peak_mw": 54165.27368891098,
+            "throughput_mwh": 38118.15557347239,
+            "conversion_loss_mwh": 3171.0077426805433,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 6.281197784119286e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 26,
+            "timeseries": "outputs/development/stress_2021-01-08_forecast_bias_plus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66476.69947198423,
+            "controlled_p95_mw": 64097.76671575317,
+            "mean_daily_peak_mw": 54137.344257701734,
+            "throughput_mwh": 32553.062814894376,
+            "conversion_loss_mwh": 2708.053752365561,
+            "energy_balance_error_mwh": 8.526512829121202e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 24,
+            "timeseries": "outputs/development/stress_2021-01-08_forecast_bias_plus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_minus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66526.77280009567,
+            "controlled_p95_mw": 64228.114552177816,
+            "mean_daily_peak_mw": 54159.11072743318,
+            "throughput_mwh": 33794.12773614574,
+            "conversion_loss_mwh": 2811.2965881022433,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 17,
+            "timeseries": "outputs/development/stress_2021-01-08_forecast_bias_minus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66364.31267938188,
+            "controlled_p95_mw": 64381.827306326486,
+            "mean_daily_peak_mw": 54177.7041832069,
+            "throughput_mwh": 27730.870810076045,
+            "conversion_loss_mwh": 2306.9008646163766,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 15,
+            "timeseries": "outputs/development/stress_2021-01-08_forecast_bias_minus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "power_70pct": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 875.0,
+          "discharge_power_mw": 875.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66800.74177751553,
+            "controlled_p95_mw": 64222.766715753176,
+            "mean_daily_peak_mw": 54201.493158491925,
+            "throughput_mwh": 26291.4432906372,
+            "conversion_loss_mwh": 2187.156460919558,
+            "energy_balance_error_mwh": 8.526512829121202e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 20,
+            "timeseries": "outputs/development/stress_2021-01-08_power_70pct_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66658.9421058578,
+            "controlled_p95_mw": 64472.766715753176,
+            "mean_daily_peak_mw": 54249.36198079598,
+            "throughput_mwh": 20526.540345838286,
+            "conversion_loss_mwh": 1707.5804793764942,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 1.9326762412674725e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 14,
+            "timeseries": "outputs/development/stress_2021-01-08_power_70pct_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "efficiency_0_85": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.85,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 67029.85354428338,
+            "controlled_p95_mw": 63863.9600400659,
+            "mean_daily_peak_mw": 54184.210954692324,
+            "throughput_mwh": 36596.15318550838,
+            "conversion_loss_mwh": 5895.75181943604,
+            "energy_balance_error_mwh": 8.562039965909207e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 22,
+            "timeseries": "outputs/development/stress_2021-01-08_efficiency_0_85_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 66814.7390259053,
+            "controlled_p95_mw": 64097.766715753176,
+            "mean_daily_peak_mw": 54224.49898222061,
+            "throughput_mwh": 30254.66869335569,
+            "conversion_loss_mwh": 4874.119339568189,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 21,
+            "timeseries": "outputs/development/stress_2021-01-08_efficiency_0_85_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "continuous_week": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "not_applicable",
+            "reason": "Frozen primary reference uses independent daily terminal equality."
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": false,
+            "baseline_peak_mw": 67142.9,
+            "controlled_peak_mw": 67615.66979794187,
+            "controlled_p95_mw": 64097.766715753176,
+            "mean_daily_peak_mw": 54347.388387331506,
+            "throughput_mwh": 21803.338110100172,
+            "conversion_loss_mwh": 1813.7958913081588,
+            "energy_balance_error_mwh": 8.668621376273222e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 7.275957614183426e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 59,
+            "timeseries": "outputs/development/stress_2021-01-08_continuous_week_two_stage_250mw_candidate.csv"
+          }
+        }
+      }
+    },
+    "2021-04-08": {
+      "nominal": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59284.365562528976,
+            "controlled_p95_mw": 52991.90625,
+            "mean_daily_peak_mw": 49724.12365178985,
+            "throughput_mwh": 15534.42576750337,
+            "conversion_loss_mwh": 1292.2919182671772,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.481659405224491e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 5,
+            "timeseries": "outputs/development/stress_2021-04-08_nominal_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53032.02,
+            "mean_daily_peak_mw": 49777.66785714286,
+            "throughput_mwh": 11958.84310018905,
+            "conversion_loss_mwh": 994.8431001890365,
+            "energy_balance_error_mwh": 4.547473508864641e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.0463630789890885e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-04-08_nominal_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_1h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 58998.389283564786,
+            "controlled_p95_mw": 53245.885,
+            "mean_daily_peak_mw": 49861.84132622353,
+            "throughput_mwh": 13477.014925743439,
+            "conversion_loss_mwh": 1121.1381567342892,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.524291969370097e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-04-08_feed_delay_1h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53399.50125,
+            "mean_daily_peak_mw": 49920.525,
+            "throughput_mwh": 9367.117005138538,
+            "conversion_loss_mwh": 779.2402361293753,
+            "energy_balance_error_mwh": 6.252776074688882e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.0127011996228248e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 2,
+            "timeseries": "outputs/development/stress_2021-04-08_feed_delay_1h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_3h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59172.690087334646,
+            "controlled_p95_mw": 53149.54,
+            "mean_daily_peak_mw": 49886.74144104781,
+            "throughput_mwh": 16069.076592565249,
+            "conversion_loss_mwh": 1336.768936643209,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.183231456205249e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 0,
+            "timeseries": "outputs/development/stress_2021-04-08_feed_delay_3h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59659.175,
+            "controlled_p95_mw": 53121.427500000005,
+            "mean_daily_peak_mw": 49956.239285714284,
+            "throughput_mwh": 9909.323979927296,
+            "conversion_loss_mwh": 824.3458423509703,
+            "energy_balance_error_mwh": 7.389644451905042e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.296918293926865e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 4,
+            "timeseries": "outputs/development/stress_2021-04-08_feed_delay_3h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "six_hour_outage": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 6,
+          "beyond_horizon_fallback_hours": 6,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59284.365562528976,
+            "controlled_p95_mw": 52991.90625,
+            "mean_daily_peak_mw": 49724.12365178985,
+            "throughput_mwh": 15534.42576750337,
+            "conversion_loss_mwh": 1292.2919182671772,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.481659405224491e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 5,
+            "timeseries": "outputs/development/stress_2021-04-08_six_hour_outage_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53032.02,
+            "mean_daily_peak_mw": 49777.66785714286,
+            "throughput_mwh": 11958.84310018905,
+            "conversion_loss_mwh": 994.8431001890365,
+            "energy_balance_error_mwh": 4.547473508864641e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.0463630789890885e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-04-08_six_hour_outage_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_plus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59284.365562528976,
+            "controlled_p95_mw": 52982.68375,
+            "mean_daily_peak_mw": 49724.12365178985,
+            "throughput_mwh": 23714.95506807047,
+            "conversion_loss_mwh": 1972.8212188342843,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.481659405224491e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-04-08_forecast_bias_plus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59659.175,
+            "controlled_p95_mw": 53031.10125,
+            "mean_daily_peak_mw": 49813.38214285714,
+            "throughput_mwh": 18964.866540642728,
+            "conversion_loss_mwh": 1577.6665406427219,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 7,
+            "timeseries": "outputs/development/stress_2021-04-08_forecast_bias_plus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_minus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 58909.9798983783,
+            "controlled_p95_mw": 53399.50125,
+            "mean_daily_peak_mw": 49849.21141405404,
+            "throughput_mwh": 9269.510675371359,
+            "conversion_loss_mwh": 771.1204721279464,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.183231456205249e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 4,
+            "timeseries": "outputs/development/stress_2021-04-08_forecast_bias_minus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59345.106178414695,
+            "controlled_p95_mw": 53399.50125,
+            "mean_daily_peak_mw": 49911.3723112021,
+            "throughput_mwh": 6684.187939715395,
+            "conversion_loss_mwh": 556.0502965447813,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.6147972675971687e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-04-08_forecast_bias_minus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "power_70pct": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 875.0,
+          "discharge_power_mw": 875.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 58980.67986525185,
+            "controlled_p95_mw": 53153.143749999996,
+            "mean_daily_peak_mw": 49734.311409321694,
+            "throughput_mwh": 10847.496645873527,
+            "conversion_loss_mwh": 902.3914020830657,
+            "energy_balance_error_mwh": 8.810729923425242e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.9558577807620168e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-04-08_power_70pct_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53403.143749999996,
+            "mean_daily_peak_mw": 49831.239285714284,
+            "throughput_mwh": 7553.137240075599,
+            "conversion_loss_mwh": 628.3372400756127,
+            "energy_balance_error_mwh": 4.547473508864641e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 2,
+            "timeseries": "outputs/development/stress_2021-04-08_power_70pct_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "efficiency_0_85": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.85,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59286.010729397945,
+            "controlled_p95_mw": 52991.90625,
+            "mean_daily_peak_mw": 49724.358675628275,
+            "throughput_mwh": 16079.22781027875,
+            "conversion_loss_mwh": 2590.412608042005,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 5,
+            "timeseries": "outputs/development/stress_2021-04-08_efficiency_0_85_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53032.02,
+            "mean_daily_peak_mw": 49777.66785714286,
+            "throughput_mwh": 12054.519896193755,
+            "conversion_loss_mwh": 1942.019896193769,
+            "energy_balance_error_mwh": 7.389644451905042e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.1600499167107046e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-04-08_efficiency_0_85_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "continuous_week": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "not_applicable",
+            "reason": "Frozen primary reference uses independent daily terminal equality."
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": false,
+            "baseline_peak_mw": 59409.175,
+            "controlled_peak_mw": 59409.175,
+            "controlled_p95_mw": 53032.02,
+            "mean_daily_peak_mw": 49777.66785714286,
+            "throughput_mwh": 10104.632623567994,
+            "conversion_loss_mwh": 840.5933551668343,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.183231456205249e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 10,
+            "timeseries": "outputs/development/stress_2021-04-08_continuous_week_two_stage_250mw_candidate.csv"
+          }
+        }
+      }
+    },
+    "2021-07-08": {
+      "nominal": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53754.345,
+            "mean_daily_peak_mw": 51318.379707131804,
+            "throughput_mwh": 40284.23675011302,
+            "conversion_loss_mwh": 3351.201670719972,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.9558577807620168e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-07-08_nominal_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53889.455,
+            "mean_daily_peak_mw": 51460.65714285714,
+            "throughput_mwh": 30421.82048656995,
+            "conversion_loss_mwh": 2530.758030078608,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.069544618483633e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-07-08_nominal_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_1h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55095.13384261748,
+            "controlled_p95_mw": 53702.62125,
+            "mean_daily_peak_mw": 51232.25126323106,
+            "throughput_mwh": 60287.266410834716,
+            "conversion_loss_mwh": 5015.231867799073,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-07-08_feed_delay_1h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53800.20266805615,
+            "mean_daily_peak_mw": 51325.15353103792,
+            "throughput_mwh": 44444.42088874415,
+            "conversion_loss_mwh": 3697.2828468972575,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.481659405224491e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 8,
+            "timeseries": "outputs/development/stress_2021-07-08_feed_delay_1h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_3h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55454.90924763074,
+            "controlled_p95_mw": 53767.24,
+            "mean_daily_peak_mw": 51216.30704771086,
+            "throughput_mwh": 59534.753752399425,
+            "conversion_loss_mwh": 4952.631161378113,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-07-08_feed_delay_3h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55454.90924763074,
+            "controlled_p95_mw": 54002.01375,
+            "mean_daily_peak_mw": 51365.18791412668,
+            "throughput_mwh": 45498.36591724157,
+            "conversion_loss_mwh": 3784.9593830634212,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.623767952376511e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-07-08_feed_delay_3h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "six_hour_outage": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 6,
+          "beyond_horizon_fallback_hours": 6,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53754.345,
+            "mean_daily_peak_mw": 51318.379707131804,
+            "throughput_mwh": 40284.23675011302,
+            "conversion_loss_mwh": 3351.201670719972,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.9558577807620168e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-07-08_six_hour_outage_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53889.455,
+            "mean_daily_peak_mw": 51460.65714285714,
+            "throughput_mwh": 30421.82048656995,
+            "conversion_loss_mwh": 2530.758030078608,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.069544618483633e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 3,
+            "timeseries": "outputs/development/stress_2021-07-08_six_hour_outage_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_plus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 54774.29910936343,
+            "controlled_p95_mw": 53590.5775,
+            "mean_daily_peak_mw": 51061.13915848049,
+            "throughput_mwh": 50277.19879156916,
+            "conversion_loss_mwh": 4182.50527208894,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.126388037344441e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 13,
+            "timeseries": "outputs/development/stress_2021-07-08_forecast_bias_plus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55193.975000000006,
+            "controlled_p95_mw": 53769.25874446647,
+            "mean_daily_peak_mw": 51210.65714285714,
+            "throughput_mwh": 39393.2103249663,
+            "conversion_loss_mwh": 3277.078155283156,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 14,
+            "timeseries": "outputs/development/stress_2021-07-08_forecast_bias_plus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_minus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 54007.30570019831,
+            "mean_daily_peak_mw": 51413.017857142855,
+            "throughput_mwh": 17573.851368382137,
+            "conversion_loss_mwh": 1461.9495072484265,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.524291969370097e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 4,
+            "timeseries": "outputs/development/stress_2021-07-08_forecast_bias_minus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 54031.356250000004,
+            "mean_daily_peak_mw": 51493.831417274356,
+            "throughput_mwh": 12980.722581211832,
+            "conversion_loss_mwh": 1079.8521384716944,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.0463630789890885e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 4,
+            "timeseries": "outputs/development/stress_2021-07-08_forecast_bias_minus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "power_70pct": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 875.0,
+          "discharge_power_mw": 875.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53970.705,
+            "mean_daily_peak_mw": 51466.31785714285,
+            "throughput_mwh": 28957.76142001476,
+            "conversion_loss_mwh": 2408.9645548712438,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.069544618483633e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 0,
+            "timeseries": "outputs/development/stress_2021-07-08_power_70pct_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 54029.69375,
+            "mean_daily_peak_mw": 51573.46071428571,
+            "throughput_mwh": 19707.981706067963,
+            "conversion_loss_mwh": 1639.4854798808692,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 1,
+            "timeseries": "outputs/development/stress_2021-07-08_power_70pct_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "efficiency_0_85": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.85,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53754.345,
+            "mean_daily_peak_mw": 51321.071329065184,
+            "throughput_mwh": 43404.792081630716,
+            "conversion_loss_mwh": 6992.644297621206,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-07-08_efficiency_0_85_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53889.455,
+            "mean_daily_peak_mw": 51460.65714285714,
+            "throughput_mwh": 32873.86968882592,
+            "conversion_loss_mwh": 5296.080602989373,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.069544618483633e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 5,
+            "timeseries": "outputs/development/stress_2021-07-08_efficiency_0_85_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "continuous_week": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "not_applicable",
+            "reason": "Frozen primary reference uses independent daily terminal equality."
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": false,
+            "baseline_peak_mw": 55608.6,
+            "controlled_peak_mw": 55049.825,
+            "controlled_p95_mw": 53985.63694557267,
+            "mean_daily_peak_mw": 51560.8969309377,
+            "throughput_mwh": 23688.380702427843,
+            "conversion_loss_mwh": 1970.6105263718125,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.183231456205249e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 32,
+            "timeseries": "outputs/development/stress_2021-07-08_continuous_week_two_stage_250mw_candidate.csv"
+          }
+        }
+      }
+    },
+    "2021-10-08": {
+      "nominal": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54621.935000000005,
+            "mean_daily_peak_mw": 53054.56967579503,
+            "throughput_mwh": 22752.30646396135,
+            "conversion_loss_mwh": 1892.7395325305793,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.7284841053187847e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_nominal_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54704.08677326598,
+            "mean_daily_peak_mw": 53048.088444361056,
+            "throughput_mwh": 17571.304573602185,
+            "conversion_loss_mwh": 1461.7376421714116,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.353761712787673e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_nominal_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_1h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59354.43934675077,
+            "controlled_p95_mw": 54477.9383554293,
+            "mean_daily_peak_mw": 53115.07376307091,
+            "throughput_mwh": 30315.870542676304,
+            "conversion_loss_mwh": 2521.94416992801,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-10-08_feed_delay_1h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59265.72699474556,
+            "controlled_p95_mw": 54797.92039697542,
+            "mean_daily_peak_mw": 53108.59253163693,
+            "throughput_mwh": 22420.383448391003,
+            "conversion_loss_mwh": 1865.1272192768934,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 10,
+            "timeseries": "outputs/development/stress_2021-10-08_feed_delay_1h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "feed_delay_3h": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 191,
+          "beyond_horizon_fallback_hours": 191,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 58737.5,
+            "controlled_p95_mw": 54856.068750000006,
+            "mean_daily_peak_mw": 52666.43413150318,
+            "throughput_mwh": 34868.20707663616,
+            "conversion_loss_mwh": 2900.6480756993665,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.296918293926865e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-10-08_feed_delay_3h_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 58979.143651699516,
+            "controlled_p95_mw": 54795.42575907275,
+            "mean_daily_peak_mw": 52815.83480738565,
+            "throughput_mwh": 23938.719669401045,
+            "conversion_loss_mwh": 1991.4359517006058,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.296918293926865e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 8,
+            "timeseries": "outputs/development/stress_2021-10-08_feed_delay_3h_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "six_hour_outage": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 6,
+          "beyond_horizon_fallback_hours": 6,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54621.935000000005,
+            "mean_daily_peak_mw": 53054.56967579503,
+            "throughput_mwh": 22752.30646396135,
+            "conversion_loss_mwh": 1892.7395325305793,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.7284841053187847e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_six_hour_outage_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54704.08677326598,
+            "mean_daily_peak_mw": 53048.088444361056,
+            "throughput_mwh": 17571.304573602185,
+            "conversion_loss_mwh": 1461.7376421714116,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.353761712787673e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_six_hour_outage_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_plus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54802.24593664961,
+            "mean_daily_peak_mw": 53054.56967579503,
+            "throughput_mwh": 25556.0273217398,
+            "conversion_loss_mwh": 2125.9780094341595,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.637978807091713e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 13,
+            "timeseries": "outputs/development/stress_2021-10-08_forecast_bias_plus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54704.08677326598,
+            "mean_daily_peak_mw": 53048.088444361056,
+            "throughput_mwh": 20192.510452470917,
+            "conversion_loss_mwh": 1679.792897259278,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 14,
+            "timeseries": "outputs/development/stress_2021-10-08_forecast_bias_plus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "forecast_bias_minus_1000mw": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 58662.46983461338,
+            "controlled_p95_mw": 54182.63999330865,
+            "mean_daily_peak_mw": 52958.60708900702,
+            "throughput_mwh": 21128.012072894213,
+            "conversion_loss_mwh": 1757.6162556307136,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 2.9558577807620168e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 11,
+            "timeseries": "outputs/development/stress_2021-10-08_forecast_bias_minus_1000mw_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 58601.75199474555,
+            "controlled_p95_mw": 54321.15606136158,
+            "mean_daily_peak_mw": 52944.54331561731,
+            "throughput_mwh": 16754.63583312727,
+            "conversion_loss_mwh": 1393.7998613346765,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.353761712787673e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_forecast_bias_minus_1000mw_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "power_70pct": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 875.0,
+          "discharge_power_mw": 875.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54752.35500502726,
+            "mean_daily_peak_mw": 53108.141104366456,
+            "throughput_mwh": 16966.69724801294,
+            "conversion_loss_mwh": 1411.4410188988227,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.126388037344441e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_power_70pct_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54781.152332532976,
+            "mean_daily_peak_mw": 53101.65987293248,
+            "throughput_mwh": 11513.011047634856,
+            "conversion_loss_mwh": 957.7548185207501,
+            "energy_balance_error_mwh": 7.389644451905042e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.524291969370097e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 6,
+            "timeseries": "outputs/development/stress_2021-10-08_power_70pct_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "efficiency_0_85": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.85,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.80946908594,
+            "controlled_p95_mw": 54621.935000000005,
+            "mean_daily_peak_mw": 53058.3984893743,
+            "throughput_mwh": 24633.602570737457,
+            "conversion_loss_mwh": 3968.548454792247,
+            "energy_balance_error_mwh": 6.821210263296962e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.410605131648481e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 13,
+            "timeseries": "outputs/development/stress_2021-10-08_efficiency_0_85_frozen_reference.csv"
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": true,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.80946908594,
+            "controlled_p95_mw": 54679.640439945724,
+            "mean_daily_peak_mw": 53044.68123776778,
+            "throughput_mwh": 18971.405338903547,
+            "conversion_loss_mwh": 3056.3512229583366,
+            "energy_balance_error_mwh": 9.094947017729282e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.183231456205249e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 12,
+            "timeseries": "outputs/development/stress_2021-10-08_efficiency_0_85_two_stage_250mw_candidate.csv"
+          }
+        }
+      },
+      "continuous_week": {
+        "model": {
+          "capacity_mwh": 30000.0,
+          "charge_power_mw": 1250.0,
+          "discharge_power_mw": 1250.0,
+          "efficiency": 0.92,
+          "minimum_soc_mwh": 4500.0,
+          "initial_soc_mwh": 15000.0,
+          "maximum_soc_mwh": 15000.0
+        },
+        "feed": {
+          "stale_issue_hours": 0,
+          "beyond_horizon_fallback_hours": 0,
+          "fallback": "Carry last published horizon point/band; never use evaluation actual loads."
+        },
+        "experiments": {
+          "frozen_reference": {
+            "status": "not_applicable",
+            "reason": "Frozen primary reference uses independent daily terminal equality."
+          },
+          "two_stage_250mw_candidate": {
+            "status": "solved",
+            "rows": 168,
+            "days": 7,
+            "daily_terminal": false,
+            "baseline_peak_mw": 59401.475000000006,
+            "controlled_peak_mw": 59395.34289595185,
+            "controlled_p95_mw": 54993.97018560476,
+            "mean_daily_peak_mw": 53048.088444361056,
+            "throughput_mwh": 13398.354718592072,
+            "conversion_loss_mwh": 1114.5944999868616,
+            "energy_balance_error_mwh": 7.958078640513122e-13,
+            "continuity_error_mwh": 0.0,
+            "bound_error": 0.0,
+            "max_abs_terminal_error_mwh": 0.0,
+            "load_accounting_error_mw": 3.353761712787673e-12,
+            "physical_audit_passed": true,
+            "reserve_target_shortfall_hours": 28,
+            "timeseries": "outputs/development/stress_2021-10-08_continuous_week_two_stage_250mw_candidate.csv"
+          }
+        }
+      }
+    }
+  }
+}

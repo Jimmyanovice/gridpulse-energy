@@ -1,0 +1,61 @@
+{
+  "file": "data\\processed\\net_load_hourly.csv",
+  "rows": 50400,
+  "columns": [
+    "timestamp",
+    "total_load_mw",
+    "solar_generation_mw",
+    "wind_generation_mw",
+    "net_load_mw"
+  ],
+  "time_coverage": {
+    "start_utc": "2015-01-01T00:00:00+00:00",
+    "end_utc": "2020-09-30T23:00:00+00:00",
+    "duration_days": 2099.9583333333335,
+    "missing_timestamps": 0,
+    "max_consecutive_missing_hours": 0,
+    "frequency_minutes": 60
+  },
+  "duplicate_timestamp_count": 0,
+  "numeric_fields": {
+    "total_load_mw": {
+      "missing_count": 0,
+      "missing_rate": 0.0,
+      "negative_count": 0,
+      "zero_count": 0,
+      "min": 31307.0,
+      "max": 77549.0
+    },
+    "solar_generation_mw": {
+      "missing_count": 103,
+      "missing_rate": 0.0020436507936507937,
+      "negative_count": 0,
+      "zero_count": 21491,
+      "min": 0.0,
+      "max": 32947.0
+    },
+    "wind_generation_mw": {
+      "missing_count": 74,
+      "missing_rate": 0.0014682539682539682,
+      "negative_count": 0,
+      "zero_count": 0,
+      "min": 135.0,
+      "max": 46064.0
+    },
+    "net_load_mw": {
+      "missing_count": 105,
+      "missing_rate": 0.0020833333333333333,
+      "negative_count": 0,
+      "zero_count": 0,
+      "min": 648.0,
+      "max": 73370.0
+    }
+  },
+  "net_load_formula_max_abs_error": 0.0,
+  "rows_with_any_missing_numeric": 105,
+  "quality_notes": [
+    "Negative values are reported as suspicious observations, not automatically deleted.",
+    "Missing intervals and field gaps must be handled explicitly before modeling.",
+    "All timestamps are normalized to UTC; local-time presentation is a later concern."
+  ]
+}

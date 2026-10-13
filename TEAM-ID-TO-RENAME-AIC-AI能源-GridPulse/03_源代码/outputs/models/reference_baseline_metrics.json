@@ -1,0 +1,30 @@
+{
+  "protocol": "All models use the same frozen eligible test timestamps; no policy or model is selected using these test metrics.",
+  "test_rows": 10035,
+  "metrics": {
+    "persistence_1h": {
+      "mae_mw": 2382.6004982561035,
+      "rmse_mw": 3024.7994028371677,
+      "mape_pct": 8.086413675315722,
+      "smape_pct": 8.09660917119808
+    },
+    "seasonal_24h": {
+      "mae_mw": 8760.665470852018,
+      "rmse_mw": 11465.883395606908,
+      "mape_pct": 34.66868066028962,
+      "smape_pct": 30.078989164632684
+    },
+    "seasonal_168h": {
+      "mae_mw": 9774.000199302442,
+      "rmse_mw": 12476.540648611393,
+      "mape_pct": 38.9674111636482,
+      "smape_pct": 32.85002840320492
+    },
+    "hist_gradient_boosting": {
+      "mae_mw": 1019.8683699335935,
+      "rmse_mw": 1354.1934784116124,
+      "mape_pct": 4.54221208163514,
+      "smape_pct": 4.116475271454697
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "gridpulse-independent-protocol.v1",
+  "frozen_at_utc": "2026-10-09T07:28:12.573097+00:00",
+  "period": {
+    "start": "2021-01-01T00:00:00+00:00",
+    "end_exclusive": "2022-01-01T00:00:00+00:00",
+    "warmup_start": "2020-12-24T00:00:00+00:00"
+  },
+  "source_url": "https://api.energy-charts.info/v2/public_power?country=de&start=2020-12-24T00:00Z&end=2022-01-01T06:00Z",
+  "source": "Energy-Charts.info, Fraunhofer ISE, CC BY 4.0",
+  "data_boundary": "Later-year same-country temporal holdout with a different data provider. Revised historical observations, not contemporaneous availability.",
+  "clock_semantics": "Provider timestamps label interval starts. Action at t controls [t,t+1h). Latest feature observation labels t-1h and finishes at t. Forecast horizon h predicts the interval ending h hours after issuance. No additional publication latency is assumed.",
+  "release_threshold_mw": 63183.07600064019,
+  "policies": [
+    "fixed_upper",
+    "dynamic_upper",
+    "dynamic_release_only",
+    "dynamic_point_only",
+    "dynamic_peak_response",
+    "fixed_peak_response"
+  ],
+  "parameters": {
+    "capacity_mwh": 30000.0,
+    "charge_power_mw": 1250.0,
+    "discharge_power_mw": 1250.0,
+    "efficiency": 0.92,
+    "hard_min_fraction": 0.15,
+    "daily_terminal": true
+  },
+  "primary_endpoint": "Full-year controlled maximum of dynamic_peak_response versus dynamic_upper; positive reduction is observed success, zero/negative is reported as no improvement.",
+  "secondary_endpoints": [
+    "P95",
+    "quarter-specific maximum and P95",
+    "top20 high-load-hour reduction",
+    "throughput",
+    "conversion losses",
+    "soft-reserve shortfalls",
+    "hard SOC and daily terminal equality",
+    "prediction MAE and interval coverage"
+  ],
+  "uncertainty": {
+    "method": "Paired circular moving-block bootstrap",
+    "block_days": 7,
+    "repetitions": 2000,
+    "seed": 20211009,
+    "endpoints": [
+      "mean daily peak reduction",
+      "P95 reduction"
+    ],
+    "sensitivity_block_days": [
+      3,
+      14
+    ]
+  },
+  "rules": [
+    "No retraining, recalibration, threshold search or load rescaling on holdout.",
+    "All six policies share complete UTC days.",
+    "Never impute missing quarter hours; report omitted days.",
+    "Report all quarters and configurations, including negative findings.",
+    "Primary full-period maximum is descriptive; bootstrap intervals do not predict unseen extreme maxima.",
+    "Retain existing exploratory findings separately; confirmation is limited to frozen historical same-country simulation."
+  ],
+  "frozen_sha256": {
+    "outputs/models/direct_horizon_1h.joblib": "c88183671b0deb9dd1a8e6a0695b66e6cc6ee7be9e0b54b8f8e571d56d1f0e42",
+    "outputs/models/direct_horizon_2h.joblib": "2ab67330eb16b2269ebcfb78629dd4b967971592454bb726e50078b867026ac3",
+    "outputs/models/direct_horizon_3h.joblib": "3dc811baa420e86ad2ca9c7badc76dcb6a7b605bf63e0a7bf417913264f5d41c",
+    "outputs/models/direct_horizon_4h.joblib": "eba465ae78489c4bb3f41b6ea68b5c4238f159f5366e7a68594d85311495b2b6",
+    "outputs/models/direct_horizon_5h.joblib": "0f092a294cbaf4bdb0052bb26dcac2b49959f39ed8899641b4bf04eb882b6767",
+    "outputs/models/direct_horizon_6h.joblib": "7ebfa3bd43aea3a1aca00733cdc4556d04af5aa161fb1b686533e10f0ffafae8",
+    "outputs/scenarios/reserve_ablation_metrics.json": "86b15b09ad7d78cb71da8cc7e250ab13104563b74e7c09ce4cdb4d02afe3398c",
+    "outputs/scenarios/storage_scenario_metrics.json": "18765038ed09ba192d7630545881564d8b1bce29d62592bf5114018a529c932d",
+    "outputs/scenarios/peak_response_metrics.json": "5ffc11e2bbd4fcaa72ed59ab06e212b06d19fe7cfc412a5026e4509643ba563e",
+    "src/scenarios.py": "8bfa58a2011290730d474f8f871fc1baa7b8ac7bbfb18e3e26f4ecaf64fae23e",
+    "src/balanced_storage.py": "a2c8e29a557c9d77defdc1dca8d81929a1561290a9efc0c7ebe70f7c185501cc",
+    "src/multihorizon.py": "5fa30af8c0a7260467d97abacef6cd28f1f9df3f2dee3617148a51677deee9df",
+    "src/independent_validation.py": "e24740761ad15e234ee761db7a5e9481d23a8956e0ded46c2199ebf58d08ce31",
+    "scripts/run_independent_validation.py": "a3e95df9e15ad3ce8116b7e45e2cd2c22a1b32ed8ddfe7b839eb6f2d25687219",
+    "scripts/run_peak_response.py": "716d01b7064cf0c8815676ccd17b7c70fc58fa6f5c9bdef7c96991540ca1b8e8"
+  }
+}

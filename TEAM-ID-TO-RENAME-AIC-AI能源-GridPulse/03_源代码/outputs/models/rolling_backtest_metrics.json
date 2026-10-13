@@ -1,0 +1,157 @@
+{
+  "schema_version": "gridpulse-rolling-backtest.v1",
+  "forecast_design": "one_step_ahead_causal",
+  "horizon_days": 30,
+  "fold_starts": [
+    "2018-01-01T00:00:00Z",
+    "2018-07-01T00:00:00Z",
+    "2019-01-01T00:00:00Z",
+    "2019-07-01T00:00:00Z",
+    "2020-01-01T00:00:00Z"
+  ],
+  "selection_policy": "Fold dates and horizon are fixed in source code before evaluation; no fold is selected by performance.",
+  "folds": [
+    {
+      "fold_start": "2018-01-01 00:00:00+00:00",
+      "fold_end_exclusive": "2018-01-31 00:00:00+00:00",
+      "train_start": "2015-01-08 07:00:00+00:00",
+      "train_end": "2017-12-31 23:00:00+00:00",
+      "train_rows": 25831,
+      "test_rows": 720,
+      "baseline_rows": 720,
+      "hist_gradient_boosting": {
+        "mae_mw": 1047.9077619025597,
+        "rmse_mw": 1424.3269110576127,
+        "mape_pct": 5.224773105266883,
+        "smape_pct": 4.465409476117068
+      },
+      "seasonal_naive_24h": {
+        "mae_mw": 10966.0875,
+        "rmse_mw": 13653.920142978475,
+        "mape_pct": 39.68055238567597,
+        "smape_pct": 33.614053500681216
+      },
+      "persistence_1h": {
+        "mae_mw": 2277.8125,
+        "rmse_mw": 2958.250582645463,
+        "mape_pct": 7.200518361483101,
+        "smape_pct": 7.217900410509006
+      }
+    },
+    {
+      "fold_start": "2018-07-01 00:00:00+00:00",
+      "fold_end_exclusive": "2018-07-31 00:00:00+00:00",
+      "train_start": "2015-01-08 07:00:00+00:00",
+      "train_end": "2018-06-30 23:00:00+00:00",
+      "train_rows": 30175,
+      "test_rows": 720,
+      "baseline_rows": 720,
+      "hist_gradient_boosting": {
+        "mae_mw": 610.552384610065,
+        "rmse_mw": 787.8632629698017,
+        "mape_pct": 1.6559090337291318,
+        "smape_pct": 1.6560369117159695
+      },
+      "seasonal_naive_24h": {
+        "mae_mw": 6084.0055555555555,
+        "rmse_mw": 8269.199930901552,
+        "mape_pct": 17.20714974971303,
+        "smape_pct": 17.167378198196438
+      },
+      "persistence_1h": {
+        "mae_mw": 2220.088888888889,
+        "rmse_mw": 2761.238798075965,
+        "mape_pct": 5.760649191830232,
+        "smape_pct": 5.797445032198799
+      }
+    },
+    {
+      "fold_start": "2019-01-01 00:00:00+00:00",
+      "fold_end_exclusive": "2019-01-31 00:00:00+00:00",
+      "train_start": "2015-01-08 07:00:00+00:00",
+      "train_end": "2018-12-31 23:00:00+00:00",
+      "train_rows": 34591,
+      "test_rows": 720,
+      "baseline_rows": 720,
+      "hist_gradient_boosting": {
+        "mae_mw": 940.020626112764,
+        "rmse_mw": 1220.1640576112768,
+        "mape_pct": 3.1976227734745155,
+        "smape_pct": 3.2040547304186697
+      },
+      "seasonal_naive_24h": {
+        "mae_mw": 11604.6625,
+        "rmse_mw": 14252.039487239477,
+        "mape_pct": 39.450481363843785,
+        "smape_pct": 33.81102967843015
+      },
+      "persistence_1h": {
+        "mae_mw": 1990.9652777777778,
+        "rmse_mw": 2627.737792654443,
+        "mape_pct": 5.706630696085653,
+        "smape_pct": 5.752042589579103
+      }
+    },
+    {
+      "fold_start": "2019-07-01 00:00:00+00:00",
+      "fold_end_exclusive": "2019-07-31 00:00:00+00:00",
+      "train_start": "2015-01-08 07:00:00+00:00",
+      "train_end": "2019-06-30 23:00:00+00:00",
+      "train_rows": 38935,
+      "test_rows": 720,
+      "baseline_rows": 720,
+      "hist_gradient_boosting": {
+        "mae_mw": 717.8231944579536,
+        "rmse_mw": 926.3812490862118,
+        "mape_pct": 2.1467376089936114,
+        "smape_pct": 2.131108736958969
+      },
+      "seasonal_naive_24h": {
+        "mae_mw": 7341.456944444444,
+        "rmse_mw": 9915.639056911281,
+        "mape_pct": 22.8820192139072,
+        "smape_pct": 22.556579329631532
+      },
+      "persistence_1h": {
+        "mae_mw": 2255.2055555555557,
+        "rmse_mw": 2787.0342834673243,
+        "mape_pct": 6.377252424461448,
+        "smape_pct": 6.404760952791438
+      }
+    },
+    {
+      "fold_start": "2020-01-01 00:00:00+00:00",
+      "fold_end_exclusive": "2020-01-31 00:00:00+00:00",
+      "train_start": "2015-01-08 07:00:00+00:00",
+      "train_end": "2019-12-31 23:00:00+00:00",
+      "train_rows": 43351,
+      "test_rows": 720,
+      "baseline_rows": 720,
+      "hist_gradient_boosting": {
+        "mae_mw": 870.1936381703665,
+        "rmse_mw": 1156.6160191854315,
+        "mape_pct": 2.7158168184803633,
+        "smape_pct": 2.69725185855833
+      },
+      "seasonal_naive_24h": {
+        "mae_mw": 8453.84861111111,
+        "rmse_mw": 10958.717320838947,
+        "mape_pct": 26.03446302809432,
+        "smape_pct": 25.374981792268237
+      },
+      "persistence_1h": {
+        "mae_mw": 2073.776388888889,
+        "rmse_mw": 2669.1289317241058,
+        "mape_pct": 6.20616803825582,
+        "smape_pct": 6.201817700913803
+      }
+    }
+  ],
+  "summary": {
+    "hist_gradient_boosting_mae_mean_mw": 837.2995210507418,
+    "hist_gradient_boosting_mae_std_mw": 174.41210965776818,
+    "seasonal_naive_mae_mean_mw": 8890.012222222222,
+    "seasonal_naive_mae_std_mw": 2352.7298106140297,
+    "folds_where_model_beats_baseline": 5
+  }
+}

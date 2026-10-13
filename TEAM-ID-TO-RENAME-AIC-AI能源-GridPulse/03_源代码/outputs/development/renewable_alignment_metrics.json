@@ -1,0 +1,193 @@
+{
+  "status": "Post-hoc descriptive renewable alignment and ramp evaluation; not avoided curtailment or renewable-sourced energy attribution.",
+  "high_renewable_share_threshold": 0.6198289648914763,
+  "calibration_period": "original complete validation days q90 renewable/total load",
+  "periods": {
+    "validation": {
+      "frozen_reference": {
+        "rows": 4992,
+        "high_renewable_share_hours": 500,
+        "charge_in_high_renewable_hours_mwh": 0.0,
+        "charge_in_high_renewable_hours_pct": 0.0,
+        "baseline_abs_ramp_p95_mw_per_hour": 5820.5,
+        "controlled_abs_ramp_p95_mw_per_hour": 5818.0,
+        "baseline_max_up_ramp_mw_per_hour": 9547.0,
+        "controlled_max_up_ramp_mw_per_hour": 9547.0,
+        "baseline_max_down_ramp_mw_per_hour": -8675.0,
+        "controlled_max_down_ramp_mw_per_hour": -8675.0
+      },
+      "two_stage_0mw": {
+        "rows": 4992,
+        "high_renewable_share_hours": 500,
+        "charge_in_high_renewable_hours_mwh": 0.0,
+        "charge_in_high_renewable_hours_pct": 0.0,
+        "baseline_abs_ramp_p95_mw_per_hour": 5820.5,
+        "controlled_abs_ramp_p95_mw_per_hour": 5818.0,
+        "baseline_max_up_ramp_mw_per_hour": 9547.0,
+        "controlled_max_up_ramp_mw_per_hour": 9547.0,
+        "baseline_max_down_ramp_mw_per_hour": -8675.0,
+        "controlled_max_down_ramp_mw_per_hour": -8675.0
+      },
+      "two_stage_100mw": {
+        "rows": 4992,
+        "high_renewable_share_hours": 500,
+        "charge_in_high_renewable_hours_mwh": 0.0,
+        "charge_in_high_renewable_hours_pct": 0.0,
+        "baseline_abs_ramp_p95_mw_per_hour": 5820.5,
+        "controlled_abs_ramp_p95_mw_per_hour": 5820.5,
+        "baseline_max_up_ramp_mw_per_hour": 9547.0,
+        "controlled_max_up_ramp_mw_per_hour": 9547.0,
+        "baseline_max_down_ramp_mw_per_hour": -8675.0,
+        "controlled_max_down_ramp_mw_per_hour": -8675.0
+      },
+      "two_stage_250mw": {
+        "rows": 4992,
+        "high_renewable_share_hours": 500,
+        "charge_in_high_renewable_hours_mwh": 0.0,
+        "charge_in_high_renewable_hours_pct": 0.0,
+        "baseline_abs_ramp_p95_mw_per_hour": 5820.5,
+        "controlled_abs_ramp_p95_mw_per_hour": 5818.0,
+        "baseline_max_up_ramp_mw_per_hour": 9547.0,
+        "controlled_max_up_ramp_mw_per_hour": 9547.0,
+        "baseline_max_down_ramp_mw_per_hour": -8675.0,
+        "controlled_max_down_ramp_mw_per_hour": -8675.0
+      },
+      "two_stage_500mw": {
+        "rows": 4992,
+        "high_renewable_share_hours": 500,
+        "charge_in_high_renewable_hours_mwh": 0.0,
+        "charge_in_high_renewable_hours_pct": 0.0,
+        "baseline_abs_ramp_p95_mw_per_hour": 5820.5,
+        "controlled_abs_ramp_p95_mw_per_hour": 5809.0,
+        "baseline_max_up_ramp_mw_per_hour": 9547.0,
+        "controlled_max_up_ramp_mw_per_hour": 9547.0,
+        "baseline_max_down_ramp_mw_per_hour": -8675.0,
+        "controlled_max_down_ramp_mw_per_hour": -8675.0
+      }
+    },
+    "known_test": {
+      "frozen_reference": {
+        "rows": 10008,
+        "high_renewable_share_hours": 1295,
+        "charge_in_high_renewable_hours_mwh": 1816.2809786582072,
+        "charge_in_high_renewable_hours_pct": 0.5151184856094996,
+        "baseline_abs_ramp_p95_mw_per_hour": 6011.0,
+        "controlled_abs_ramp_p95_mw_per_hour": 6008.899999999992,
+        "baseline_max_up_ramp_mw_per_hour": 12680.0,
+        "controlled_max_up_ramp_mw_per_hour": 12680.0,
+        "baseline_max_down_ramp_mw_per_hour": -8688.0,
+        "controlled_max_down_ramp_mw_per_hour": -8688.0
+      },
+      "two_stage_0mw": {
+        "rows": 10008,
+        "high_renewable_share_hours": 1295,
+        "charge_in_high_renewable_hours_mwh": 1816.2809786582072,
+        "charge_in_high_renewable_hours_pct": 0.5132532791026413,
+        "baseline_abs_ramp_p95_mw_per_hour": 6011.0,
+        "controlled_abs_ramp_p95_mw_per_hour": 6011.0,
+        "baseline_max_up_ramp_mw_per_hour": 12680.0,
+        "controlled_max_up_ramp_mw_per_hour": 12680.0,
+        "baseline_max_down_ramp_mw_per_hour": -8688.0,
+        "controlled_max_down_ramp_mw_per_hour": -8688.0
+      },
+      "two_stage_100mw": {
+        "rows": 10008,
+        "high_renewable_share_hours": 1295,
+        "charge_in_high_renewable_hours_mwh": 1598.1335306430851,
+        "charge_in_high_renewable_hours_pct": 0.5020381987725744,
+        "baseline_abs_ramp_p95_mw_per_hour": 6011.0,
+        "controlled_abs_ramp_p95_mw_per_hour": 6011.0,
+        "baseline_max_up_ramp_mw_per_hour": 12680.0,
+        "controlled_max_up_ramp_mw_per_hour": 12680.0,
+        "baseline_max_down_ramp_mw_per_hour": -8688.0,
+        "controlled_max_down_ramp_mw_per_hour": -8688.0
+      },
+      "two_stage_250mw": {
+        "rows": 10008,
+        "high_renewable_share_hours": 1295,
+        "charge_in_high_renewable_hours_mwh": 1202.3868387716288,
+        "charge_in_high_renewable_hours_pct": 0.4510459230828922,
+        "baseline_abs_ramp_p95_mw_per_hour": 6011.0,
+        "controlled_abs_ramp_p95_mw_per_hour": 6008.899999999992,
+        "baseline_max_up_ramp_mw_per_hour": 12680.0,
+        "controlled_max_up_ramp_mw_per_hour": 12680.0,
+        "baseline_max_down_ramp_mw_per_hour": -8688.0,
+        "controlled_max_down_ramp_mw_per_hour": -8688.0
+      },
+      "two_stage_500mw": {
+        "rows": 10008,
+        "high_renewable_share_hours": 1295,
+        "charge_in_high_renewable_hours_mwh": 386.1058601134217,
+        "charge_in_high_renewable_hours_pct": 0.2028522505586956,
+        "baseline_abs_ramp_p95_mw_per_hour": 6011.0,
+        "controlled_abs_ramp_p95_mw_per_hour": 6003.699999999999,
+        "baseline_max_up_ramp_mw_per_hour": 12680.0,
+        "controlled_max_up_ramp_mw_per_hour": 12680.0,
+        "baseline_max_down_ramp_mw_per_hour": -8688.0,
+        "controlled_max_down_ramp_mw_per_hour": -8688.0
+      }
+    },
+    "known_2021": {
+      "frozen_reference": {
+        "rows": 8760,
+        "high_renewable_share_hours": 696,
+        "charge_in_high_renewable_hours_mwh": 1250.0,
+        "charge_in_high_renewable_hours_pct": 0.16527777375487274,
+        "baseline_abs_ramp_p95_mw_per_hour": 5836.622500000001,
+        "controlled_abs_ramp_p95_mw_per_hour": 5867.4975,
+        "baseline_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "controlled_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "baseline_max_down_ramp_mw_per_hour": -9297.674999999996,
+        "controlled_max_down_ramp_mw_per_hour": -9297.674999999996
+      },
+      "two_stage_0mw": {
+        "rows": 8760,
+        "high_renewable_share_hours": 696,
+        "charge_in_high_renewable_hours_mwh": 1250.0,
+        "charge_in_high_renewable_hours_pct": 0.16604599238546425,
+        "baseline_abs_ramp_p95_mw_per_hour": 5836.622500000001,
+        "controlled_abs_ramp_p95_mw_per_hour": 5867.4975,
+        "baseline_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "controlled_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "baseline_max_down_ramp_mw_per_hour": -9297.674999999996,
+        "controlled_max_down_ramp_mw_per_hour": -9297.674999999996
+      },
+      "two_stage_100mw": {
+        "rows": 8760,
+        "high_renewable_share_hours": 696,
+        "charge_in_high_renewable_hours_mwh": 1150.0,
+        "charge_in_high_renewable_hours_pct": 0.16744707605588705,
+        "baseline_abs_ramp_p95_mw_per_hour": 5836.622500000001,
+        "controlled_abs_ramp_p95_mw_per_hour": 5867.358778624693,
+        "baseline_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "controlled_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "baseline_max_down_ramp_mw_per_hour": -9297.674999999996,
+        "controlled_max_down_ramp_mw_per_hour": -9297.674999999996
+      },
+      "two_stage_250mw": {
+        "rows": 8760,
+        "high_renewable_share_hours": 696,
+        "charge_in_high_renewable_hours_mwh": 1000.0,
+        "charge_in_high_renewable_hours_pct": 0.16776712881956604,
+        "baseline_abs_ramp_p95_mw_per_hour": 5836.622500000001,
+        "controlled_abs_ramp_p95_mw_per_hour": 5841.284999999995,
+        "baseline_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "controlled_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "baseline_max_down_ramp_mw_per_hour": -9297.674999999996,
+        "controlled_max_down_ramp_mw_per_hour": -9297.674999999996
+      },
+      "two_stage_500mw": {
+        "rows": 8760,
+        "high_renewable_share_hours": 696,
+        "charge_in_high_renewable_hours_mwh": 750.0,
+        "charge_in_high_renewable_hours_pct": 0.16732508792095505,
+        "baseline_abs_ramp_p95_mw_per_hour": 5836.622500000001,
+        "controlled_abs_ramp_p95_mw_per_hour": 5836.342500000004,
+        "baseline_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "controlled_max_up_ramp_mw_per_hour": 10781.099999999999,
+        "baseline_max_down_ramp_mw_per_hour": -9297.674999999996,
+        "controlled_max_down_ramp_mw_per_hour": -9297.674999999996
+      }
+    }
+  }
+}

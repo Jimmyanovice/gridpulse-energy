@@ -1,0 +1,25 @@
+{
+  "status": "Post-hoc operating sensitivity on four fixed calendar weeks, not independent validation.",
+  "weeks": [
+    "2021-01-08",
+    "2021-04-08",
+    "2021-07-08",
+    "2021-10-08"
+  ],
+  "policies": [
+    "frozen_reference",
+    "two_stage_250mw_candidate"
+  ],
+  "scenarios": [
+    "nominal",
+    "feed_delay_1h",
+    "feed_delay_3h",
+    "six_hour_outage",
+    "forecast_bias_plus_1000mw",
+    "forecast_bias_minus_1000mw",
+    "power_70pct",
+    "efficiency_0_85",
+    "continuous_week"
+  ],
+  "meaning": "Feed lag delays an already frozen forecast issue, not a retrained model with delayed observations. Continuity is within each week only. All weeks and scenarios fixed before stress evaluation."
+}

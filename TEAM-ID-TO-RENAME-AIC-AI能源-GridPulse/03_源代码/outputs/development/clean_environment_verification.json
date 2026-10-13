@@ -1,0 +1,44 @@
+{
+  "schema_version": "gridpulse-clean-environment.v1",
+  "platform": "Windows x64",
+  "environment": {
+    "python": "3.13.5",
+    "isolated_venv": true,
+    "system_site_packages": false
+  },
+  "checks": [
+    {
+      "name": "dependency_consistency",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "unit_tests",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "optimality_certificates",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "dashboard",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "development_audit",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "later_year_audit",
+      "passed": true,
+      "exit_code": 0
+    }
+  ],
+  "passed": true,
+  "requirements_sha256": "cda084dee3f4022bfc338030391ba3a63facd33b5c150808589bb6266f67403b",
+  "boundary": "Fresh isolated dependency install and existing-artifact tests. Full source download/retraining and other operating systems were not exercised."
+}

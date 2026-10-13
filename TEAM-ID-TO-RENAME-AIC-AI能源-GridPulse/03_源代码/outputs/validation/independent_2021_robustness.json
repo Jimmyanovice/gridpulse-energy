@@ -1,0 +1,78 @@
+{
+  "schema_version": "gridpulse-independent-robustness.v1",
+  "primary_report_sha256": "041e3478e4c01a3e7eeab426f1535dd3e44700df28e09d273bb1ef25f821a299",
+  "status": "Post-hoc disclosure and sensitivity checks; primary frozen evaluation is unchanged.",
+  "api_probe_disclosure": "Before full-year registration, API requests for Jan 1--3 inspected field names, units and timestamp semantics; only a first-row sample and schema were displayed. No trigger, model or policy was fitted to these probes. To avoid claiming every hour was untouched, all three dates are additionally excluded here.",
+  "daily_peak_direction": {
+    "improved_days": 132,
+    "equal_days": 222,
+    "worsened_days": 11
+  },
+  "probe_excluded_period": {
+    "start": "2021-01-04T00:00:00+00:00",
+    "end_exclusive": "2022-01-01T00:00:00+00:00"
+  },
+  "probe_excluded_metrics": {
+    "fixed_upper": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 70449.90000000001,
+      "controlled_p95_mw": 58787.88744496265,
+      "throughput_mwh": 863404.8520172798
+    },
+    "dynamic_upper": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 70449.90000000001,
+      "controlled_p95_mw": 59021.41499999999,
+      "throughput_mwh": 798501.5465413097
+    },
+    "dynamic_release_only": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 70449.90000000001,
+      "controlled_p95_mw": 59069.73499999999,
+      "throughput_mwh": 814091.0720649683
+    },
+    "dynamic_point_only": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 70062.83370294956,
+      "controlled_p95_mw": 58895.06224106417,
+      "throughput_mwh": 1298718.210807683
+    },
+    "dynamic_peak_response": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 69199.90000000001,
+      "controlled_p95_mw": 59213.559940549036,
+      "throughput_mwh": 1389363.4330996647
+    },
+    "fixed_peak_response": {
+      "days": 362,
+      "rows": 8688,
+      "controlled_peak_mw": 69199.90000000001,
+      "controlled_p95_mw": 58684.687455772924,
+      "throughput_mwh": 1649947.1036196628
+    }
+  },
+  "probe_excluded_uncertainty": {
+    "repetitions": 2000,
+    "block_days": 7,
+    "seed": 20211009,
+    "days": 362,
+    "method": "Paired circular moving-block bootstrap of UTC days, percentile 95% intervals",
+    "boundary": "Conditional on these observed days and frozen predictions; not an interval for unseen global extremes or field reliability.",
+    "mean_daily_peak_reduction_mw": {
+      "estimate": 237.3047083370281,
+      "lower_95": 183.84368917726616,
+      "upper_95": 290.45063399801273
+    },
+    "p95_reduction_mw": {
+      "estimate": -192.14494054904208,
+      "lower_95": -364.13484075449213,
+      "upper_95": 80.90144365966817
+    }
+  },
+  "probe_excluded_peak_reduction_mw": 1250.0
+}

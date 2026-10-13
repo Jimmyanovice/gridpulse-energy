@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "gridpulse-final-preflight.v1",
+  "passed": true,
+  "core_metric": {
+    "hist_gradient_boosting_test_mae_mw": 1019.8683699335935
+  },
+  "checks": [
+    {
+      "name": "pytest",
+      "passed": true,
+      "detail": [
+        ".....................................................                    [100%]"
+      ]
+    },
+    {
+      "name": "application-startup-and-date-interaction",
+      "passed": true
+    },
+    {
+      "name": "artifact:data/processed/net_load_hourly.csv",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/metrics/data-quality-report.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/models/day3_model_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/models/multihorizon_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/models/rolling_backtest_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/models/reference_baseline_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/alerts/alert_evaluation.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/scenarios/storage_scenario_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/scenarios/reserve_ablation_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/scenarios/daily_energy_balance_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/scenarios/peak_response_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/validation/independent_2021_protocol.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/validation/independent_2021_metrics.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/validation/independent_2021_data_quality.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/validation/independent_2021_robustness.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/report/gridpulse-technical-report-v0.1.pdf",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/presentation/gridpulse-defense-v9.pdf",
+      "passed": true
+    },
+    {
+      "name": "artifact:outputs/presentation/gridpulse-defense-v9.pptx",
+      "passed": true
+    },
+    {
+      "name": "artifact:.codex-finalizer/gridpulse-defense-v9.validation.json",
+      "passed": true
+    },
+    {
+      "name": "artifact:.codex-finalizer/gridpulse-anonymous-preflight.json",
+      "passed": true
+    },
+    {
+      "name": "daily-matched-trace-energy-audit",
+      "passed": true
+    },
+    {
+      "name": "peak-response-energy-and-matched-sample-audit",
+      "passed": true
+    },
+    {
+      "name": "independent-frozen-protocol-and-results-audit",
+      "passed": true
+    },
+    {
+      "name": "finite-instance-exact-and-primal-dual-certificates",
+      "passed": true
+    },
+    {
+      "name": "controller-operating-interval-and-renewable-development-audit",
+      "passed": true
+    },
+    {
+      "name": "locked-2022-replication-and-trajectory-audit",
+      "passed": true
+    },
+    {
+      "name": "fresh-isolated-windows-environment",
+      "passed": true
+    },
+    {
+      "name": "shared-timestamp-baselines",
+      "passed": true
+    },
+    {
+      "name": "supplemental-soc-accounting",
+      "passed": true
+    },
+    {
+      "name": "rolling-identical-sample-count",
+      "passed": true
+    },
+    {
+      "name": "model-metric-boundary",
+      "passed": true,
+      "detail": "one_step_ahead_causal"
+    },
+    {
+      "name": "direct-multihorizon-boundary",
+      "passed": true,
+      "detail": {
+        "forecast_design": "direct_multi_horizon_causal",
+        "horizons": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "name": "prediction-interval-calibration",
+      "passed": true,
+      "detail": {
+        "radius_mw": 1984.794001870309,
+        "test_coverage_pct": 86.9157947184853
+      }
+    },
+    {
+      "name": "storage-sensitivity",
+      "passed": true,
+      "detail": {
+        "storage_10000mwh": {
+          "fixed_reserve_policy": "fixed_30%",
+          "fair_p95_delta_mw": -12.450000000004366,
+          "risk_aware_solver_optimal_rate_pct": 100.0
+        },
+        "storage_20000mwh": {
+          "fixed_reserve_policy": "fixed_30%",
+          "fair_p95_delta_mw": -34.85000000000582,
+          "risk_aware_solver_optimal_rate_pct": 100.0
+        },
+        "storage_30000mwh": {
+          "fixed_reserve_policy": "fixed_30%",
+          "fair_p95_delta_mw": -99.65676654210256,
+          "risk_aware_solver_optimal_rate_pct": 100.0
+        }
+      }
+    },
+    {
+      "name": "ppt-validation",
+      "passed": true,
+      "detail": {
+        "package": "pass",
+        "import_passed": true
+      }
+    },
+    {
+      "name": "anonymous-material-scan",
+      "passed": true,
+      "detail": "This scan cannot identify a person from visual-only content, Git history, browser tabs, or a shared-drive URL. Exclude .git and identity-bearing repository metadata from an anonymous submission package."
+    }
+  ],
+  "pending_external_or_manual_items": {
+    "technical_report_pdf": false,
+    "defense_ppt_pdf": false,
+    "demo_video": true,
+    "submission_upload": true,
+    "anonymous_final_review": true
+  },
+  "interpretation": "Core repository evidence is ready when passed=true; pending items require final competition packaging or human review."
+}
