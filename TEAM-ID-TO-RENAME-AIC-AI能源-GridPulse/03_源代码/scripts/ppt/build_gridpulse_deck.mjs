@@ -225,7 +225,7 @@ function metric(slide, label, value, left, top, width, accent = C.teal) {
   for(let c=0;c<4;c++) table.getCell(0,c).fill=C.teal;
   table.cells.block({row:0,column:0,rowCount:1,columnCount:4}).assign({textStyle:{typeface:font,color:C.white,bold:true,fontSize:19}});
   box(s,"2021 年原最高点 70,449.90 − 1,250 = 69,199.90 MW，现有策略达到下界",80,447,1120,38,23,C.teal,true);
-  box(s,"两组离线解均有精确有理数下界达到证明，1,564 个 LP 原始与对偶见证交叉核验。\n原固定策略也达到相同最高点，数学证书不证明动态储备独有优势。",80,506,1120,65,20,C.ink);
+  box(s,"两组离线解均有精确有理数下界达到证明，1,564 个 LP 原始与对偶见证交叉核验。\n新固定策略也达到相同最高点，数学证书不证明动态储备独有优势。",80,506,1120,65,20,C.ink);
   box(s,"离线解预知全年真实负荷。最低吞吐、P95 和所有未来在线场景不能混为同一最优。",80,613,1120,36,18,C.red,true);
   footer(s,12); note(s,"来源：outputs/optimality/certificates.json、docs/global-optimality.md。物理约束：容量30000MWh，日初末SOC15000MWh，硬下限4500MWh，操作上限15000MWh，功率各1250MW，单向效率0.92。精确有理数证书针对CSV十进制原值，控制轨迹另按1e-5物理残差容差核验。离线调度去掉预测门槛和软储备，是更宽物理可行集。旧测试现有策略仍有604.15MW差距。标准线性规划和强对偶不作为原创算法主张。");
 }
@@ -284,5 +284,6 @@ function metric(slide, label, value, left, top, width, accent = C.teal) {
   note(s, "系统功能来源：app.py；滚动回测来源：outputs/models/rolling_backtest_metrics.json；风险感知调控来源：outputs/scenarios/storage_scenario_metrics.json。下一关口为研究计划，尚未实施。");
 }
 
+await fs.mkdir(tmpDir, { recursive: true });
 await (await PresentationFile.exportPptx(ppt)).save(draftPath);
 console.log(draftPath);

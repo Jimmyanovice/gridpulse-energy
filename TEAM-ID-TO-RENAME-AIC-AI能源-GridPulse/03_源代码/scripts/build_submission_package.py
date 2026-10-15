@@ -290,6 +290,8 @@ def build(team_id: str, replace: bool) -> Path:
     for relative in RESULTS:
         copy_file(relative, package / "03_源代码" / relative)
     copy_tree("outputs/development",package / "03_源代码/outputs/development",{".json",".csv",".txt"})
+    if (ROOT / "outputs/experiments").is_dir():
+        copy_tree("outputs/experiments", package / "03_源代码/outputs/experiments", {".json", ".csv"})
     later_results = tuple(source.relative_to(ROOT).as_posix()
                           for source in sorted((ROOT/"outputs/validation").glob("independent_2022_*")))
     for relative in later_results:

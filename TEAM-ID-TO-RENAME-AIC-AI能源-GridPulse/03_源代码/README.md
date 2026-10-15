@@ -73,6 +73,14 @@ Read [the controller-development audit](docs/controller-development.md) for two-
 
 ## What Is Implemented
 
+The browser dashboard now opens on a project overview with 2021/2022 year selection,
+six storage policies, annual peak/P95/throughput/loss metrics, interactive daily
+net-load and SOC charts, and CSV export. The existing six analysis tabs remain
+available. Overview selections are independent of the sidebar's original test-period
+date filter. Launch with `python -m streamlit run app.py` and open
+`http://localhost:8501`. Chinese plots detect common Windows, macOS and Linux fonts;
+set `GRIDPULSE_FONT_PATH` to a Chinese font file if needed.
+
 The separately locked [2022 replication](docs/later-year-validation.md) evaluates all six unchanged policies on 365 shared days. Relative to the original dynamic policy, the new dynamic policy reduces the maximum by 1,250 MW and mean daily peak by 165.83 MW (95% block interval [106.43,227.73]). Annual P95 is 145.49 MW lower, but its interval covers zero and each quarter's P95 worsens. Throughput increases by 300,478.17 MWh; one-hour frozen interval coverage falls to 82.03%. These failures and costs remain visible in the dashboard and report. [Release review](docs/release-review.md) records error handling and strict audit repairs.
 
 - Public OPSD data acquisition, normalization, data dictionary, quality checks, and EDA.
@@ -200,3 +208,9 @@ Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and run
 ## License
 
 The original GridPulse source code is available under the [MIT License](LICENSE). This license does not apply to third-party data, third-party repositories, or their respective terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Forecast-to-dispatch exploratory comparison
+
+Run `python scripts/compare_forecast_dispatch.py` to compare AI, persistence and previous-day forecasts with the same dynamic-reserve controller, common complete UTC days and method-specific calibration using the same validation rules. Results and physically audited trajectories are saved separately under `outputs/experiments/forecast_dispatch/` and displayed in the frontend overview. This uses the already inspected original test period; it is not a new independent holdout or a basis for selecting policies.
+
+In the delivered experiment, AI reduces maximum load by 1191.86 MW and P95 by 243.06 MW versus persistence, while increasing throughput and conversion loss. Versus previous-day forecasts, maximum load is similar and P95/throughput improve, but mean daily peak is higher. These tradeoffs do not establish overall superiority, realized savings or deployment performance. Frozen 2021/2022 evidence is unchanged.

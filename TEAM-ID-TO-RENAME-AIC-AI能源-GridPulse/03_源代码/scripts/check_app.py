@@ -9,11 +9,25 @@ from pathlib import Path
 
 def check(root: Path) -> dict:
     sys.path.insert(0, str(root.resolve()))
+    import matplotlib
+    matplotlib.use("Agg", force=True)
     from streamlit.testing.v1 import AppTest
 
     warnings.filterwarnings("error", message="Glyph .* missing from font")
     app = AppTest.from_file(str(root / "app.py"), default_timeout=45).run()
     errors = [item.message for item in app.exception]
+    if not errors:
+        next(x for x in app.selectbox if x.label == "展示年份").set_value(2022).run()
+        errors.extend(item.message for item in app.exception)
+    if not errors:
+        next(x for x in app.selectbox if x.label == "储能对照策略").set_value("fixed_peak_response").run()
+        errors.extend(item.message for item in app.exception)
+        if not any("2022 年 · 新固定组合" in item.value for item in app.markdown):
+            errors.append("Annual overview did not update after switching year and policy.")
+    if not errors:
+        days = next(x for x in app.selectbox if x.label == "查看运行日期（UTC）")
+        days.set_value(days.value.replace(month=1, day=1)).run()
+        errors.extend(item.message for item in app.exception)
     if not errors:
         app.date_input[1].set_value(app.date_input[1].max).run()
         errors.extend(item.message for item in app.exception)
@@ -35,7 +49,7 @@ def check(root: Path) -> dict:
         errors.extend(item.message for item in app.exception)
         if not any("结束日期不能早于开始日期" in item.value for item in app.error):
             errors.append("Invalid date range did not explain the error.")
-    return {"passed": not errors, "checks": ["startup", "full_test_period", "last_test_day", "incomplete_daily_trace_explanation", "Chinese_plot_fonts", "development_period_selection", "stress_week_selection", "invalid_date_range"], "errors": errors}
+    return {"passed": not errors, "checks": ["startup", "overview_year_and_policy_selection", "overview_day_selection", "full_test_period", "last_test_day", "incomplete_daily_trace_explanation", "Chinese_plot_fonts", "development_period_selection", "stress_week_selection", "invalid_date_range"], "errors": errors}
 
 
 def main() -> int:

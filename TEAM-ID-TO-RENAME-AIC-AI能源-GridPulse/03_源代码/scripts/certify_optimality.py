@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from src.optimality import (StorageModel, analytic_certificate, offline_benchmark,
     verify_benchmark, exact_power_bound_witness, verify_exact_witness)
+from src.numerics import same_numeric_evidence
 
 CASES = {
     "independent_2021":"outputs/validation/independent_2021_dynamic_peak_response_timeseries.csv",
@@ -58,7 +59,7 @@ def verify(root=ROOT):
                 or abs(float(Fraction(exact["attained_throughput_mwh"]))-oracle["minimum_throughput_at_optimum_peak_mwh"]) > 1e-3):
             return False
         analytic = analytic_certificate(frame,StorageModel(**oracle["model"]))
-        if analytic != case["analytic_certificate"] or not analytic["audit"]["passed"]:
+        if not same_numeric_evidence(analytic, case["analytic_certificate"]) or not analytic["audit"]["passed"]:
             return False
         if abs(case["controller_peak_gap_mw"]-(analytic["achieved_peak_mw"]-oracle["period_optimum_peak_mw"])) > 1e-5:
             return False

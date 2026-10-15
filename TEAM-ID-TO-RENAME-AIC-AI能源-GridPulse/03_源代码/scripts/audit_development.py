@@ -13,6 +13,7 @@ sys.path.insert(0,str(ROOT))
 from scripts.run_controller_development import read,sha
 from src.trajectory_audit import audited_summary
 from src.optimality import StorageModel
+from src.numerics import same_loads
 
 
 def compare(trace,saved,model,daily=True):
@@ -44,7 +45,7 @@ def audit():
         for name,exp in item["experiments"].items():
             trace = pd.read_csv(ROOT/exp["timeseries"],parse_dates=["timestamp"])
             if (not pd.to_datetime(trace.timestamp,utc=True).equals(pd.to_datetime(panel.timestamp,utc=True))
-                    or not np.array_equal(trace.net_load_mw,panel.net_load_mw) or not compare(trace,exp,model)):
+                    or not same_loads(trace.net_load_mw,panel.net_load_mw) or not compare(trace,exp,model)):
                 return False
     valid = report["periods"]["validation"]["experiments"]
     ref = valid["frozen_reference"]
@@ -72,7 +73,7 @@ def audit():
                     if not np.array_equal(pd.to_datetime(trace.timestamp,utc=True),expected):
                         return False
                     truth = panel2021.set_index("timestamp").loc[expected,"net_load_mw"]
-                    if not np.array_equal(trace.net_load_mw,truth):
+                    if not same_loads(trace.net_load_mw,truth):
                         return False
                     if not compare(trace,exp,StorageModel(**item["model"]),scenario != "continuous_week"):
                         return False

@@ -3,22 +3,23 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import altair as alt
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
 import pandas as pd
 import streamlit as st
 
 from src.scenarios import dispatch_suggestions, flatten_suggestions
 from src.artifacts import ArtifactError, inspect_runtime, validate_frame
+from src.plotting import configure_chinese_font
 
 ROOT = Path(__file__).resolve().parent
-for family in ("Microsoft YaHei", "SimHei", "Noto Sans CJK SC", "WenQuanYi Zen Hei"):
-    if family in {font.name for font in font_manager.fontManager.ttflist}:
-        plt.rcParams["font.sans-serif"] = [family]
-        plt.rcParams["axes.unicode_minus"] = False
-        break
+chart_font = configure_chinese_font()
 
 st.set_page_config(page_title="GridPulse", page_icon="GP", layout="wide")
+if chart_font is None:
+    st.warning("未找到中文图表字体。请安装 Noto Sans CJK SC，或通过 GRIDPULSE_FONT_PATH 指定中文字体文件后重启。")
 
 REQUIRED_ARTIFACTS = (
     "data/processed/net_load_hourly.csv",
@@ -34,6 +35,9 @@ REQUIRED_ARTIFACTS = (
     "outputs/development/renewable_alignment_metrics.json", "outputs/development/interval_audit_metrics.json",
     "outputs/validation/independent_2022_metrics.json",
 )
+FORECAST_COMPARISON = "outputs/experiments/forecast_dispatch/metrics.json"
+if (ROOT / FORECAST_COMPARISON).is_file():
+    REQUIRED_ARTIFACTS += (FORECAST_COMPARISON,)
 missing = [name for name in REQUIRED_ARTIFACTS if not (ROOT/name).is_file()]
 if missing:
     st.error("演示所需数据或结果工件缺失。请使用完整解压的项目包，或按 docs/reproducibility.md 生成结果。")
@@ -88,6 +92,20 @@ def risk_label(value: str) -> str:
     return "、".join(mapping.get(item, item) for item in value.split("|"))
 
 
+def interactive_utc_chart(frame: pd.DataFrame, labels: dict[str, str], colors: list[str], height: int):
+    chart_data = frame[["timestamp", *labels]].rename(columns=labels).melt(
+        id_vars="timestamp", var_name="指标", value_name="数值")
+    chart_data["时间 (UTC)"] = chart_data.timestamp.dt.strftime("%Y-%m-%d %H:%M")
+    chart = alt.Chart(chart_data).mark_line().encode(
+        x=alt.X("timestamp:T", scale=alt.Scale(type="utc"), title="时间 (UTC)"),
+        y=alt.Y("数值:Q", scale=alt.Scale(zero=False), title=" / ".join(labels.values())),
+        color=alt.Color("指标:N", scale=alt.Scale(domain=list(labels.values()), range=colors)),
+        tooltip=[alt.Tooltip("时间 (UTC):N"),
+                 "指标:N", alt.Tooltip("数值:Q", format=",.2f")],
+    ).properties(height=height)
+    st.altair_chart(chart, width="stretch")
+
+
 try:
     data, predictions, alerts, importance, metrics, evaluation, multihorizon, scenario, baselines, reserve_ablation, daily_balance, peak_response, independent = load_artifacts(artifact_fingerprint)
 except ArtifactError as exc:
@@ -111,9 +129,82 @@ with st.sidebar:
 window_predictions = predictions.loc[(predictions["timestamp"].dt.date >= start) & (predictions["timestamp"].dt.date <= end)].copy()
 window_alerts = alerts.loc[(alerts["timestamp"].dt.date >= start) & (alerts["timestamp"].dt.date <= end)].copy()
 
-overview, forecast, risks, explanation, suggestions, control = st.tabs(
-    ["数据概览", "预测回测", "风险事件", "特征解释", "调度建议", "风险感知调控"]
+summary, overview, forecast, risks, explanation, suggestions, control = st.tabs(
+    ["项目总览", "数据概览", "预测回测", "风险事件", "特征解释", "调度建议", "风险感知调控"]
 )
+
+with summary:
+    st.subheader("从新能源波动到储能方案评估")
+    st.write("面向区域聚合储能的历史分析原型。查看净负荷预测、复核运行风险，并比较削峰与电池循环代价。")
+    model_mae = metrics["models"]["hist_gradient_boosting"]["test"]["mae_mw"]
+    persistence_mae = baselines["metrics"]["persistence_1h"]["mae_mw"]
+    a, b, c = st.columns(3)
+    a.metric("测试预测 MAE", f"{model_mae:,.2f} MW")
+    b.metric("相对持平预测误差下降", f"{100 * (1 - model_mae / persistence_mae):.2f}%")
+    c.metric("后续年份复验", "2021 / 2022")
+    st.caption("预测指标覆盖原冻结测试期；以下储能指标覆盖所选年份全年。日期筛选仅作用于标明日期范围的页面。")
+
+    left, right = st.columns([1, 2])
+    with left:
+        year = st.selectbox("展示年份", [2021, 2022])
+        policy_names = {"dynamic_upper": "原动态策略", "fixed_upper": "原固定策略",
+                        "dynamic_point_only": "动态，仅点预测目标", "dynamic_release_only": "动态，仅储备释放",
+                        "dynamic_peak_response": "新动态组合", "fixed_peak_response": "新固定组合"}
+        policy = st.selectbox("储能对照策略", list(policy_names), index=4,
+                              format_func=policy_names.get)
+        annual = json.loads((ROOT / f"outputs/validation/independent_{year}_metrics.json").read_text(encoding="utf-8"))
+        selected_metrics = annual["experiments"][policy]
+        reference = annual["experiments"]["dynamic_upper"]
+        st.info("共同物理假设：30 GWh 容量，充放电上限各 1,250 MW，单向效率 92%，每日初末 SOC 50%，硬下限 15%。")
+
+    with right:
+        st.markdown(f"**{year} 年 · {policy_names[policy]}**")
+        a, b = st.columns(2)
+        a.metric("全年最高净负荷", f"{selected_metrics['controlled_peak_mw']:,.2f} MW",
+                 f"{selected_metrics['controlled_peak_mw'] - reference['controlled_peak_mw']:+,.2f} MW",
+                 delta_color="inverse")
+        b.metric("全年 P95", f"{selected_metrics['controlled_p95_mw']:,.2f} MW",
+                 f"{selected_metrics['controlled_p95_mw'] - reference['controlled_p95_mw']:+,.2f} MW",
+                 delta_color="inverse")
+        a, b = st.columns(2)
+        a.metric("全年充放电吞吐", f"{selected_metrics['throughput_mwh'] / 1000:,.2f} GWh")
+        b.metric("全年转换损耗", f"{selected_metrics['conversion_loss_mwh'] / 1000:,.2f} GWh")
+        st.caption("箭头差值均相对原动态策略；负荷越低越好。吞吐与损耗用于同时检查削峰代价。")
+
+    selected_trace = pd.read_csv(ROOT / selected_metrics["timeseries"], parse_dates=["timestamp"])
+    available_days = sorted(selected_trace.timestamp.dt.date.unique())
+    peak_day = selected_trace.loc[selected_trace.net_load_mw.idxmax(), "timestamp"].date()
+    chosen_day = st.selectbox("查看运行日期（UTC）", available_days,
+                              index=available_days.index(peak_day), format_func=str)
+    day_trace = selected_trace.loc[selected_trace.timestamp.dt.date.eq(chosen_day)].copy()
+    st.caption("默认展示全年原始净负荷最高点所在日；可以切换到任意完整日查看补电和放电。下方图表支持悬停读取数值。")
+    interactive_utc_chart(day_trace, {"net_load_mw": "原始净负荷 (MW)",
+                                     "controlled_net_load_mw": "储能后净负荷 (MW)"},
+                          ["#64748b", "#0f766e"], 300)
+    with st.expander("查看当日 SOC、充放电及原始数据"):
+        interactive_utc_chart(day_trace, {"storage_soc_mwh": "储能 SOC (MWh)"}, ["#0f766e"], 200)
+        st.dataframe(day_trace[["timestamp", "net_load_mw", "controlled_net_load_mw", "charge_mw", "discharge_mw", "storage_soc_mwh"]],
+                     width="stretch", hide_index=True)
+    st.download_button("下载所选日储能轨迹 CSV", day_trace.to_csv(index=False).encode("utf-8-sig"),
+                       f"gridpulse_{year}_{policy}_{chosen_day}.csv", "text/csv")
+    st.warning("削峰存在代价：2021 年新动态组合全年 P95 变差，2022 年 P95 改善区间包含零。新固定组合也达到相同全年最高点，现有结果不支持动态储备全面占优。")
+    with st.expander("功能导航与结论范围"):
+        st.markdown("**数据概览**查看来源与出力；**预测回测**比较预测与基线；**风险事件**查看触发证据；"
+                    "**特征解释**检查模型依赖；**调度建议**导出复核清单；**风险感知调控**查看完整消融与年度复验。")
+        st.write("当前为公开历史数据回测，尚未连接真实设备。预测精度改善不直接等同于调度收益，新能源消纳、经济效益和网络可行性仍需业务数据验证。")
+    if (ROOT / FORECAST_COMPARISON).is_file():
+        with st.expander("AI 预测是否改善调度？查看同控制器对照"):
+            comparison = json.loads((ROOT / FORECAST_COMPARISON).read_text(encoding="utf-8"))
+            method_labels = {"ai": "AI 直接预测", "persistence": "上一小时持平", "seasonal_24h": "前一日同小时"}
+            st.caption(f"原已知测试期探索性补充：共享 {comparison['sample']['test']['days']} 个完整 UTC 日。控制器、物理约束和校准规则相同；每种预测分别用验证期校准区间与阈值。未按此结果选型。")
+            st.dataframe(pd.DataFrame([
+                {"预测方法": method_labels[name], "一小时 MAE (MW)": m["forecast_h1_mae_mw"],
+                 "最高净负荷 (MW)": m["controlled_peak_mw"], "平均日最高点 (MW)": m["mean_daily_peak_mw"],
+                 "P95 (MW)": m["controlled_p95_mw"], "吞吐 (MWh)": m["throughput_mwh"],
+                 "损耗 (MWh)": m["conversion_loss_mwh"]}
+                for name, item in comparison["methods"].items() for m in [item["metrics"]]
+            ]), width="stretch", hide_index=True)
+            st.write("请同时比较削峰、尾部负荷与循环代价。该对照评价预测方法及其验证校准组成的链路，不把精度差直接解释为经济收益，也不构成新留出期验证。")
 
 with overview:
     m1, m2, m3, m4 = st.columns(4)
@@ -134,6 +225,8 @@ with forecast:
     else:
         line_chart(window_predictions, ["net_load_mw", "hist_gradient_boosting_prediction_mw", "hist_gradient_boosting_lower_mw", "hist_gradient_boosting_upper_mw"], ["实际净负荷", "模型预测", "预测区间下界", "预测区间上界"], "净负荷预测回测与校准区间")
         st.dataframe(window_predictions.rename(columns={"timestamp": "时间 (UTC)", "net_load_mw": "实际净负荷 (MW)", "hist_gradient_boosting_prediction_mw": "预测净负荷 (MW)", "residual_mw": "残差 (MW)"}), width="stretch")
+        st.download_button("下载所选预测 CSV", window_predictions.to_csv(index=False).encode("utf-8-sig"),
+                           "gridpulse_forecasts.csv", "text/csv")
 
 with risks:
     st.caption("阈值和预测区间均来自冻结验证期；列表包含候选运行风险与仅由预测上界触发的人工复核信号，不是已确认事件。")
@@ -144,6 +237,8 @@ with risks:
         display["risk_types"] = display["risk_types"].map(risk_label)
         display = display.rename(columns={"timestamp": "时间 (UTC)", "risk_types": "风险类型", "risk_evidence": "触发证据", "predicted_net_load_mw": "预测净负荷 (MW)", "prediction_upper_mw": "预测上界 (MW)", "risk_score": "风险分数", "review_priority": "复核优先级", "residual_mw": "残差 (MW)"})
         st.dataframe(display, width="stretch", height=360)
+        st.download_button("下载风险复核队列 CSV", display.to_csv(index=False).encode("utf-8-sig"),
+                           "gridpulse_risk_review.csv", "text/csv")
         selected = st.selectbox("查看事件详情", window_alerts.index, format_func=lambda index: f"{window_alerts.loc[index, 'timestamp']} | {risk_label(window_alerts.loc[index, 'risk_types'])}")
         event = window_alerts.loc[selected]
         st.write("**触发证据：**", event["risk_evidence"])

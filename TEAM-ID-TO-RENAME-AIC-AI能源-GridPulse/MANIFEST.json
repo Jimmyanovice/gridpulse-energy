@@ -1,6 +1,6 @@
 {
   "schemaVersion": "gridpulse-submission-package.v1",
-  "generatedOn": "2026-10-13",
+  "generatedOn": "2026-10-15",
   "contents": "Anonymous GridPulse competition package, excluding the required MP4 demonstration video.",
   "files": [
     {
@@ -20,23 +20,43 @@
     },
     {
       "path": "02_答辩材料/GridPulse-答辩材料.pdf",
-      "bytes": 729329,
-      "sha256": "efd2b2d1fae0b13f61c73e41be7c678a866da9b684dcb8b75fc97953b0837e65"
+      "bytes": 1582834,
+      "sha256": "31299d123684de101777dc2a3274c35312cab3c94219bc2f96098033f61360d7"
     },
     {
       "path": "02_答辩材料/GridPulse-答辩材料.pptx",
-      "bytes": 923380,
-      "sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f"
-    },
-    {
-      "path": "03_源代码/app.py",
-      "bytes": 30318,
-      "sha256": "70353bc65e166d9f07d5a9dd422be8f87d26f4caedf1b053d4df0790bf058e5f"
+      "bytes": 923432,
+      "sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94"
     },
     {
       "path": "03_源代码/CONTRIBUTING.md",
       "bytes": 1343,
       "sha256": "7ef0ce766acc70542431acf33835745ba407487f50468345cfea1d1b0556cf71"
+    },
+    {
+      "path": "03_源代码/LICENSE",
+      "bytes": 1100,
+      "sha256": "e982988087395e26ac621a852eb762bd11a8f10a17948b1930aca727d26f33fb"
+    },
+    {
+      "path": "03_源代码/README.md",
+      "bytes": 16215,
+      "sha256": "2a8345ff78a7a83fe7bc36b6dd0a57a69730a824e7cc7074ffe9756ae5a1306b"
+    },
+    {
+      "path": "03_源代码/SECURITY.md",
+      "bytes": 988,
+      "sha256": "c78308d10aae3e640f5947b2e4860921f73ffa403e2af2843d66b9e7521b5da1"
+    },
+    {
+      "path": "03_源代码/THIRD_PARTY_NOTICES.md",
+      "bytes": 3065,
+      "sha256": "fa100496ef0775681f07d4f1194f11f8f6f3a3e4003aef7a9696994d3efbe4c6"
+    },
+    {
+      "path": "03_源代码/app.py",
+      "bytes": 37998,
+      "sha256": "9361b9fdfd04c333df6bbd24fac4188653294ddc27578e323a82a60be7282370"
     },
     {
       "path": "03_源代码/data/processed/independent_de_2021_hourly.csv",
@@ -52,6 +72,11 @@
       "path": "03_源代码/data/processed/net_load_hourly.csv",
       "bytes": 2574943,
       "sha256": "5cf6b2f3eebc73b487b235731a64d0c080ee7582d013a159022146e8ba337f65"
+    },
+    {
+      "path": "03_源代码/docs/INNOVATION_BRIEF.md",
+      "bytes": 3285,
+      "sha256": "eef9faa76a5d9828ac1c77e0e462644da730d72d92b6a4216e69a99f5840371c"
     },
     {
       "path": "03_源代码/docs/anonymous-submission.md",
@@ -134,11 +159,6 @@
       "sha256": "b65d99d229dfd0c817e983403f352cb85b31261dae9883d8aa526293d78cdc7e"
     },
     {
-      "path": "03_源代码/docs/INNOVATION_BRIEF.md",
-      "bytes": 3285,
-      "sha256": "eef9faa76a5d9828ac1c77e0e462644da730d72d92b6a4216e69a99f5840371c"
-    },
-    {
       "path": "03_源代码/docs/later-year-validation.md",
       "bytes": 4505,
       "sha256": "98505c5fdff69f8099e7d9e7f2362fbe27d18626e4bfc08507f8ffea6fd8bde1"
@@ -165,8 +185,8 @@
     },
     {
       "path": "03_源代码/docs/reproducibility.md",
-      "bytes": 9524,
-      "sha256": "e3b8e4583d8996729892f23b20b94a21c4951065b8cf8179cef7f1a36e37c896"
+      "bytes": 10459,
+      "sha256": "9deb4082793bebc5caf08ccd315fe274d14fb27002b47caa2483e0546e34f464"
     },
     {
       "path": "03_源代码/docs/risk-aware-control.md",
@@ -192,11 +212,6 @@
       "path": "03_源代码/docs/technical-report-outline.md",
       "bytes": 3556,
       "sha256": "fcd574df1c65bbcb434672792b563a88d595c7f7ced7f174100c53c7d9a5493a"
-    },
-    {
-      "path": "03_源代码/LICENSE",
-      "bytes": 1100,
-      "sha256": "e982988087395e26ac621a852eb762bd11a8f10a17948b1930aca727d26f33fb"
     },
     {
       "path": "03_源代码/outputs/alerts/alert_evaluation.json",
@@ -679,6 +694,26 @@
       "sha256": "7b153de2e96cd31a6f4fc7b33a875a44b4dec1b586c006f60ae5af7dc2f4cb8a"
     },
     {
+      "path": "03_源代码/outputs/experiments/forecast_dispatch/ai_timeseries.csv",
+      "bytes": 2001675,
+      "sha256": "184b154244644ea34366969a1b39194f44f172b210e90550dfbf2bdf746217a3"
+    },
+    {
+      "path": "03_源代码/outputs/experiments/forecast_dispatch/metrics.json",
+      "bytes": 258226,
+      "sha256": "aa51308458fa9b8f036d6dcd22922ce737fa60e79f97e8364e629677619236cc"
+    },
+    {
+      "path": "03_源代码/outputs/experiments/forecast_dispatch/persistence_timeseries.csv",
+      "bytes": 1750929,
+      "sha256": "88af12f6ca1826732a6d1db62161be89116e9dd8bb9ecd74cffb469eb36f414b"
+    },
+    {
+      "path": "03_源代码/outputs/experiments/forecast_dispatch/seasonal_24h_timeseries.csv",
+      "bytes": 1830679,
+      "sha256": "a8ad07f9d1f7acaf7aed9724790ca1e2eb74b13ef9a61beb659b96836da29a79"
+    },
+    {
       "path": "03_源代码/outputs/figures/01_full_period_timeseries.png",
       "bytes": 411979,
       "sha256": "6cfe8e1dd0ce47ce3dbedfe78b9e2ff6326c178f8eeb3dc102935fc9c038a67e"
@@ -825,13 +860,13 @@
     },
     {
       "path": "03_源代码/outputs/presentation/gridpulse-defense-v9.pdf",
-      "bytes": 729329,
-      "sha256": "efd2b2d1fae0b13f61c73e41be7c678a866da9b684dcb8b75fc97953b0837e65"
+      "bytes": 1582834,
+      "sha256": "31299d123684de101777dc2a3274c35312cab3c94219bc2f96098033f61360d7"
     },
     {
       "path": "03_源代码/outputs/presentation/gridpulse-defense-v9.pptx",
-      "bytes": 923380,
-      "sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f"
+      "bytes": 923432,
+      "sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94"
     },
     {
       "path": "03_源代码/outputs/report/gridpulse-technical-report-v0.1.pdf",
@@ -1074,11 +1109,6 @@
       "sha256": "64440832da590fa7a7e93ced1070deab94f7467ef96908a46e9f9dd7e228bc38"
     },
     {
-      "path": "03_源代码/README.md",
-      "bytes": 14686,
-      "sha256": "e205fd7312f5c138af68c91fee07c9a0b8db3986090aedfbc6de4aca60d1d2a1"
-    },
-    {
       "path": "03_源代码/requirements.txt",
       "bytes": 160,
       "sha256": "cda084dee3f4022bfc338030391ba3a63facd33b5c150808589bb6266f67403b"
@@ -1095,8 +1125,8 @@
     },
     {
       "path": "03_源代码/scripts/audit_development.py",
-      "bytes": 6125,
-      "sha256": "04729fe462d274570e78a451190af9da7f8196ef3120a4cd993e9aae3312a3e3"
+      "bytes": 6153,
+      "sha256": "3a219081bc5543f4bf9d4430c072f4a769ec103503bab6db9b851b8a1cc603fc"
     },
     {
       "path": "03_源代码/scripts/audit_energy_and_intervals.py",
@@ -1115,18 +1145,23 @@
     },
     {
       "path": "03_源代码/scripts/build_submission_package.py",
-      "bytes": 17595,
-      "sha256": "99bf2fb132e3446396bbdd5e5c68e7b918b10e69b1d5d5d9a63f12113c8c03f4"
+      "bytes": 17749,
+      "sha256": "fc6a649fa74827274afe570df80e4d043ac9aac81ed818fd748c156cd6c0a404"
     },
     {
       "path": "03_源代码/scripts/certify_optimality.py",
-      "bytes": 5738,
-      "sha256": "ca4a2708a57d02a06cce8aefc41be07d4c53138ccfb9dc4dae966b54be1e2e1c"
+      "bytes": 5810,
+      "sha256": "aef7a98b5b5ee1e7853d47355b70c2fd2e3455482d9fa58028a86481863909b9"
     },
     {
       "path": "03_源代码/scripts/check_app.py",
-      "bytes": 2323,
-      "sha256": "b238fb432f05dd303f38504a844f0fd667727fc32f4fc42c640fffef82c915ab"
+      "bytes": 3231,
+      "sha256": "fe4f5022566c403d4fbe83ec88655d72dd1c65a1245c837c06d133a8f8f03cc9"
+    },
+    {
+      "path": "03_源代码/scripts/compare_forecast_dispatch.py",
+      "bytes": 5936,
+      "sha256": "35b4c82cd9a23e0f15b8a6e5f4263ca20e91123b43a633ec36188f2a2edca057"
     },
     {
       "path": "03_源代码/scripts/competition_figures.py",
@@ -1154,9 +1189,14 @@
       "sha256": "246cb5f535abe4553b334e4b90dd1b50feb416f82e76246167c40c447308a874"
     },
     {
+      "path": "03_源代码/scripts/ppt/README.md",
+      "bytes": 1410,
+      "sha256": "978854636d82add0fc9d5472733a7da199b534c755f08693c3edaed600a3a199"
+    },
+    {
       "path": "03_源代码/scripts/ppt/build_gridpulse_deck.mjs",
-      "bytes": 30902,
-      "sha256": "77205d48d43333e02e56364749184a47146031bb86f11b05d8b79ed68b1fc783"
+      "bytes": 30947,
+      "sha256": "13d616c1a68c94d6a6284a058a2e7e0f68344521e9a7cb161290c9d8a6b9a108"
     },
     {
       "path": "03_源代码/scripts/ppt/finalize_gridpulse_deck.mjs",
@@ -1167,11 +1207,6 @@
       "path": "03_源代码/scripts/ppt/install-artifact-tool.mjs",
       "bytes": 1189,
       "sha256": "25ac9a909aeeaa9ebf6a09a108f08605268a1be6242116c05d3c55255d45bb99"
-    },
-    {
-      "path": "03_源代码/scripts/ppt/README.md",
-      "bytes": 1410,
-      "sha256": "978854636d82add0fc9d5472733a7da199b534c755f08693c3edaed600a3a199"
     },
     {
       "path": "03_源代码/scripts/quality_report.py",
@@ -1259,11 +1294,6 @@
       "sha256": "407662ad762c1ab6de0819d902b693345357040b361edc3c0917a78b1b468c35"
     },
     {
-      "path": "03_源代码/SECURITY.md",
-      "bytes": 988,
-      "sha256": "c78308d10aae3e640f5947b2e4860921f73ffa403e2af2843d66b9e7521b5da1"
-    },
-    {
       "path": "03_源代码/src/__init__.py",
       "bytes": 44,
       "sha256": "5acb150e8eeb4002d7235f21517b2c6aa2d95a7eef1b88af3599ada031d4402a"
@@ -1334,9 +1364,19 @@
       "sha256": "5fa30af8c0a7260467d97abacef6cd28f1f9df3f2dee3617148a51677deee9df"
     },
     {
+      "path": "03_源代码/src/numerics.py",
+      "bytes": 1619,
+      "sha256": "52a41c335bee8c96f73bf796f9e02632134a1751063cac64942fc5125b8b1a20"
+    },
+    {
       "path": "03_源代码/src/optimality.py",
-      "bytes": 17153,
-      "sha256": "5a277e4f9cc35832c27ee35943d627a938bd45693d58b92a728f295134f4dd69"
+      "bytes": 17186,
+      "sha256": "b8a7bbef7e6ad7decdb13d4cadf9c50e8e0fd4f41339c907c1f1c62aba8245e0"
+    },
+    {
+      "path": "03_源代码/src/plotting.py",
+      "bytes": 920,
+      "sha256": "09b168d811466afeb3d4328c9d743a6bee85fdbf7c75a68ba354d88b02a15df4"
     },
     {
       "path": "03_源代码/src/quality.py",
@@ -1389,6 +1429,11 @@
       "sha256": "a3618300f69b5c78b439a81973e76908c485ba243f6c9bf62048704a3f3dd4a6"
     },
     {
+      "path": "03_源代码/tests/test_forecast_dispatch_comparison.py",
+      "bytes": 2182,
+      "sha256": "bc5d75694041b5f085ff7db50bf85e7422493387aad6f17d3bb28a367c80f35d"
+    },
+    {
       "path": "03_源代码/tests/test_forecast_feed.py",
       "bytes": 1328,
       "sha256": "f9577b475ac46f7e9a8d9e5f45120ffc128a2ddb485ced4ad81c23a4e385a7a9"
@@ -1409,6 +1454,11 @@
       "sha256": "e735050921109510893de46904c90cd7a91837ea0fa368faa961df70cd4e582b"
     },
     {
+      "path": "03_源代码/tests/test_numerics.py",
+      "bytes": 1616,
+      "sha256": "b99250ea6828c2d31d9a7929e31eafbbcc44cc9088d9237b726afa7bc8685b75"
+    },
+    {
       "path": "03_源代码/tests/test_optimality.py",
       "bytes": 4451,
       "sha256": "f5efccb9adc1d0e1a35ded0a8e069a557f032a62a32fea9eb7113bc0ec0d7bf5"
@@ -1422,11 +1472,6 @@
       "path": "03_源代码/tests/test_trajectory_audit.py",
       "bytes": 1416,
       "sha256": "f1ee8d1358649f85f2bb9885a69217dbda677cdb1fd2edfbec3560e82a7150c6"
-    },
-    {
-      "path": "03_源代码/THIRD_PARTY_NOTICES.md",
-      "bytes": 3065,
-      "sha256": "fa100496ef0775681f07d4f1194f11f8f6f3a3e4003aef7a9696994d3efbe4c6"
     },
     {
       "path": "04_实验结果/实验索引.md",
@@ -1505,8 +1550,8 @@
     },
     {
       "path": "05_复现与合规/reproducibility.md",
-      "bytes": 9524,
-      "sha256": "e3b8e4583d8996729892f23b20b94a21c4951065b8cf8179cef7f1a36e37c896"
+      "bytes": 10459,
+      "sha256": "9deb4082793bebc5caf08ccd315fe274d14fb27002b47caa2483e0546e34f464"
     },
     {
       "path": "05_复现与合规/risk-aware-control.md",
@@ -1525,8 +1570,8 @@
     },
     {
       "path": "05_复现与合规/验证回执/gridpulse-defense-v9.validation.json",
-      "bytes": 8834,
-      "sha256": "2df2cbd15de11ba98d76a27fa99ff7b466da7d4375e8ba2ab44abbb8479a8353"
+      "bytes": 8830,
+      "sha256": "7071adcc5eb03cb0192bc9be77cb32532281fc7ad0ce86a68c199110fc8ea013"
     },
     {
       "path": "05_复现与合规/验证回执/gridpulse-final-preflight.json",
@@ -1540,8 +1585,8 @@
     },
     {
       "path": "06_平台上传文件/TEAM-ID-TO-RENAME-AIC-AI能源-GridPulse-答辩材料.pdf",
-      "bytes": 729329,
-      "sha256": "efd2b2d1fae0b13f61c73e41be7c678a866da9b684dcb8b75fc97953b0837e65"
+      "bytes": 1582834,
+      "sha256": "31299d123684de101777dc2a3274c35312cab3c94219bc2f96098033f61360d7"
     }
   ]
 }

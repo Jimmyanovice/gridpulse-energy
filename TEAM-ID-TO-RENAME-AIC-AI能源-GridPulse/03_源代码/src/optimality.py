@@ -13,6 +13,8 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import linprog
 
+from src.numerics import same_loads
+
 
 @dataclass(frozen=True)
 class StorageModel:
@@ -205,7 +207,7 @@ def verify_benchmark(data: pd.DataFrame, trace: pd.DataFrame, report: dict) -> b
     """Independent recheck of decomposition, dual bounds and physical attainment."""
     model = StorageModel(**report["model"])
     data,trace = check_days(data),check_days(trace)
-    if not data.timestamp.equals(trace.timestamp) or not np.array_equal(data.net_load_mw,trace.net_load_mw):
+    if not data.timestamp.equals(trace.timestamp) or not same_loads(data.net_load_mw,trace.net_load_mw):
         return False
     groups = list(data.groupby(data.timestamp.dt.floor("D")))
     days = report["daily_certificates"]

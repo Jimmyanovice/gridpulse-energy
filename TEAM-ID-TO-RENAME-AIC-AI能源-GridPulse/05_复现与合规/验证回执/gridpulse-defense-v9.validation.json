@@ -1,7 +1,7 @@
 {
   "schemaVersion": "presentation-finalization.v1",
-  "finalSha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f",
-  "byteCount": 923380,
+  "finalSha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94",
+  "byteCount": 923432,
   "packageIntegrity": {
     "chart_count": 2,
     "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
@@ -75,9 +75,9 @@
     "performed": true,
     "passed": true,
     "slideCount": 15,
-    "sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f",
+    "sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94",
     "runtimeNodeModules": "node_modules",
-    "nodeExecutable": "node.exe"
+    "nodeExecutable": "node"
   },
   "nativeTableArithmetic": {
     "performed": true,
@@ -150,7 +150,7 @@
     "native_chart_count": 2,
     "native_powerpoint_verified": false,
     "passed": true,
-    "presentation_sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f",
+    "presentation_sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94",
     "schema_version": "presentation-native-chart-titles.v1",
     "slide_count": 15,
     "source_text_emitted": false,
@@ -204,7 +204,7 @@
       "failed_slides": [],
       "formal_human_reviewed": false,
       "native_application_open_verified": false,
-      "package_sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f",
+      "package_sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94",
       "passed": true,
       "results": [
         {
@@ -289,10 +289,10 @@
       7
     ],
     "experimental": true,
-    "input_sha256": "f2373ca1411f5429ada5612a8a2a2379a28ee64f3c6fac8d7cb71144db639a7d",
+    "input_sha256": "a05c3baaf7d6f493d0306c51026614a505355800c96501086c0a798610db504a",
     "new_formulas_describe_snapshot_only": true,
-    "output_bytes": 923380,
-    "output_sha256": "9b16a8e4712841aabeda0ccc403d12fd562591a01ef162f76972b76e36a1f81f",
+    "output_bytes": 923432,
+    "output_sha256": "f3bd5c07631c82d03f20f250c369737ef174747029346264263217185beebc94",
     "portable_chart_validation_passed": true,
     "portable_validated_owner_slides": [
       5,
