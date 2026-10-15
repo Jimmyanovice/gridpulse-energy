@@ -21,7 +21,7 @@
 
 | 赛题要求 | GridPulse 对应实现 | 当前状态 | 验收证据 |
 |---|---|---|---|
-| 聚焦能源生产、传输、存储、消费等真实工程场景 | 新能源出力波动下的净负荷预测、峰值风险复核和理论储能削峰 | 已实现为历史回测原型 | `README.md`、`docs/technical-report-draft.md`、Streamlit 六个页面 |
+| 聚焦能源生产、传输、存储、消费等真实工程场景 | 新能源出力波动下的净负荷预测、峰值风险复核和理论储能削峰 | 已实现为历史回测原型 | `README.md`、`docs/technical-report-draft.md`、Streamlit 七个页面 |
 | 选取 AI 技术解决能源问题 | 梯度提升、直接多步预测、经验预测区间、规则风险筛查、滚动线性规划 | 已实现 | `src/models.py`、`src/multihorizon.py`、`src/alerts.py`、`src/scenarios.py` |
 | 自拟题目并说明场景、方法、应用效果、预期效益 | 明确主方向为新能源消纳与并网智能调控；给出预测、复核、动态储备调控对照链路 | 场景和方法已完成；真实效益仍需业务数据 | `docs/risk-aware-control.md`、技术报告第 1/3/4/5 节 |
 | 可运行代码、模型或系统原型 | 可下载数据、构建特征、训练模型、生成风险和储能情景，启动 Streamlit | 已实现 | `docs/reproducibility.md`、`scripts/final_preflight.py` |

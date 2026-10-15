@@ -1,8 +1,8 @@
-# Day 6 Evidence Refinement and Risk-Aware Storage Planning
+# Forecast Ablations and Storage Planning Results
 
 ## Fixed experimental boundary
 
-All forecast, interval, alert, and storage-policy evaluation uses the frozen Day 2 test start: `2019-08-09 21:00 UTC`. The original experiment freezes thresholds, model configurations, interval radii and policy weights. The later supplemental analysis was designed after original test results were known; it is exploratory even though its calibration uses only validation data. No supplemental winner replaces the original result.
+All forecast, interval, alert, and storage-policy evaluation uses the frozen baseline test start: `2019-08-09 21:00 UTC`. The original experiment freezes thresholds, model configurations, interval radii and policy weights. The later supplemental analysis was designed after original test results were known; it is exploratory even though its calibration uses only validation data. No supplemental winner replaces the original result.
 
 ## Feature ablations on the frozen test period
 

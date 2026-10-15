@@ -1,4 +1,4 @@
-# Originality and Provenance Review
+# Sources, Contributions and Tool Use
 
 ## Purpose
 
@@ -26,15 +26,12 @@ This document records the evidence boundary required for a competition originali
 - Public data provenance, selected fields, URL, DOI, transformation, and attribution are recorded.
 - The dashboard and documents label results as a historical backtest and theoretical storage scenario; they do not claim field deployment, realized savings, fault-confirmation accuracy, or hardware integration.
 
-## Team verification required before submission
+## Attribution and submission review
 
-- [ ] Confirm every team-authored source file, chart, image, and slide was created by the team or is explicitly attributed and permitted.
-- [ ] Confirm no external code, model weights, report prose, screenshots, or visual assets have been copied without permission and attribution.
-- [ ] Confirm reported metrics are regenerated from the committed scripts and match the final PDF, PPT PDF, and video.
-- [ ] Confirm the final submission contains no personal, school, instructor, account, or unrelated local information where anonymous review applies.
+Third-party data, algorithms and dependencies retain their source attribution. Reported metrics are linked to the experiment artifacts. Formal submission review covers permissions, consistency across the report/deck/video, and anonymity; delivery status is recorded in [submission-checklist.md](submission-checklist.md).
 
-## Disclosure boundary
+## Tool use and responsibility
 
-AI tools assisted code implementation, debugging, documentation and artifact preparation. The team must review the resulting code, experimental interpretation and final materials, retain third-party attribution, and follow the competition's current disclosure rules. Standard tree algorithms and linear programming are established methods, not claimed as newly invented algorithms.
+AI-assisted tools were used for implementation, debugging and material preparation. The participating team is responsible for code review, result interpretation, attribution and submission declarations. Standard tree algorithms and linear programming are established methods; the project contribution is their application, integration and verification in the stated energy scenario.
 
 An originality declaration is a human assertion. This repository can document provenance and run reproducibility checks, but it cannot certify authorship, competition-period creation, or permissions that are not present in the files.

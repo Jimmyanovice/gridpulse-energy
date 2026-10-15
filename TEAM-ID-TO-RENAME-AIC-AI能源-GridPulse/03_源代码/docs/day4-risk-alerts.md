@@ -1,4 +1,4 @@
-# Day 4 Candidate-Risk Alerts
+# Candidate-Risk Screening
 
 ## Scope and terminology
 

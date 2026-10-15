@@ -259,7 +259,7 @@ def build(team_id: str, replace: bool) -> Path:
     copy_file("docs/technical-report-draft.md", package / "01_技术报告/GridPulse-技术报告源稿.md")
     report_source = package / "01_技术报告/GridPulse-技术报告源稿.md"
     report_source.write_text(report_source.read_text(encoding="utf-8").replace(
-        "](outputs/figures/", "](../03_源代码/outputs/figures/"
+        "](../outputs/figures/", "](../03_源代码/outputs/figures/"
     ), encoding="utf-8")
     copy_file("outputs/presentation/gridpulse-defense-v9.pdf", package / "02_答辩材料/GridPulse-答辩材料.pdf")
     copy_file("outputs/presentation/gridpulse-defense-v9.pptx", package / "02_答辩材料/GridPulse-答辩材料.pptx")

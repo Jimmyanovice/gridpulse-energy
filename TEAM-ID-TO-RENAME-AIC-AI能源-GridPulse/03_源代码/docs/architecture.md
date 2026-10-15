@@ -19,7 +19,7 @@ OPSD source
 
 | Area | Main files | Responsibility | Output boundary |
 |---|---|---|---|
-| Ingestion | `src/ingest.py`, `scripts/build_dataset.py` | Download, normalize, and derive net load | Local data only; not committed |
+| Ingestion | `src/ingest.py`, `scripts/build_dataset.py` | Download, normalize, and derive net load | Standardized snapshot included; raw source downloaded separately |
 | Quality and EDA | `src/quality.py`, `scripts/quality_report.py`, `scripts/eda_report.py` | Validate timestamps, values, formula, and distributions | Recreated metrics and figures |
 | Baseline | `src/baseline.py`, `scripts/run_baseline.py` | Timestamp-aligned 24-hour seasonal-naive comparator | Evaluation baseline only |
 | Features and models | `src/features.py`, `src/models.py`, `src/multihorizon.py`, `scripts/train_models.py`, `scripts/train_multihorizon.py` | Causal one-step and direct 1--6 hour features, chronological training, intervals | No direct 24-hour claim |
@@ -38,9 +38,9 @@ Every observed target, solar, and wind feature is shifted before model use. For 
 ## Artifact Ownership
 
 - Source code and documentation are version-controlled.
-- Downloaded data, trained binaries, figures, metrics, and large CSV outputs are local reproducible artifacts and are ignored by Git.
+- Standardized data, frozen model binaries, figures, metrics and experiment trajectories are included in the delivered snapshot; raw downloads and caches are excluded.
 - The report preview and defense deck are tracked review deliverables; their numeric claims must be regenerated and reconciled before a formal submission.
-- `.codex-finalizer/`, `tmp/`, `pytest-temp/`, and `node_modules/` are local tooling state and must never be committed.
+- Local verification receipts, temporary files, test caches and dependency directories are excluded from the submission.
 
 ## Verification Path
 

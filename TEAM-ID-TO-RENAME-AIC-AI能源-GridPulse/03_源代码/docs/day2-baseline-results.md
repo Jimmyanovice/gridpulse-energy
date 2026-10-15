@@ -1,4 +1,4 @@
-# Day 2 Baseline Results
+# Baseline Results
 
 The seasonal-naive baseline was executed on `data/processed/net_load_hourly.csv` using the protocol in `day2-baseline-protocol.md`.
 
@@ -20,4 +20,4 @@ The machine-readable record is `outputs/metrics/seasonal_naive_metrics.json`; te
 
 ## Interpretation boundary
 
-These numbers establish a reproducible reference line only. They do not prove that a future model will generalize, and they do not imply any operational or economic benefit. The higher test error relative to validation suggests a distribution or seasonal change that later models should investigate with time-aware diagnostics.
+These numbers establish a reproducible reference line only. They do not prove that a future model will generalize, and they do not imply any operational or economic benefit. Test error is higher than validation error; robustness diagnostics are documented in `rolling-backtest.md`.

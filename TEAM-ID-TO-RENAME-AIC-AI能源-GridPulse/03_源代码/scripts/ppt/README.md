@@ -1,8 +1,8 @@
 # Local presentation build dependency
 
-Run `npm run ppt:setup` once on a machine that has Codex's locally supplied presentation package available. This places `@oai/artifact-tool` in this repository's `node_modules` for local development.
+Run `npm run ppt:setup` once on a machine with the required local presentation runtime. This places `@oai/artifact-tool` in this repository's `node_modules` for local development.
 
-`@oai/artifact-tool` is a private, bundled Codex package rather than a public npm package. It is deliberately installed without saving an absolute machine path to `package.json`. The repository therefore does not attempt to publish or vendor the package.
+`@oai/artifact-tool` is a private presentation dependency unavailable from the public npm registry. It is deliberately installed without saving an absolute machine path to `package.json`. The repository therefore does not attempt to publish or vendor the package.
 
 Use `npm run ppt:build` to build the deck and `npm run ppt:finalize` to run the local finalization flow. Before finalizing in PowerShell, set `GRIDPULSE_PYTHON` to an absolute Python path and `GRIDPULSE_PRESENTATION_SKILL_DIR` to the local presentations-skill directory. The tracked build sources are `build_gridpulse_deck.mjs` and `finalize_gridpulse_deck.mjs`; generated local build artifacts remain ignored by Git.
 

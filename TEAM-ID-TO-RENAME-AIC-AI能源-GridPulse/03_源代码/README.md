@@ -73,10 +73,9 @@ Read [the controller-development audit](docs/controller-development.md) for two-
 
 ## What Is Implemented
 
-The browser dashboard now opens on a project overview with 2021/2022 year selection,
+The browser dashboard opens on a project overview with 2021/2022 year selection,
 six storage policies, annual peak/P95/throughput/loss metrics, interactive daily
-net-load and SOC charts, and CSV export. The existing six analysis tabs remain
-available. Overview selections are independent of the sidebar's original test-period
+net-load and SOC charts, and CSV export. Six analysis pages complement the overview. Overview selections are independent of the sidebar's original test-period
 date filter. Launch with `python -m streamlit run app.py` and open
 `http://localhost:8501`. Chinese plots detect common Windows, macOS and Linux fonts;
 set `GRIDPULSE_FONT_PATH` to a Chinese font file if needed.
@@ -117,7 +116,7 @@ tests/                 Unit tests for causal features, baseline, and storage bou
 docs/                  Methods, evidence notes, architecture, report, and demo materials
 outputs/presentation/  Editable defense deck tracked for review
 outputs/report/        Generated technical-report PDF tracked for review
-data/                  Local download and processed-data locations (not committed)
+data/                  Supplied standardized snapshots and raw-download location
 ```
 
 Read [the architecture guide](docs/architecture.md) for component ownership and data flow. Read [the reproducibility guide](docs/reproducibility.md) before regenerating results.
@@ -181,9 +180,9 @@ The preflight validates tests, expected evidence artifacts, prediction-interval 
 
 ## Data and Third-Party Material
 
-The pipeline downloads the Open Power System Data (OPSD) Time Series release rather than committing it to this repository. The source URL, DOI, field mapping, attribution, and third-party boundaries are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The pipeline downloads the Open Power System Data (OPSD) Time Series release. Standardized snapshots are supplied; the original raw release is downloaded separately. The source URL, DOI, field mapping, attribution, and third-party boundaries are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Generated raw/processed data, model binaries, derived figures, and large experiment outputs are excluded from Git. They can be recreated using the documented pipeline. The tracked report and deck are review materials, not a substitute for rerunning the evidence chain.
+The submission includes standardized data, frozen models, figures and experiment trajectories. Raw source downloads, caches and temporary files are excluded. The documented pipeline can regenerate results in a separate working copy.
 
 ## Documentation
 

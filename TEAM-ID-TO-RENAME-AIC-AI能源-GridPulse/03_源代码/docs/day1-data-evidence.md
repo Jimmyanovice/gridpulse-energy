@@ -1,4 +1,4 @@
-# Day 1 Data Evidence
+# Data Quality and Coverage
 
 ## Scope
 
@@ -11,7 +11,7 @@ The first data slice uses Germany-level hourly OPSD observations from 2015-01-01
 - Quality report: `outputs/metrics/data-quality-report.json`
 - EDA figures: `outputs/figures/01_*.png` through `06_*.png`
 
-## Initial evidence from the executed quality check
+## Quality-check results
 
 - Coverage is 2,100 calendar days from 2015-01-01 through 2020-09-30 at a 60-minute inferred frequency.
 - There are no duplicate timestamps and no missing timestamp intervals in the standardized table.
@@ -21,6 +21,6 @@ The first data slice uses Germany-level hourly OPSD observations from 2015-01-01
 
 ## Modeling implications
 
-The data supports a historical net-load forecasting prototype, but the missing renewable/load observations must be handled explicitly before training. The implemented model is a one-step-ahead causal backtest; a direct 24-hour forecast requires inputs known at issuance time. A first model protocol should either restrict training/evaluation to complete rows or use a documented, leakage-safe imputation policy. Threshold calibration and all feature decisions must be completed on validation data only.
+The data supports a historical net-load forecasting prototype, but the missing renewable/load observations must be handled explicitly before training. The implemented model is a one-step-ahead causal backtest; a direct 24-hour forecast requires inputs known at issuance time. Training and evaluation use rows with complete required features and targets. Threshold calibration uses validation data; observed features are shifted to preserve the information boundary.
 
 These are data-quality findings, not claims about forecast performance or real operational benefit.

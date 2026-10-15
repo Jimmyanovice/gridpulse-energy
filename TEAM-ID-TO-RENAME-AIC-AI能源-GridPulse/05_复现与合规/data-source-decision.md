@@ -2,7 +2,7 @@
 
 ## Selected source
 
-GridPulse Day 1 uses the Open Power System Data (OPSD) time-series release:
+GridPulse uses the Open Power System Data (OPSD) time-series release:
 
 - URL: https://data.open-power-system-data.org/time_series/2020-10-06/time_series_60min_singleindex.csv
 - Release path: `time_series/2020-10-06`
@@ -18,7 +18,7 @@ It contains one region with actual load, solar generation, and wind generation i
 
 ## Deliberately excluded fields
 
-Forecast, capacity, profile, price, and distribution-grid subregion fields are not used in Day 1. They may be considered later only if their semantics and licensing are documented.
+Forecast, capacity, profile, price, and distribution-grid subregion fields are excluded from the normalized modeling table.
 
 ## Reproduction
 

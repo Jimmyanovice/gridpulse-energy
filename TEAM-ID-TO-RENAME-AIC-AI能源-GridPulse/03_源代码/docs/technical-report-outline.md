@@ -1,66 +1,15 @@
-# Technical Report Outline
+# 技术报告章节索引
 
-This is a writing structure, not a completed report. Populate it only with regenerated figures, metrics, and citations from this repository. Do not add unverified deployment, fault, saving, or user claims.
+完整报告源稿见 [technical-report-draft.md](technical-report-draft.md)，PDF 位于 `outputs/report/gridpulse-technical-report-v0.1.pdf`。
 
-## Cover and abstract
+| 章节 | 内容 | 配套证据 |
+|---|---|---|
+| 摘要 | 场景、预测与规划方法、主要结果及适用范围 | 冻结预测、储能对照与年度复验 |
+| 1. 项目背景与意义 | 新能源波动、净负荷定义、应用对象和研究目标 | `competition-alignment.md`、`data-source-decision.md` |
+| 2. 技术方案与实现 | 数据质量、因果特征、一步与直接 1–6 小时预测、候选风险、滚动规划和七页仪表盘 | `architecture.md`、`data-dictionary.md`、`risk-aware-control.md` |
+| 3. 实验与分析 | 预测基线、特征消融、规则压力测试、同信息储备对照、每日恢复、极端响应、2021/2022 复验及有限实例证书 | `day3-model-results.md`、`peak-response.md`、`independent-validation.md`、`later-year-validation.md`、`global-optimality.md` |
+| 4. 创新与应用价值 | 预测到规划的工程集成、风险证据链、机制对照与方案评估 | `INNOVATION_BRIEF.md`、`controller-development.md` |
+| 5. 结论与局限 | 削峰结果、P95 与循环取舍、数据泛化和现场应用条件 | 完整季度、吞吐、损耗与区间覆盖结果 |
+| 参考资料与附录 | 数据、算法与软件来源，依赖和复现路径 | `THIRD_PARTY_NOTICES.md`、`originality-and-provenance.md`、`reproducibility.md` |
 
-- Title: GridPulse: Renewable-Aware Net-Load Forecasting and Candidate Operational-Risk Screening.
-- Group: Technology Innovation Group.
-- Abstract: state the Germany public-data scope, causal one-step evaluation, selected model, three candidate-risk rules, and theoretical storage scenario. Keep the one-step and theoretical-scenario boundaries visible.
-
-## 1. Project background and significance
-
-- Explain net-load variability under wind and solar generation.
-- Define the target: `net_load = total_load - solar_generation - wind_generation`.
-- Frame the problem as decision support for renewable integration and peak-risk screening.
-- Cite OPSD and relevant energy forecasting literature. Add only sources that have been independently checked.
-
-## 2. Technical solution and implementation
-
-### 2.1 Architecture
-
-Describe the path from OPSD download through normalization, quality checks, causal features, model, risk rules, scenario, and Streamlit prototype.
-
-### 2.2 Data processing
-
-Use `data-dictionary.md`, `data-source-decision.md`, and the Day 1 quality report. State UTC usage, source fields, missingness, and formula validation.
-
-### 2.3 Forecasting method
-
-Describe the seasonal-naive reference, Random Forest, and Histogram Gradient Boosting. Explain time split and the historical-only feature policy. State clearly that Day 3 reports one-step-ahead causal backtesting, not a direct 24-hour forecast.
-
-### 2.4 Candidate-risk rules
-
-Describe validation-calibrated peak, solar-drop, and sustained-deviation rules. Use “candidate operational risk,” never “confirmed fault.”
-
-### 2.5 System functions
-
-Show the five Streamlit views and explain the evidence trace stored for each risk event.
-
-## 3. Experiments and analysis
-
-- Environment and reproducibility commands from `reproducibility.md`.
-- Baseline comparison: use regenerated results from Day 2 and Day 3 JSON outputs.
-- Ablation: cite the three Day 6 variants and their MAE differences.
-- Risk stress test: call it an injected deterministic mechanics test, not real detection accuracy.
-- Storage scenario: list capacity, SOC, power and efficiency assumptions, then report P95 and maximum outcomes without claiming actual savings.
-
-## 4. Innovation and application value
-
-- Renewable-aware net-load target with explicit solar/wind feature ablation.
-- Validation-calibrated, evidence-traceable risk taxonomy.
-- A cautious decision-support interface that separates model evidence, candidate risks, and theoretical actions.
-
-## 5. Limitations, ethics, and future work
-
-- One Germany-wide historical data release and no verified fault labels.
-- One-step causal backtest rather than direct 24-hour issuance.
-- Solar-drop retrospective signal needs operational forecasts or real-time measurements in deployment.
-- Storage policy omits market, network, degradation, and authorization constraints.
-- Explain the risk of false alerts, potential unequal impacts of automatic recommendations, and need for human approval.
-
-## References and appendix
-
-- Cite OPSD with its DOI and original sources as required.
-- Include dependencies and their versions.
-- Appendix: data dictionary, quality report, model configuration, reproducibility commands, and output file index.
+报告区分冻结结果、已知测试期上的探索性实验和下载前锁定的后续年份复验。历史仿真结果不等同于设备运行或经济收益，候选风险不等同于确认故障。

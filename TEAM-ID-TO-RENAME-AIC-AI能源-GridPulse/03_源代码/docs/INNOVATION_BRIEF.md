@@ -1,48 +1,27 @@
-# GridPulse Innovation Brief
+# GridPulse 技术贡献与验证结果
 
-## Current product claim
+## 作品定位
 
-GridPulse is not a generic load-forecasting dashboard. The implemented contribution is a renewable-aware, uncertainty-aware decision-support prototype that links a causal one-step-ahead net-load backtest to explainable operational-risk signals and cautious rule-based actions. A direct 24-hour forecast is future work and requires issuance-time forecast inputs.
+GridPulse 面向新能源波动下的净负荷预测与储能规划，将公开数据、因果预测、经验预测区间、候选风险筛查和受约束滚动优化接入同一套决策支持原型。系统用于历史运行分析和储能方案评估。
 
-## Research hypotheses
+## 已实现的技术贡献
 
-### H1: Renewable-aware net load is the correct target
+| 模块 | 实现 | 验证结果与边界 |
+|---|---|---|
+| 新能源关联预测 | 总负荷扣除光伏与风电形成净负荷；采用滞后与日历特征训练梯度提升模型 | 冻结测试 MAE 为 1,019.87 MW，相对上一小时持平改善 57.20%；去除新能源滞后特征后 MAE 增加 100.17 MW |
+| 多时距与区间 | 直接 1–6 小时预测，使用验证残差校准经验区间 | 一步预测原测试覆盖率为 86.92%；区间不提供未来覆盖保证，原储备规则存在不确定性项饱和 |
+| 风险证据 | 峰值负荷、光伏骤降、持续偏差三类规则，保留阈值与触发值 | 972 条候选风险行、1,135 条人工复核记录；注入测试验证规则响应，无真实故障准确率结论 |
+| 储能规划 | 同信息固定/动态储备对照，补充每日能量恢复与极端软储备释放消融 | 原测试极端响应组合削减最高峰 645.85 MW；设计属于探索性实验，削峰伴随循环代价 |
+| 时间泛化 | 2021/2022 年分别在下载全年观测前锁定模型、阈值和六组策略 | 两年相对原动态策略均削减最高峰 1,250 MW；P95 优势不稳定，吞吐与损耗增加 |
+| 数学核验 | 有限实例精确有理数与 LP 原始-对偶证书 | 证明指定物理模型下的离线峰值与最低吞吐，不证明未来在线策略全面最优 |
+| 交互展示 | 七个 Streamlit 页面，年度与策略选择、每日曲线和 CSV 导出 | 随附数据与模型快照，无需重训即可启动 |
 
-Subtracting solar and wind generation from total load should make the target more useful for peak-risk screening than forecasting demand alone. This must be tested with an ablation that removes renewable terms or renewable-derived features.
+## 方法与原创性范围
 
-### H2: Uncertainty contains operational information
+梯度提升、随机森林、线性规划和对偶理论属于已有方法。作品贡献在能源问题建模、信息边界、预测与规划集成、同信息对照、能量核算和可复核交付。来源与工具使用说明见 [originality-and-provenance.md](originality-and-provenance.md)。
 
-A forecast interval or calibrated prediction set should identify high-risk periods more usefully than a point forecast residual alone. We will report interval coverage, interval width, and risk-event precision/recall where event labels are available only in stress tests.
+## 应用限制
 
-### H3: Joint risk rules are more actionable than one residual threshold
+现有证据来自德国公开历史数据，未接入设备控制。网络、电价、退化、备用义务和额外数据发布延迟尚未完整建模，不能据此宣称现场可靠性、实际节省、碳减排或减少弃电。直接 24 小时预报还需发布时可获得的天气或新能源预测输入。
 
-Combining forecast deviation, net-load percentile, and renewable ramp rate should produce more interpretable event categories than a single residual threshold. The threshold policy must be fitted on validation data and frozen before final testing.
-
-### H4: A simple dispatch policy can be evaluated without claiming real savings
-
-A constrained, rule-based storage or peak-shaving simulation can show whether warnings arrive early enough to support an action. Results will be labeled theoretical scenario results, with assumptions and no claim of real deployment or realized savings.
-
-## Candidate technical contributions
-
-The following are candidates, not yet proven contributions:
-
-1. An implemented leakage-controlled one-step-ahead net-load forecasting pipeline built from real public data; a direct 24-hour multi-step pipeline remains future work.
-2. Validation-calibrated prediction intervals or conformalized residual bounds.
-3. A risk taxonomy that separates peak stress, renewable ramp-down, and sustained deviation, with an evidence trace for each alert.
-4. A dispatch-suggestion layer that maps risk evidence to auditable actions and constraints.
-5. Stress-test protocols that measure early warning, false alarms, missed events, and robustness by event severity.
-
-## Experiment gates
-
-We will not describe a candidate as an innovation until the following evidence exists:
-
-- The data source and license are recorded.
-- A seasonal-naive baseline is implemented.
-- Train, validation, and final test periods are chronological and frozen.
-- The candidate improves a predeclared metric or adds a measurable operational benefit without unacceptable tradeoffs.
-- At least one ablation explains which component caused the improvement.
-- No result uses final-test data for threshold or model selection.
-
-## First implementation milestone
-
-Day 1 is limited to source selection, ingestion, schema normalization, quality checks, a data dictionary, and exploratory figures for load, solar, wind, and net load. Model choice and innovation claims remain provisional until this evidence is available.
+完整方法与结果见 [technical-report-draft.md](technical-report-draft.md)、[risk-aware-control.md](risk-aware-control.md) 和 [later-year-validation.md](later-year-validation.md)。

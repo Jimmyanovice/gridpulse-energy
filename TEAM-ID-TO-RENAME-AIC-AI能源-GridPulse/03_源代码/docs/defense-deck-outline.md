@@ -1,37 +1,23 @@
-# Defense Deck Outline
+# 答辩材料页面索引
 
-## Slide 1: GridPulse
+答辩材料共 15 页，可编辑版本为 `outputs/presentation/gridpulse-defense-v9.pptx`，PDF 为同目录下的 `gridpulse-defense-v9.pdf`。
 
-Project title, Technology Innovation Group, and a one-line scope: renewable-aware net-load forecasting and candidate risk screening. Do not show school, instructor, or logo.
+| 页码 | 内容 | 核心结果与说明 |
+|---:|---|---|
+| 1 | 作品定位 | 净负荷预测与风险感知储能规划，公开数据回测原型 |
+| 2 | 工程问题 | 风光变化与净负荷压力、辅助决策场景 |
+| 3 | 数据与质量 | OPSD 德国 50,400 条小时记录、字段与缺失情况 |
+| 4 | 因果预测与滚动规划 | 一步预测、直接 1–6 小时模型及信息边界 |
+| 5 | 预测结果 | 模型误差对照、预测曲线与经验区间 |
+| 6 | 候选风险 | 三类规则、证据字段与注入压力测试 |
+| 7 | 特征消融 | 新能源滞后与滚动统计的预测贡献 |
+| 8 | 连续储能对照 | 固定与动态储备的 P95、SOC 和循环取舍 |
+| 9 | 每日能量恢复 | 共同硬下限、日末电量、补电与损耗 |
+| 10 | 极端峰值响应 | 点预测目标与软储备释放消融、最高点转移 |
+| 11 | 2021 年锁定验证 | 极端削峰、平均日峰值改善和 P95/Q3 不利结果 |
+| 12 | 有限实例最优性 | 物理下界、精确证书、原测试控制器的最优差距 |
+| 13 | 控制器开发与运行边界 | 循环代价候选、准入结果及 68 条运行压力轨迹 |
+| 14 | 2022 年锁定复验 | 年度差异、季度 P95、循环代价与区间退化 |
+| 15 | 系统原型与扩展条件 | 已实现界面、复现入口、现场应用所需数据 |
 
-## Slide 2: Engineering problem
-
-Explain why wind and solar fluctuations complicate net-load management. Define the net-load formula and intended decision-support role.
-
-## Slide 3: Data and quality evidence
-
-Show OPSD Germany fields, 2015-2020 hourly coverage, missingness controls, and the EDA time-series figure.
-
-## Slide 4: Causal forecasting design
-
-Show the one-step evidence path, then the direct 1--6 hour planning models and their causal information boundary.
-
-## Slide 5: Forecasting results
-
-Show MAE comparison and the actual-versus-predicted chart. State the frozen test period.
-
-## Slide 6: Risk screening
-
-Show the three rules, validation-only threshold calibration, and the evidence carried by each alert. State that candidate risks are not confirmed faults.
-
-## Slide 7: Ablation evidence
-
-Show full model versus renewable-free, rolling-free, and calendar-only variants. Link the renewable ablation to the project claim.
-
-## Slide 8: Risk-aware storage planning
-
-Show the fixed-reserve baseline against dynamic SOC reserve rolling optimization. Compare P95 and equivalent full cycles, and state the extreme-peak versus risk-reserve tradeoff plainly.
-
-## Slide 9: Prototype and next steps
-
-Show the Streamlit MVP, the fixed rolling evidence (5/5 folds beating baseline; mean MAE 837.30 MW), the calibrated test coverage (86.92%), the reproducibility path, and the next research gate: direct 24-hour forecast inputs with prices, degradation, and network constraints.
+图表与表格来源为 `outputs/models/`、`outputs/alerts/`、`outputs/scenarios/`、`outputs/validation/`、`outputs/optimality/` 和 `outputs/development/`。演示步骤见 [demo-script.md](demo-script.md)。

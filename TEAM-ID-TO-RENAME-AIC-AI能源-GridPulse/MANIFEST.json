@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "00_提交说明.md",
-      "bytes": 3864,
-      "sha256": "1d15017b76fa1ddde879299511e2d2cedbc3fa6cd7e044e780823b1b988504a0"
+      "bytes": 3861,
+      "sha256": "da6633097092d85140a708bfee262200998a524e8e3da96eabd3e6c46d11ebdc"
     },
     {
       "path": "01_技术报告/GridPulse-技术报告.pdf",
@@ -15,8 +15,8 @@
     },
     {
       "path": "01_技术报告/GridPulse-技术报告源稿.md",
-      "bytes": 35819,
-      "sha256": "ef6cf52f616a44bb436e664baeebd8a876a7956c54c41f94b8bea1e5bf204bb4"
+      "bytes": 35934,
+      "sha256": "52b825e7eb5236ea6e2aa8c2d78f94d0b127715b33a4e21f3d9247afd0035778"
     },
     {
       "path": "02_答辩材料/GridPulse-答辩材料.pdf",
@@ -40,8 +40,8 @@
     },
     {
       "path": "03_源代码/README.md",
-      "bytes": 16215,
-      "sha256": "2a8345ff78a7a83fe7bc36b6dd0a57a69730a824e7cc7074ffe9756ae5a1306b"
+      "bytes": 16210,
+      "sha256": "5ddbc47d6a03f09c12ee432ae8869d4ed2cef87f6f9f182dfab75d1e9bef7e88"
     },
     {
       "path": "03_源代码/SECURITY.md",
@@ -75,73 +75,73 @@
     },
     {
       "path": "03_源代码/docs/INNOVATION_BRIEF.md",
-      "bytes": 3285,
-      "sha256": "eef9faa76a5d9828ac1c77e0e462644da730d72d92b6a4216e69a99f5840371c"
+      "bytes": 2732,
+      "sha256": "50cfeb0a6b7b311b1cfb80fa1dcae5711512a4828a293199248da871fa6b96c5"
     },
     {
       "path": "03_源代码/docs/anonymous-submission.md",
-      "bytes": 1288,
-      "sha256": "d69aa7c2be01029755dec0f12b02856d1cde7502d8311d6890c562f9470a7d88"
+      "bytes": 1280,
+      "sha256": "820c3dab4707367c924a8b8001e45000bcf2eb49901501d9eaf23a81ccfb58ba"
     },
     {
       "path": "03_源代码/docs/architecture.md",
-      "bytes": 3914,
-      "sha256": "46198acf9bd925262f5d34f3d3a45a511dd86de894fcf14fdd3f4970373f0cd7"
+      "bytes": 3983,
+      "sha256": "87598e61602ad98354c8ebdba1b1c2fb89951ecafb33b3ae856eec1c72c1b9ce"
     },
     {
       "path": "03_源代码/docs/competition-alignment.md",
       "bytes": 8355,
-      "sha256": "df8b757cc344ecca58bf1f6f04a1740b7cd90d33dae90190fc7283a01e62678d"
+      "sha256": "10505fe454c0383bc2ba8f982561f22859693790701a9d792495339eb74f4056"
     },
     {
       "path": "03_源代码/docs/controller-development.md",
-      "bytes": 7984,
-      "sha256": "86f28c9eeca6c87204c95eb0123cca1814680cf83df3d171a8345dc8d9bfc3bf"
+      "bytes": 7806,
+      "sha256": "0369994a85bd4d5d468a56eeb7e664b4d92a9207f8b71d1db5288afda000be04"
     },
     {
       "path": "03_源代码/docs/data-dictionary.md",
-      "bytes": 1279,
-      "sha256": "c7cf9588a91c5e2637682ff430295fbbef3e4f08404527e63bfa9daacebffed1"
+      "bytes": 1315,
+      "sha256": "2f158856b6063c56a680a448c07b832948d58e1eae2fcaf7e11991ba37cc7da1"
     },
     {
       "path": "03_源代码/docs/data-source-decision.md",
-      "bytes": 1500,
-      "sha256": "354196cdfbf8364a492fb3cd080198ea8285dddee97cd9152154f7118ed2b44a"
+      "bytes": 1437,
+      "sha256": "e13258e4f38c6c5b14cf913569e82f846f72e067305917a5634a266f2173b000"
     },
     {
       "path": "03_源代码/docs/day1-data-evidence.md",
-      "bytes": 1867,
-      "sha256": "f867b0caad22c6de4dae64b4feded539dc4b0b57c3e5785e237d673b07bb4272"
+      "bytes": 1809,
+      "sha256": "8a7b007cd007130f6a12f58a73e174fdda400eea71854d49ca92488423769d54"
     },
     {
       "path": "03_源代码/docs/day2-baseline-protocol.md",
-      "bytes": 1612,
-      "sha256": "c4cf623abcf7f9ca2300e9feea3b35834b11149eda73ece2876612e2a3695015"
+      "bytes": 1549,
+      "sha256": "f2b38538c1e2926aaf1827b599610c46e7d1d26a7998bd984212e377924e052c"
     },
     {
       "path": "03_源代码/docs/day2-baseline-results.md",
-      "bytes": 1306,
-      "sha256": "301644768764cc0a541bbc774b4fc46505e8deb44646e15e49c6dc24606ad3d3"
+      "bytes": 1254,
+      "sha256": "91c089fc7f66b6981f13e16a23587395541068933c77abeec4fd7bb15791d29d"
     },
     {
       "path": "03_源代码/docs/day3-model-results.md",
-      "bytes": 3260,
-      "sha256": "f3055861bab072eae62f4f2685d1fe80f06dc7e1fa00d0f0b5e4f859ba8ce1b5"
+      "bytes": 3291,
+      "sha256": "d027f9ac4458ffd15377bfef3470fbe7f8108edcdb89db1d50d0ba850b861112"
     },
     {
       "path": "03_源代码/docs/day4-risk-alerts.md",
-      "bytes": 3381,
-      "sha256": "78f5881122687ed1d0641711f322f7e03c936cf42ce6a7fd21d1ee4e7f5f1707"
+      "bytes": 3378,
+      "sha256": "6e94371e025d4fac49e0a4ca26700f5d58c7db48a4073f397ea8414c3c924c6e"
     },
     {
       "path": "03_源代码/docs/day6-evidence-and-scenario.md",
-      "bytes": 5529,
-      "sha256": "5a363aa531cf60452428048845f0e11af82253b862c808d4e755b2a9f8b64d25"
+      "bytes": 5522,
+      "sha256": "6c0deec7bd261c7feb7faca8b0cf0826a722b54b8fa994fcdb9a32f2b0d6fb6b"
     },
     {
       "path": "03_源代码/docs/defense-deck-outline.md",
-      "bytes": 1737,
-      "sha256": "dd5e1289a2cdcb88d8cbb37a525178a393d9f85315c830dca9ea2ed6d69ba641"
+      "bytes": 1759,
+      "sha256": "2b19772fa82de343e7e15389373980edee3bbce703124db2c9f64f0bef83840b"
     },
     {
       "path": "03_源代码/docs/demo-script.md",
@@ -150,13 +150,13 @@
     },
     {
       "path": "03_源代码/docs/global-optimality.md",
-      "bytes": 11961,
-      "sha256": "f5d741934332e82bb653e4464c15330a700e3a2ba3f98e7e2fab2d244b8e0771"
+      "bytes": 11973,
+      "sha256": "a68bc930910fed00923fea7b7abc36a252deea8f653a464b1a5408b026b0d6e7"
     },
     {
       "path": "03_源代码/docs/independent-validation.md",
-      "bytes": 9711,
-      "sha256": "b65d99d229dfd0c817e983403f352cb85b31261dae9883d8aa526293d78cdc7e"
+      "bytes": 9771,
+      "sha256": "c8547271392fef79d8c568d0b13cc8a11ff6593e0c99c557dd7552894cecc252"
     },
     {
       "path": "03_源代码/docs/later-year-validation.md",
@@ -165,28 +165,28 @@
     },
     {
       "path": "03_源代码/docs/originality-and-provenance.md",
-      "bytes": 3277,
-      "sha256": "0e67e0cfeb8fca137c2d2bec141fbde7c2635e74de77d633b2db067f0275b871"
+      "bytes": 3048,
+      "sha256": "1757d1bded0ae9a725db894a468784392763239aac33708eea90a2c8dde8d31e"
     },
     {
       "path": "03_源代码/docs/peak-response.md",
-      "bytes": 5506,
-      "sha256": "2da8703c54ebfcce640c9e07a93c40fd6946b1c1ebc5ce45d8b635a9a9c4a2da"
+      "bytes": 5530,
+      "sha256": "8b75e57401e80be322818b363b6178216d3a267db1e77f9ff2ffad621ebd3729"
     },
     {
       "path": "03_源代码/docs/project-walkthrough-zh.md",
-      "bytes": 26474,
-      "sha256": "195c3f139c8c491572dac75b228cd189609d80d634c03e2a1347c6360b66365e"
+      "bytes": 26057,
+      "sha256": "b4f05ba87670371e9da3bbd87557e71a56b240e3694233d9d05eae4468eb074d"
     },
     {
       "path": "03_源代码/docs/release-review.md",
-      "bytes": 2194,
-      "sha256": "a8b2922f5678fac549ba431a630faf0d0b628e9e0e530dee01c9bf3889b16ed6"
+      "bytes": 2098,
+      "sha256": "4fb08c3b69d25fb745c3e2a13535fb02c13a6f641e6c799a8705680fcfdb39b1"
     },
     {
       "path": "03_源代码/docs/reproducibility.md",
-      "bytes": 10459,
-      "sha256": "9deb4082793bebc5caf08ccd315fe274d14fb27002b47caa2483e0546e34f464"
+      "bytes": 10323,
+      "sha256": "fb5d59b290512f6856cb1c130aab447373ee8a62036168084780b0bbe0dc58f9"
     },
     {
       "path": "03_源代码/docs/risk-aware-control.md",
@@ -196,7 +196,7 @@
     {
       "path": "03_源代码/docs/rolling-backtest.md",
       "bytes": 1182,
-      "sha256": "8751e1aef57a55443849d591942eaa452fc9d14e81636cb26a6b355881d5b09b"
+      "sha256": "f698b93452d13c3745a49ff7167c371076ed115f04befea7951c98dad4a19484"
     },
     {
       "path": "03_源代码/docs/submission-checklist.md",
@@ -205,13 +205,13 @@
     },
     {
       "path": "03_源代码/docs/technical-report-draft.md",
-      "bytes": 35450,
-      "sha256": "e83ccba9838774a6b1390e6a623ca40ddc273532d9ea724793a9d091e4901f32"
+      "bytes": 35574,
+      "sha256": "7808d25bc53377f5e04bc5e537893d99dc2408ddac9283fdfea748d8aa7cd70b"
     },
     {
       "path": "03_源代码/docs/technical-report-outline.md",
-      "bytes": 3556,
-      "sha256": "fcd574df1c65bbcb434672792b563a88d595c7f7ced7f174100c53c7d9a5493a"
+      "bytes": 1709,
+      "sha256": "bf760f0dd340503df86862d4c8df674e1851ea06cd5f68cab4b62f75a523078e"
     },
     {
       "path": "03_源代码/outputs/alerts/alert_evaluation.json",
@@ -1145,8 +1145,8 @@
     },
     {
       "path": "03_源代码/scripts/build_submission_package.py",
-      "bytes": 17749,
-      "sha256": "fc6a649fa74827274afe570df80e4d043ac9aac81ed818fd748c156cd6c0a404"
+      "bytes": 17752,
+      "sha256": "eff3d8f5c1aab8a7f16834765f69e19e362d00a4dd0bfbe684e1b60e72741a8a"
     },
     {
       "path": "03_源代码/scripts/certify_optimality.py",
@@ -1180,8 +1180,8 @@
     },
     {
       "path": "03_源代码/scripts/export_report_pdf.py",
-      "bytes": 8860,
-      "sha256": "6522023445ebacc188c0dad4cf1c5ae16b2a9839a9ec23371c6e8f8255069ed8"
+      "bytes": 8869,
+      "sha256": "ce79ccc61942ff32bef33b160358b6b9aa946a3b1090a672c8461b251dd9654d"
     },
     {
       "path": "03_源代码/scripts/final_preflight.py",
@@ -1190,8 +1190,8 @@
     },
     {
       "path": "03_源代码/scripts/ppt/README.md",
-      "bytes": 1410,
-      "sha256": "978854636d82add0fc9d5472733a7da199b534c755f08693c3edaed600a3a199"
+      "bytes": 1399,
+      "sha256": "21d1e7bd62c920f6610816f887424f26db2a3ae04215308c6a1e1059f51e26a1"
     },
     {
       "path": "03_源代码/scripts/ppt/build_gridpulse_deck.mjs",
@@ -1480,33 +1480,33 @@
     },
     {
       "path": "05_复现与合规/anonymous-submission.md",
-      "bytes": 1288,
-      "sha256": "d69aa7c2be01029755dec0f12b02856d1cde7502d8311d6890c562f9470a7d88"
+      "bytes": 1280,
+      "sha256": "820c3dab4707367c924a8b8001e45000bcf2eb49901501d9eaf23a81ccfb58ba"
     },
     {
       "path": "05_复现与合规/architecture.md",
-      "bytes": 3914,
-      "sha256": "46198acf9bd925262f5d34f3d3a45a511dd86de894fcf14fdd3f4970373f0cd7"
+      "bytes": 3983,
+      "sha256": "87598e61602ad98354c8ebdba1b1c2fb89951ecafb33b3ae856eec1c72c1b9ce"
     },
     {
       "path": "05_复现与合规/competition-alignment.md",
       "bytes": 8355,
-      "sha256": "df8b757cc344ecca58bf1f6f04a1740b7cd90d33dae90190fc7283a01e62678d"
+      "sha256": "10505fe454c0383bc2ba8f982561f22859693790701a9d792495339eb74f4056"
     },
     {
       "path": "05_复现与合规/controller-development.md",
-      "bytes": 7984,
-      "sha256": "86f28c9eeca6c87204c95eb0123cca1814680cf83df3d171a8345dc8d9bfc3bf"
+      "bytes": 7806,
+      "sha256": "0369994a85bd4d5d468a56eeb7e664b4d92a9207f8b71d1db5288afda000be04"
     },
     {
       "path": "05_复现与合规/data-dictionary.md",
-      "bytes": 1279,
-      "sha256": "c7cf9588a91c5e2637682ff430295fbbef3e4f08404527e63bfa9daacebffed1"
+      "bytes": 1315,
+      "sha256": "2f158856b6063c56a680a448c07b832948d58e1eae2fcaf7e11991ba37cc7da1"
     },
     {
       "path": "05_复现与合规/data-source-decision.md",
-      "bytes": 1500,
-      "sha256": "354196cdfbf8364a492fb3cd080198ea8285dddee97cd9152154f7118ed2b44a"
+      "bytes": 1437,
+      "sha256": "e13258e4f38c6c5b14cf913569e82f846f72e067305917a5634a266f2173b000"
     },
     {
       "path": "05_复现与合规/demo-script.md",
@@ -1515,13 +1515,13 @@
     },
     {
       "path": "05_复现与合规/global-optimality.md",
-      "bytes": 11961,
-      "sha256": "f5d741934332e82bb653e4464c15330a700e3a2ba3f98e7e2fab2d244b8e0771"
+      "bytes": 11973,
+      "sha256": "a68bc930910fed00923fea7b7abc36a252deea8f653a464b1a5408b026b0d6e7"
     },
     {
       "path": "05_复现与合规/independent-validation.md",
-      "bytes": 9711,
-      "sha256": "b65d99d229dfd0c817e983403f352cb85b31261dae9883d8aa526293d78cdc7e"
+      "bytes": 9771,
+      "sha256": "c8547271392fef79d8c568d0b13cc8a11ff6593e0c99c557dd7552894cecc252"
     },
     {
       "path": "05_复现与合规/later-year-validation.md",
@@ -1530,28 +1530,28 @@
     },
     {
       "path": "05_复现与合规/originality-and-provenance.md",
-      "bytes": 3277,
-      "sha256": "0e67e0cfeb8fca137c2d2bec141fbde7c2635e74de77d633b2db067f0275b871"
+      "bytes": 3048,
+      "sha256": "1757d1bded0ae9a725db894a468784392763239aac33708eea90a2c8dde8d31e"
     },
     {
       "path": "05_复现与合规/peak-response.md",
-      "bytes": 5506,
-      "sha256": "2da8703c54ebfcce640c9e07a93c40fd6946b1c1ebc5ce45d8b635a9a9c4a2da"
+      "bytes": 5530,
+      "sha256": "8b75e57401e80be322818b363b6178216d3a267db1e77f9ff2ffad621ebd3729"
     },
     {
       "path": "05_复现与合规/project-walkthrough-zh.md",
-      "bytes": 26889,
-      "sha256": "acf5a88bad1e8b4c367e2aceb5d27378de8435b6a56669faef4aafa6d12270f8"
+      "bytes": 26471,
+      "sha256": "f9509fda08fd6df366a6ab1ea31bd6806e3dd15bb147b22b2854de6a1aeaa549"
     },
     {
       "path": "05_复现与合规/release-review.md",
-      "bytes": 2194,
-      "sha256": "a8b2922f5678fac549ba431a630faf0d0b628e9e0e530dee01c9bf3889b16ed6"
+      "bytes": 2098,
+      "sha256": "4fb08c3b69d25fb745c3e2a13535fb02c13a6f641e6c799a8705680fcfdb39b1"
     },
     {
       "path": "05_复现与合规/reproducibility.md",
-      "bytes": 10459,
-      "sha256": "9deb4082793bebc5caf08ccd315fe274d14fb27002b47caa2483e0546e34f464"
+      "bytes": 10323,
+      "sha256": "fb5d59b290512f6856cb1c130aab447373ee8a62036168084780b0bbe0dc58f9"
     },
     {
       "path": "05_复现与合规/risk-aware-control.md",

@@ -1,4 +1,4 @@
-# Day 2 Forecasting Baseline Protocol
+# Forecasting Baseline Protocol
 
 ## Target
 
@@ -12,7 +12,7 @@ The baseline prediction for timestamp `t` is the observed net load at `t - 24 ho
 prediction(t) = net_load(t - 24 hours)
 ```
 
-This is a seasonal-naive baseline for an hourly series with a daily cycle. It is intentionally simple and establishes the minimum performance that later models must beat.
+This is a seasonal-naive baseline for an hourly series with a daily cycle. It provides a reproducible reference for the model comparison.
 
 ## Missing-value policy
 
@@ -23,10 +23,10 @@ The source table is kept as an hourly timeline. An evaluation row is valid only 
 The evaluable rows are split once, in timestamp order:
 
 - first 70%: training period, used only to establish the protocol;
-- next 10%: validation period, reserved for future model/threshold decisions;
+- next 10%: validation period for model selection and threshold calibration;
 - final 20%: untouched test period, used for the reported baseline result.
 
-The seasonal-naive model has no fitted parameters, but the same split is retained so later models can be compared under identical periods.
+The seasonal-naive model has no fitted parameters, but the same time boundaries are retained for model comparisons.
 
 ## Metrics
 

@@ -56,8 +56,8 @@ Chinese plot labels require Microsoft YaHei, SimHei, Noto Sans CJK SC or WenQuan
 | Peak-response diagnosis | `outputs/scenarios/peak_response_metrics.json`, `peak_validation_*` and `peak_test_*` hourly traces |
 | Frozen temporal validation | `outputs/validation/independent_2021_*`, `data/processed/independent_de_2021_hourly.csv` |
 | Post-hoc optimality audit | `outputs/optimality/certificates.json`, two `*_oracle.csv` traces; see `docs/global-optimality.md` |
-| Final preflight | `.codex-finalizer/gridpulse-final-preflight.json` |
-| Anonymous material scan | `python scripts/anonymous_preflight.py` -> `.codex-finalizer/gridpulse-anonymous-preflight.json` |
+| Final preflight | `python scripts/final_preflight.py` |
+| Anonymous material scan | `python scripts/anonymous_preflight.py` |
 
 ## Reproduction boundaries
 
@@ -67,9 +67,9 @@ Chinese plot labels require Microsoft YaHei, SimHei, Noto Sans CJK SC or WenQuan
 - Supplemental reserve experiments were added after reviewing original test outcomes. They calibrate hourly radii and the uncertainty scale on validation data only, but do not constitute an untouched confirmatory test. Original and supplemental results are kept separate.
 - Daily energy experiments compare the same 417 complete UTC days. Every episode starts at 50% SOC with a common hard 15% minimum. Balanced mode restores 50% SOC, caps SOC at 50%, and allows recovery charging at any hour. All charge load and losses count. Open daily resets are an experimental control, not sustainable operation. Cross-mode changes cannot be attributed solely to the terminal equality. Advisory reserve targets remain soft; this is exploratory, single-region evidence.
 - Peak-response experiments separately ablate the planning objective (upper band vs. point forecast) and advisory-reserve release at a window point forecast reaching the direct one-hour validation q99 threshold. Intervals still determine dynamic reserves and discharge gates. Both fixed and dynamic policies retain the same physical and daily energy constraints. Validation diagnostics reuse validation calibration, and the design follows inspection of the old test peak, so neither result is independent confirmation. No test-threshold search is used.
-- Generated data and outputs are intentionally ignored by Git. Rerun the pipeline to regenerate them.
+- Standardized data and frozen output snapshots are included. Regenerate results in a separate copy to preserve the supplied evidence.
 - Before public submission, verify current dataset terms and include the required source attribution.
-- The repository contains an independent `references/` checkout for comparison only. `pytest.ini` restricts test collection to this project's `tests/` directory so duplicate test module names in that checkout cannot contaminate the result.
+- `pytest.ini` restricts test collection to this project's `tests/` directory. External reference checkouts are excluded from the submission.
 ## 2021 temporal holdout validation
 
 This extension retains the original models and all original calibration values. It evaluates a later, previously unused calendar year from Energy-Charts.info. Read `docs/independent-validation.md` before running.

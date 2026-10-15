@@ -8,7 +8,7 @@ python scripts/anonymous_preflight.py
 
 It scans the final report PDF, defense PPTX/PDF, speaker notes, embedded PPTX XML,
 external-link relationships, document metadata, and local paths in submitted source
-scripts. The result is written to `.codex-finalizer/gridpulse-anonymous-preflight.json`.
+scripts. The command prints its findings and saves a local verification receipt.
 
 ## Manual release gate
 

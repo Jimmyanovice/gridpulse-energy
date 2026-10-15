@@ -130,7 +130,7 @@ def build_story(styles):
         image_match = re.fullmatch(r"!\[([^]]*)\]\(([^)]+)\)", line.strip())
         if image_match:
             caption, relative_path = image_match.groups()
-            image_path = ROOT / relative_path
+            image_path = SOURCE.parent / relative_path
             if not image_path.is_file():
                 raise FileNotFoundError(f"Report figure is missing: {image_path}")
             source_width, source_height = ImageReader(str(image_path)).getSize()

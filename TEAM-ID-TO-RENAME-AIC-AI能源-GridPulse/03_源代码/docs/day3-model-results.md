@@ -1,8 +1,8 @@
-# Day 3 Machine-Learning Results
+# Machine-Learning Forecast Results
 
 ## Forecasting boundary
 
-This Day 3 experiment is a **one-step-ahead causal forecast**: the model predicts net load at time `t` using calendar features and measurements available no later than `t - 1 hour`. It is not yet a direct 24-hour-ahead forecast, because no future weather or renewable-generation forecast has been introduced. This distinction must remain explicit in the report and dashboard.
+The forecasting experiment is a **one-step-ahead causal forecast**: the model predicts net load at time `t` using calendar features and measurements available no later than `t - 1 hour`. It is not yet a direct 24-hour-ahead forecast, because no future weather or renewable-generation forecast has been introduced. The report and dashboard distinguish these forecast horizons.
 
 ## Feature policy
 
@@ -15,7 +15,7 @@ All observed quantities are shifted before use. The feature set includes:
 
 ## Frozen comparison window
 
-The validation boundary (`2019-01-12 20:00 UTC`) and test boundary (`2019-08-09 21:00 UTC`) exactly match Day 2. Feature availability reduces training rows to 34,875 but leaves all 5,017 validation and 10,035 test rows available.
+The validation boundary (`2019-01-12 20:00 UTC`) and test boundary (`2019-08-09 21:00 UTC`) exactly match the baseline evaluation. Feature availability reduces training rows to 34,875 but leaves all 5,017 validation and 10,035 test rows available.
 
 ## Executed test results
 
@@ -25,7 +25,7 @@ The validation boundary (`2019-01-12 20:00 UTC`) and test boundary (`2019-08-09 
 | Random Forest | 1,126.88 | 1,501.19 | 4.69 | 4.42 | 87.14% |
 | Histogram Gradient Boosting | 1,019.87 | 1,354.19 | 4.54 | 4.12 | 88.36% |
 
-Histogram Gradient Boosting is the current selected Day 3 model because it achieves the lowest validation and test error under the frozen protocol. Its validation permutation-importance output ranks `net_load_lag_1h` first, followed by time-of-day terms and solar lag features. This is an association-based diagnostic, not a causal explanation.
+Histogram Gradient Boosting is the selected model based on validation error; it also has the lowest test error among these models under the frozen protocol. Its validation permutation-importance output ranks `net_load_lag_1h` first, followed by time-of-day terms and solar lag features. This is an association-based diagnostic, not a causal explanation.
 
 ## Calibrated prediction interval
 
@@ -42,6 +42,6 @@ Removing solar and wind lag features from the selected model increases test MAE 
 - Validation permutation importance: `outputs/models/*_validation_permutation_importance.csv`
 - Saved models: `outputs/models/*.joblib`
 
-## Limits and next gate
+## Scope and limitations
 
 The evaluation uses one Germany-wide historical data release and has no real fault labels. Before a 24-hour product claim, the project needs an explicit multi-horizon strategy and inputs that would actually be known at issuance time (for example, weather forecasts or recursively generated estimates). Risk thresholds must be calibrated on the existing validation period only.

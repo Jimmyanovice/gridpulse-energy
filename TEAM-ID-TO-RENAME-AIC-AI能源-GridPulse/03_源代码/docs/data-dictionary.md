@@ -3,9 +3,9 @@
 | Standard field | Unit | Source field | Meaning | Transformation |
 |---|---:|---|---|---|
 | `timestamp` | UTC timestamp | `utc_timestamp` | Observation time | Parsed as UTC and sorted ascending |
-| `total_load_mw` | MW | `DE_load_actual_entsoe_transparency` | Germany actual electricity load | Numeric coercion; no imputation in Day 1 |
-| `solar_generation_mw` | MW | `DE_solar_generation_actual` | Germany actual solar generation | Numeric coercion; no imputation in Day 1 |
-| `wind_generation_mw` | MW | `DE_wind_generation_actual` | Germany actual wind generation | Numeric coercion; no imputation in Day 1 |
+| `total_load_mw` | MW | `DE_load_actual_entsoe_transparency` | Germany actual electricity load | Numeric coercion; no imputation during normalization |
+| `solar_generation_mw` | MW | `DE_solar_generation_actual` | Germany actual solar generation | Numeric coercion; no imputation during normalization |
+| `wind_generation_mw` | MW | `DE_wind_generation_actual` | Germany actual wind generation | Numeric coercion; no imputation during normalization |
 | `net_load_mw` | MW | Derived | Load not covered by selected solar and wind generation | `total_load_mw - solar_generation_mw - wind_generation_mw` |
 
 ## Interpretation notes
